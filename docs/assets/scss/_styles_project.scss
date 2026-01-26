@@ -75,3 +75,114 @@
 .medium-zoom-image--opened {
     z-index: 101;
 }
+
+// Copy code button styles
+.code-block-wrapper {
+    position: relative;
+
+    // Ensure pre element has proper positioning context without affecting its margin
+    pre {
+        position: relative;
+    }
+
+    .copy-code-button {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        padding: 0.4rem 0.5rem;
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 0.375rem;
+        color: rgba(255, 255, 255, 0.6);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease-in-out;
+        opacity: 0.4;
+        backdrop-filter: blur(8px);
+        z-index: 10;
+
+        // SVG icon styling
+        svg {
+            display: block;
+            width: 16px;
+            height: 16px;
+        }
+
+        // Less visible when not hovering over code block
+        .code-block-wrapper:not(:hover) & {
+            opacity: 0.3;
+        }
+
+        // More visible on hover
+        &:hover,
+        .code-block-wrapper:hover & {
+            opacity: 1;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: rgba(255, 255, 255, 0.9);
+            transform: scale(1.05);
+        }
+
+        // Success state (after copying)
+        &.copied {
+            opacity: 1;
+            background-color: rgba(40, 167, 69, 0.2);
+            border-color: rgba(40, 167, 69, 0.4);
+            color: #28a745;
+        }
+
+        // Focus state for accessibility
+        &:focus {
+            outline: 2px solid rgba(255, 255, 255, 0.4);
+            outline-offset: 2px;
+        }
+
+        // Active state
+        &:active {
+            transform: scale(0.95);
+        }
+    }
+}
+
+// Dark theme adjustments (if needed)
+.td-dark-mode {
+    .copy-code-button {
+        background-color: rgba(0, 0, 0, 0.2);
+        border-color: rgba(255, 255, 255, 0.15);
+        
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+    }
+}
+
+// Light theme adjustments for better contrast
+.td-light-mode,
+body:not(.td-dark-mode) {
+    .copy-code-button {
+        background-color: rgba(0, 0, 0, 0.05);
+        border-color: rgba(0, 0, 0, 0.1);
+        color: rgba(0, 0, 0, 0.5);
+
+        .code-block-wrapper:not(:hover) & {
+            opacity: 0.4;
+        }
+
+        &:hover,
+        .code-block-wrapper:hover & {
+            opacity: 1;
+            background-color: rgba(0, 0, 0, 0.08);
+            border-color: rgba(0, 0, 0, 0.15);
+            color: rgba(0, 0, 0, 0.8);
+        }
+
+        &.copied {
+            background-color: rgba(40, 167, 69, 0.15);
+            border-color: rgba(40, 167, 69, 0.3);
+            color: #28a745;
+        }
+    }
+}
