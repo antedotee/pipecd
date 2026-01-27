@@ -1,0 +1,129 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PipeCD – Introduction</title>
+    <link>https://antedotee.github.io/pipecd/docs-preview-feature/categories/introduction/</link>
+    <description>Recent content in Introduction on PipeCD</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 28 Apr 2025 00:00:00 +0000</lastBuildDate>
+    
+	  <atom:link href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/introduction/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Blog: Introduction to EventWatcher: Connecting CI to PipeCD</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/blog/2025/04/28/introduction-to-eventwatcher-connecting-ci-to-pipecd/</link>
+      <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/blog/2025/04/28/introduction-to-eventwatcher-connecting-ci-to-pipecd/</guid>
+      <description>
+        
+        
+        &lt;p&gt;This article explains the basics of &amp;ldquo;&lt;strong&gt;EventWatcher&lt;/strong&gt;&amp;rdquo;, a crucial feature in practical PipeCD usage.&lt;/p&gt;
+&lt;p&gt;This article is intended for those who:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;Don&amp;rsquo;t know how to integrate CI with PipeCD&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Have found the EventWatcher feature but can&amp;rsquo;t grasp how it works&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;This article is based on PipeCD v0.51.2 (latest at the time of writing).&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;background-why-eventwatcher-is-needed&#34;&gt;Background: Why EventWatcher is needed&lt;/h2&gt;
+&lt;p&gt;Basically, PipeCD is a CD tool that continuously deploys specified config/manifests.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/eventwatcher-only-cd.drawio.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Deployment typically requires manifest changes. So, how can we &amp;ldquo;&lt;strong&gt;deploy using a new image (etc.) after CI completion&lt;/strong&gt;&amp;rdquo;? It&amp;rsquo;s annoying to update the manifest repo manually each time.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/eventwatcher-problem.drawio.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;This is where the EventWatcher feature comes into play!&lt;/p&gt;
+&lt;h2 id=&#34;what-is-eventwatcher&#34;&gt;What is EventWatcher?&lt;/h2&gt;
+&lt;p&gt;EventWatcher is a feature in PipeCD that seamlessly connects CI and CD. It updates the manifest repo based on events from CI, triggering CD.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://pipecd.dev/docs-v0.51.x/user-guide/event-watcher/&#34;&gt;https://pipecd.dev/docs-v0.51.x/user-guide/event-watcher/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;mechanism&#34;&gt;Mechanism&lt;/h3&gt;
+&lt;p&gt;The overall picture of EventWatcher looks like the diagram below.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/eventwatcher-overview.drawio.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;The EventWatcher feature itself handles steps 4-6:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;1-3. Develop new app code and store the results (container images, etc.) in a container registry&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;4.&lt;/strong&gt; Publish an event in CI to pass the new image URI to PipeCD&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;5.&lt;/strong&gt; Piped detects the event&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;6.&lt;/strong&gt; Update the manifest repo using the data provided by the event (image URI, etc.)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;7-8. Automatic deployment occurs through the standard deployment flow of PipeCD&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;usage&#34;&gt;Usage&lt;/h2&gt;
+&lt;p&gt;You need to setup three areas:&lt;/p&gt;
+&lt;h4 id=&#34;1-piped-configuration&#34;&gt;1. Piped Configuration&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;Which manifest repo events to handle&lt;/li&gt;
+&lt;li&gt;Commit permissions for the manifest repo&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a href=&#34;https://pipecd.dev/docs-v0.51.x/user-guide/managing-piped/configuring-event-watcher/&#34;&gt;https://pipecd.dev/docs-v0.51.x/user-guide/managing-piped/configuring-event-watcher/&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;2-apppipecdyaml-configuration&#34;&gt;2. app.pipecd.yaml Configuration&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;Which events to handle for the Application (&lt;code&gt;matcher&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;What actions to take for matched events (&lt;code&gt;handler&lt;/code&gt;)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;(Example) Configuration to update the &lt;code&gt;spec.template.spec.containers[0].image&lt;/code&gt; field in &lt;code&gt;deployment.yaml&lt;/code&gt; when the &lt;code&gt;helloworld-image-update&lt;/code&gt; event is triggered:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;apiVersion&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;pipecd.dev/v1beta1&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;kind&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;KubernetesApp&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;spec&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;helloworld&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;eventWatcher&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;- &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;matcher&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Which events to handle&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;helloworld-image-update&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;handler&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# What actions to take&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;GIT_UPDATE&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;config&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;          &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;replacements&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;            &lt;/span&gt;- &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;file&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;deployment.yaml&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;              &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;yamlField&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;$.spec.template.spec.containers[0].image&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Full configuration reference:
+&lt;a href=&#34;https://pipecd.dev/docs-v0.51.x/user-guide/configuration-reference/#eventwatcher&#34;&gt;https://pipecd.dev/docs-v0.51.x/user-guide/configuration-reference/#eventwatcher&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;3-event-triggering-via-pipectl-or-github-actions&#34;&gt;3. Event Triggering via pipectl or GitHub Actions&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;Event name (set in &lt;code&gt;app.pipecd.yaml&lt;/code&gt; as &lt;code&gt;matcher.name&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;New value (image URI, etc.)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;(Example) Command to trigger an event named &lt;code&gt;helloworld-image-update&lt;/code&gt; to change the image URI to &lt;code&gt;ghcr.io/xxx/helloworld:v0.2.0&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pipectl event register &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    --address&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;={&lt;/span&gt;CONTROL_PLANE_API_ADDRESS&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    --api-key&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;={&lt;/span&gt;API_KEY&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    --name&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;helloworld-image-update &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    --data&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;ghcr.io/xxx/helloworld:v0.2.0
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you use GitHub Actions for your CI, using PipeCD&amp;rsquo;s official &lt;code&gt;actions-event-register&lt;/code&gt; is recommended (configurations are the same):&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/marketplace/actions/pipecd-register-event&#34;&gt;https://github.com/marketplace/actions/pipecd-register-event&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;For example, triggering an event named &lt;code&gt;helloworld-image-update&lt;/code&gt; to change the image URI to &lt;code&gt;ghcr.io/xxx/helloworld:v0.2.0&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;uses&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;pipe-cd/actions-event-register@v1.2.0&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;with&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;          &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;api-address&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;${{ secrets.API_ADDRESS }}&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;          &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;api-key&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;${{ secrets.API_KEY }}&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;          &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;event-name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;helloworld-image-update&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;          &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;data&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;ghcr.io/xxx/helloworld:v0.2.0&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You can also handle events differently by environment using the &lt;code&gt;--labels&lt;/code&gt; option, even for events with the same name.&lt;/p&gt;
+&lt;h5 id=&#34;advanced---contexts-option&#34;&gt;Advanced: &lt;code&gt;--contexts&lt;/code&gt; Option&lt;/h5&gt;
+&lt;p&gt;Adding &lt;code&gt;--contexts&lt;/code&gt; to &lt;code&gt;pipectl event register&lt;/code&gt; allows you to include various information in the manifest repo commit. For example, passing the &lt;strong&gt;&amp;ldquo;commit hash and URL of the app repo that triggered the event&amp;rdquo;&lt;/strong&gt; makes it easier to track &amp;ldquo;which app repo changes caused this event&amp;rdquo; in the manifest repo. This is particularly useful when deployments occur frequently.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://pipecd.dev/docs-v0.51.x/user-guide/event-watcher/#optional-using-contexts&#34;&gt;https://pipecd.dev/docs-v0.51.x/user-guide/event-watcher/#optional-using-contexts&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;appendix-code-reading&#34;&gt;Appendix: Code Reading&lt;/h2&gt;
+&lt;p&gt;The EventWatcher code is consolidated in one file (though it&amp;rsquo;s quite long). Remembering that &amp;ldquo;EventWatcher runs continuously as a goroutine from Piped startup&amp;rdquo; makes it slightly easier to read.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/pipe-cd/pipecd/blob/v0.50.2/pkg/app/piped/eventwatcher/eventwatcher.go&#34;&gt;https://github.com/pipe-cd/pipecd/blob/v0.50.2/pkg/app/piped/eventwatcher/eventwatcher.go&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Using EventWatcher enables seamless integration between CI and CD. There are various advanced applications, and it would be great to see more examples being shared.&lt;/p&gt;
+&lt;p&gt;Additionally, &lt;strong&gt;Deployment Traces&lt;/strong&gt; feature enhances the integration of CI and PipeCD. For more details, please see this article:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://pipecd.dev/blog/2024/12/26/the-gap-between-ci/cd-and-how-pipecd-appeared-to-fulfill-the-gap/&#34;&gt;https://pipecd.dev/blog/2024/12/26/the-gap-between-ci/cd-and-how-pipecd-appeared-to-fulfill-the-gap/&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

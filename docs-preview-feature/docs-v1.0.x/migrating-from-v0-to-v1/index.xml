@@ -1,0 +1,18 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PipeCD – Migrate to PipeCD v1</title>
+    <link>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v1.0.x/migrating-from-v0-to-v1/</link>
+    <description>Recent content in Migrate to PipeCD v1 on PipeCD</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+	  <atom:link href="https://antedotee.github.io/pipecd/docs-preview-feature/docs-v1.0.x/migrating-from-v0-to-v1/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+  </channel>
+</rss>

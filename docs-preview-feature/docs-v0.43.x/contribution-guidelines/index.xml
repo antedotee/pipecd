@@ -1,0 +1,203 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PipeCD – Contributor Guide</title>
+    <link>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.43.x/contribution-guidelines/</link>
+    <description>Recent content in Contributor Guide on PipeCD</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+	  <atom:link href="https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.43.x/contribution-guidelines/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs-V0.43.x: Contributing</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.43.x/contribution-guidelines/contributing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.43.x/contribution-guidelines/contributing/</guid>
+      <description>
+        
+        
+        &lt;p&gt;PipeCD is an open source project that anyone in the community can use, improve, and enjoy. We&amp;rsquo;d love you to join us!&lt;/p&gt;
+&lt;h2 id=&#34;contributor-license-agreement&#34;&gt;Contributor License Agreement&lt;/h2&gt;
+&lt;p&gt;For any code contribution, please read the documents below carefully:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/pipe-cd/pipecd/blob/master/LICENSE&#34;&gt;License&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://developercertificate.org/&#34;&gt;Developer Certificate of Origin (DCO)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And signing off your commit with &lt;code&gt;git commit -s&lt;/code&gt; (About commit sign-off please read &lt;a href=&#34;https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/managing-the-commit-signoff-policy-for-your-repository#about-commit-signoffs&#34;&gt;Github docs&lt;/a&gt;)&lt;/p&gt;
+&lt;h2 id=&#34;creating-an-issue&#34;&gt;Creating an issue&lt;/h2&gt;
+&lt;p&gt;If you&amp;rsquo;ve found a problem, please check the existing &lt;a href=&#34;https://github.com/pipe-cd/pipecd/issues&#34;&gt;issues tracker&lt;/a&gt; first, and create an issue in the &lt;a href=&#34;https://github.com/pipe-cd/pipecd/issues&#34;&gt;pipe-cd/pipecd&lt;/a&gt; repository if needed.&lt;/p&gt;
+&lt;h2 id=&#34;creating-a-pull-request&#34;&gt;Creating a pull request&lt;/h2&gt;
+&lt;p&gt;Look at our &lt;a href=&#34;https://github.com/pipe-cd/pipecd/issues?q=is%3Aissue&amp;#43;is%3Aopen&amp;#43;label%3A%22help&amp;#43;wanted%22&#34;&gt;help wanted issues&lt;/a&gt; or our &lt;a href=&#34;https://github.com/pipe-cd/pipecd/issues?q=is%3Aissue&amp;#43;is%3Aopen&amp;#43;label%3A%22good&amp;#43;first&amp;#43;issue%22&#34;&gt;good first issues&lt;/a&gt; for finding some good issues for your first pull request.&lt;/p&gt;
+&lt;h3 id=&#34;small-tips&#34;&gt;Small tips&lt;/h3&gt;
+&lt;p&gt;The pull request title is used to generate our release changelog. Therefore, it would be great if you write the title that is easier to understand from the user&amp;rsquo;s point of view.&lt;/p&gt;
+&lt;h2 id=&#34;code-reviews&#34;&gt;Code reviews&lt;/h2&gt;
+&lt;p&gt;All submissions, including submissions by project members, require review. We use GitHub pull requests for this purpose. Consult &lt;a href=&#34;https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests&#34;&gt;GitHub Help&lt;/a&gt; for more information on using pull requests.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs-V0.43.x: Development</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.43.x/contribution-guidelines/development/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.43.x/contribution-guidelines/development/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://go.dev/&#34;&gt;Go 1.19&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.docker.com/&#34;&gt;Docker&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://kind.sigs.k8s.io/docs/user/quick-start/#installation&#34;&gt;kind&lt;/a&gt; (If you want to run Control Plane locally)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://helm.sh/docs/intro/install/&#34;&gt;helm 3.8&lt;/a&gt; (If you want to run Control Plane locally)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;repositories&#34;&gt;Repositories&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/pipe-cd/pipecd&#34;&gt;pipecd&lt;/a&gt;: contains all source code and documentation of PipeCD project.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/pipe-cd/examples&#34;&gt;examples&lt;/a&gt;: contains various generated examples to demonstrate how to use PipeCD.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;commands&#34;&gt;Commands&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;make build/go&lt;/code&gt;: builds all go modules including pipecd, piped, pipectl.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;make build/web&lt;/code&gt;: builds the static files for web.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;make test/go&lt;/code&gt;: runs all unit tests of go modules.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;make test/web&lt;/code&gt;: runs all unit tests of web.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;make test/integration&lt;/code&gt;: runs integration tests.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;make run/piped&lt;/code&gt;: runs Piped locally (for more information, see &lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.43.x/contribution-guidelines/development/#how-to-run-piped-agent-locally&#34;&gt;here&lt;/a&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;make run/site&lt;/code&gt;: runs PipeCD site locally (requires &lt;a href=&#34;https://github.com/gohugoio/hugo&#34;&gt;hugo&lt;/a&gt; with &lt;code&gt;_extended&lt;/code&gt; version &lt;code&gt;0.92.1&lt;/code&gt; or later to be installed).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;make gen/code&lt;/code&gt;: generate Go and Typescript code from protos and mock configs. You need to run it if you modified any proto or mock definition files.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For the full list of available commands, please see the Makefile at the root of repository.&lt;/p&gt;
+&lt;h2 id=&#34;how-to-run-control-plane-locally&#34;&gt;How to run Control Plane locally&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Start running a Kubernetes cluster&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-style:italic&#34;&gt;make kind-up
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Once it is no longer used, run &lt;code&gt;make kind-down&lt;/code&gt; to delete it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Install the web dependencies module&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-style:italic&#34;&gt;make update/web-deps
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Install Control Plane into the local cluster&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-style:italic&#34;&gt;make run/pipecd
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Once all components are running up, use &lt;code&gt;kubectl port-forward&lt;/code&gt; to expose the installed Control Plane on your localhost:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-style:italic&#34;&gt;kubectl -n pipecd port-forward svc/pipecd 8080
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Access to the local Control Plane web console&lt;/p&gt;
+&lt;p&gt;Point your web browser to &lt;a href=&#34;http://localhost:8080&#34;&gt;http://localhost:8080&lt;/a&gt; to login with the configured static admin account: project = &lt;code&gt;quickstart&lt;/code&gt;, username = &lt;code&gt;hello-pipecd&lt;/code&gt;, password = &lt;code&gt;hello-pipecd&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;how-to-run-piped-agent-locally&#34;&gt;How to run Piped agent locally&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Prepare the piped configuration file &lt;code&gt;piped-config.yaml&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ensure that your &lt;code&gt;kube-context&lt;/code&gt; is connecting to the right kubernetes cluster&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Run the following command to start running &lt;code&gt;piped&lt;/code&gt; (if you want to connect Piped to a locally running Control Plane, add &lt;code&gt;INSECURE=true&lt;/code&gt; option)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-style:italic&#34;&gt;make run/piped CONFIG_FILE=piped-config.yaml
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;docs-and-workaround-with-docs&#34;&gt;Docs and workaround with docs&lt;/h2&gt;
+&lt;p&gt;PipeCD official site contains multiple versions of documentation, all placed under the &lt;code&gt;/docs/content/en&lt;/code&gt; directory, which are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/docs&lt;/code&gt;: stable version docs, usually synced with the latest released version docs.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/docs-dev&lt;/code&gt;: experimental version docs, contains docs for not yet released features or changes.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/docs-v0.x.x&lt;/code&gt;: contains docs for specified version family (a version family is all versions which in the same major release).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Basically, we have two simple rules:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Do not touch to the &lt;code&gt;/docs&lt;/code&gt; content directly.&lt;/li&gt;
+&lt;li&gt;Keep stable docs version synced with the latest released docs version.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Here are the flow of docs contribution regard some known scenarios:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Update docs that are related to a specified version (which is not the latest released version):
+In such case, update the docs under &lt;code&gt;/docs-v0.x.x&lt;/code&gt; is enough.&lt;/li&gt;
+&lt;li&gt;Update docs for not yet released features or changes:
+In such case, update the docs under &lt;code&gt;/docs-dev&lt;/code&gt; is enough.&lt;/li&gt;
+&lt;li&gt;Update docs that are related to the latest released docs version:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Change the docs&amp;rsquo; content that fixes the issue under &lt;code&gt;/docs-dev&lt;/code&gt; and &lt;code&gt;/docs-v0.x.x&lt;/code&gt;, they share the same file structure so you should find the right files in both directories.&lt;/li&gt;
+&lt;li&gt;Use &lt;code&gt;make gen/stable-docs&lt;/code&gt; command to sync the latest released version docs under &lt;code&gt;/docs-v0.x.x&lt;/code&gt; to &lt;code&gt;/docs&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you find any issues related to the docs, we&amp;rsquo;re happy to accept your help.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs-V0.43.x: Architectural overview</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.43.x/contribution-guidelines/architectural-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.43.x/contribution-guidelines/architectural-overview/</guid>
+      <description>
+        
+        
+        &lt;p&gt;&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/architecture-overview.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p style=&#34;text-align: center;&#34;&gt;
+Component Architecture
+&lt;/p&gt;
+&lt;h3 id=&#34;piped&#34;&gt;Piped&lt;/h3&gt;
+&lt;p&gt;A single binary component runs in your cluster, your local network to handle the deployment tasks.
+It can be run inside a Kubernetes cluster by simply starting a Pod or a Deployment.
+This component is designed to be stateless, so it can also be run in a single VM or even your local machine.&lt;/p&gt;
+&lt;h3 id=&#34;control-plane&#34;&gt;Control Plane&lt;/h3&gt;
+&lt;p&gt;A centralized component manages deployment data and provides gRPC API for connecting &lt;code&gt;piped&lt;/code&gt;s as well as all web-functionalities of PipeCD such as
+authentication, showing deployment list/details, application list/details, delivery insights&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Control Plane contains the following components:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;server&lt;/code&gt;: a service to provide api for piped, web and serve static assets for web.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ops&lt;/code&gt;: a service to provide administrative features for Control Plane owner like adding/managing projects.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cache&lt;/code&gt;: a redis cache service for caching internal data.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;datastore&lt;/code&gt;: data storage for storing deployment, application data
+&lt;ul&gt;
+&lt;li&gt;this can be a fully-managed service such as &lt;code&gt;Firestore&lt;/code&gt;, &lt;code&gt;Cloud SQL&lt;/code&gt;&amp;hellip;&lt;/li&gt;
+&lt;li&gt;or a self-managed such as &lt;code&gt;MySQL&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;filestore&lt;/code&gt;: file storage for storing logs, application states
+&lt;ul&gt;
+&lt;li&gt;this can a fully-managed service such as &lt;code&gt;GCS&lt;/code&gt;, &lt;code&gt;S3&lt;/code&gt;&amp;hellip;&lt;/li&gt;
+&lt;li&gt;or a self-managed service such as &lt;code&gt;Minio&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For more information, see &lt;a href=&#34;../../user-guide/managing-controlplane/architecture-overview/&#34;&gt;Architecture overview of Control Plane&lt;/a&gt;.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

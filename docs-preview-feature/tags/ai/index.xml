@@ -1,0 +1,75 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PipeCD – AI</title>
+    <link>https://antedotee.github.io/pipecd/docs-preview-feature/tags/ai/</link>
+    <description>Recent content in AI on PipeCD</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 26 May 2025 00:00:00 +0000</lastBuildDate>
+    
+	  <atom:link href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Blog: MCP Server for PipeCD Docs Has Been Released</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/blog/2025/05/26/mcp-server-for-pipecd-docs-has-been-released/</link>
+      <pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/blog/2025/05/26/mcp-server-for-pipecd-docs-has-been-released/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Finding the right information in the official PipeCD docs can sometimes be challenging due to its volume.
+To address this, we have developed the &amp;ldquo;&lt;strong&gt;PipeCD Docs Local MCP Server&lt;/strong&gt;,&amp;rdquo; which allows you to perform full-text searches on the official documentation locally.&lt;br&gt;
+This server automatically fetches the PipeCD docs from GitHub and provides simple APIs for full-text search via the &lt;a href=&#34;https://modelcontextprotocol.io/introduction&#34;&gt;MCP protocol&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The repository is here: &lt;a href=&#34;https://github.com/pipe-cd/docs-mcp-server&#34;&gt;https://github.com/pipe-cd/docs-mcp-server&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;example&#34;&gt;Example&lt;/h2&gt;
+&lt;p&gt;For example, when I ask Cursor how to configure PipeCD for ECS, Cursor will search docs via the MCP server like this:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/mcp-server-intro-example1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;usage&#34;&gt;Usage&lt;/h2&gt;
+&lt;p&gt;See &lt;a href=&#34;https://github.com/pipe-cd/docs-mcp-server/blob/main/README.md&#34;&gt;README&lt;/a&gt; for details.&lt;/p&gt;
+&lt;p&gt;After preparing npm config to fetch the package from GitHub Packages registry, you can simply run the server by &lt;code&gt;npx @pipe-cd/docs-mcp-server@latest&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;For example, for Cursor editor, add the following to your &lt;code&gt;mcp.json&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;mcpServers&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;pipe-cd.docs-mcp-server&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;stdio&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;npx&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;args&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;@pipe-cd/docs-mcp-server@latest&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;mcp-tools&#34;&gt;MCP Tools&lt;/h2&gt;
+&lt;p&gt;The MCP Server provides two tools for now:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;search_docs&lt;/code&gt;: Performs full-text search with keywords.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;read_docs&lt;/code&gt;: Retrieves the content of a specified page.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;development-highlights&#34;&gt;Development Highlights&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Efficient cloning with sparse checkout&lt;/strong&gt;&lt;br&gt;
+Only the necessary directory (&lt;code&gt;docs/content/en&lt;/code&gt;) is cloned to speed up processing.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Simple Search Logic&lt;/strong&gt;&lt;br&gt;
+The current search logic is simple: it prioritizes title matches, followed by content matches.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;We hope this tool helps PipeCD users to configure or find information more efficiently.
+Contributions, including bug reports and feature requests are welcome via &lt;a href=&#34;https://github.com/pipe-cd/docs-mcp-server/issues&#34;&gt;Issues&lt;/a&gt;.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

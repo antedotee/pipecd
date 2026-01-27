@@ -1,0 +1,131 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PipeCD – Feature Improvement</title>
+    <link>https://antedotee.github.io/pipecd/docs-preview-feature/tags/feature-improvement/</link>
+    <description>Recent content in Feature Improvement on PipeCD</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 26 Dec 2024 00:00:00 +0000</lastBuildDate>
+    
+	  <atom:link href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/feature-improvement/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Blog: The Gap Between CI/CD and How PipeCD Appeared to FulFill the Gap</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/blog/2024/12/26/the-gap-between-ci/cd-and-how-pipecd-appeared-to-fulfill-the-gap/</link>
+      <pubDate>Thu, 26 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/blog/2024/12/26/the-gap-between-ci/cd-and-how-pipecd-appeared-to-fulfill-the-gap/</guid>
+      <description>
+        
+        
+        &lt;p&gt;PipeCD became a CNCF Sandbox last year and has only just begun to attract the attention of the community, but it has a long history of development since its inception, more than four years ago.&lt;/p&gt;
+&lt;p&gt;In this article, I would like to share the fundamental CICD challenges that the PipeCD development and operations team at CyberAgent identified, how we solved them in the current version of PipeCD, and our future direction.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; The content may be change in the future since it&amp;rsquo;s still under development.&lt;/p&gt;
+&lt;h2 id=&#34;gitops-and-cicd&#34;&gt;GitOps and CICD&lt;/h2&gt;
+&lt;p&gt;Although there are many different definitions and understandings, there are some commonalities when it comes to related concepts such as GitOps and CICD:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CI/CD separation is necessary&lt;/li&gt;
+&lt;li&gt;CI belongs to the application source code scope, and the output of CI is the input of CD. CD belongs to the manifest source code scope, and the input of CD is the output of CI&lt;/li&gt;
+&lt;li&gt;CD tools perform tasks based on GitOps principles&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;eventwatcher-as-the-bridge-between-ci-and-cd&#34;&gt;EventWatcher as the bridge between CI and CD&lt;/h2&gt;
+&lt;p&gt;Since the first version, which didn&amp;rsquo;t have much user feedback, the development team has been pushing testing and using dogfooding techniques as a way to detect shortcomings in PipeCD&amp;rsquo;s functionality.
+Since these early days, the problem of effectively linking CI and CD has emerged.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/cicd-flow.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;source: &lt;a href=&#34;https://www.weave.works/blog/what-is-gitops-really&#34;&gt;https://www.weave.works/blog/what-is-gitops-really&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;A common way to bypass the &amp;ldquo;immutability firewall&amp;rdquo; between CI and CD without paying too much attention to what CI is being used for is to rely on an artifact (container image) that is the common element between CI and CD. This approach is used by many popular CDs today, such as ArgoCD and FluxCD.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/image-watcher-flow.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;In addition to advantages such as a generic interface (as it only depends on the container image itself), this approach also has limitations, such as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It needs to support many different container registries (Docker Hub, ECR, GCR, ACR, Harbor, etc.)&lt;/li&gt;
+&lt;li&gt;It can only support container images as the artifacts, and not other artifacts such as Helm Charts, Terraform modules, Lambda source zips, etc.&lt;/li&gt;
+&lt;li&gt;As the number of container images to be monitored increases, performance-related issues arise&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Because PipeCD&amp;rsquo;s most important feature is to support various platforms, being able to only support container images as artifacts is not suitable for PipeCD. Therefore, we decided to develop a new solution to solve this problem: EventWatcher.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/pipecd-event-watcher-flow.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Instead of choosing a container image as the interface between CI and CD, PipeCD directly uses events sent from CI to PipeCD as triggers for the CD pipeline.&lt;/p&gt;
+&lt;p&gt;An event is considered a command to PipeCD (similar to triggering a deployment from the UI). It contains information such as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The event definition name and event label, are used to determine which application deployments should be triggered when piped processes this event&lt;/li&gt;
+&lt;li&gt;Information about what data is used by piped when processing the event&lt;/li&gt;
+&lt;li&gt;Information specifying paths to fields in the manifest file&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For example, suppose you want to use PipeCD EventWatcher feature to auto trigger deployment for your Kubernetes application. You first need to update your application configuration manifest like this&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;apiVersion&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;pipecd.dev/v1beta1&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;kind&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;KubernetesApp&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;spec&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;helloworld&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;eventWatcher&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;- &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;matcher&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;event-test&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;handler&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;GIT_UPDATE&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;config&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;          &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;replacements&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;            &lt;/span&gt;- &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;file&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;deployment.yaml&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;              &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;yamlField&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;$.spec.template.spec.containers[0].image&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then, in the last step of your CI pipeline, you need to use pipectl to send an event to PipeCD controlplane like this&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ pipectl event register --name&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;event-test --data&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;ghcr.io/pipecd/helloworld:v0.49.0
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The piped which manage your Kubernetes application will be notified by the event, it will create a commit to your application manifest repo, which contains&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  spec:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    template:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      spec:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        containers:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        - name: helloworld
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;-         image: ghcr.io/pipecd/helloworld:v0.48.0
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#00a000&#34;&gt;+         image: ghcr.io/pipecd/helloworld:v0.49.0
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And the piped will trigger a new deployment based on the changed commit.&lt;/p&gt;
+&lt;p&gt;EventWatcher helps you avoid performance issues as the number of container images you monitor grows. It supports a wide variety of artifact types (Helm charts, Terraform modules, Lambda source zips, etc.) while easily ensuring compatibility with a wide range of CIs.&lt;/p&gt;
+&lt;h2 id=&#34;the-issue-with-eventwatcher&#34;&gt;The issue with EventWatcher&lt;/h2&gt;
+&lt;p&gt;EventWatcher solves the above problems, but it also has certain limitations, although they are not directly due to the design of EventWatcher.&lt;/p&gt;
+&lt;p&gt;Due to security requirements, projects usually do not store source code and manifests in the same repository, but separate them into two repositories.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/code-manifest-repo-separation.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;A common request is that when users look at a pipeline deployment on PipeCD, how can they know what source code (code repo) changes are being deployed in this deployment?&lt;/p&gt;
+&lt;p&gt;If you use container images as an interface between CI and CD, you can take advantage of the LABEL feature of containers to store information about source code commit hashes, branches, etc. The OCI specification also has some predefined LABELs that you can use without defining additional keys.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-dockerfile&#34; data-lang=&#34;dockerfile&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;LABEL&lt;/span&gt; org.opencontainers.image.source&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;https://github.com/pipe-cd/pipecd&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;LABEL&lt;/span&gt; org.opencontainers.image.revision&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;0123456789abcdefg&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;However, although this approach is similar to the previous one, it is only suitable for artifacts that are container images, and at the same time, scanning container images to get information about commit hashes and displaying it in the UI incurs additional processing overhead.&lt;/p&gt;
+&lt;p&gt;At this point, we realized a strength in the EventWatcher design: sending events from CI to CD.&lt;/p&gt;
+&lt;p&gt;The essence of this problem is that when viewing a deployment, you need to know information in the code repository that is only relevant to the manifest repository. In the approach of sending events between CI and CD, you add the necessary information, such as the commit hash and PR URL, as part of the event. When it is piped to create a commit change to the manifest repository, this information is used to link the deployment with the commit trigger and commit the code change.&lt;/p&gt;
+&lt;p&gt;We use the &lt;a href=&#34;https://git-scm.com/docs/git-interpret-trailers&#34;&gt;git trailer&lt;/a&gt; feature to add this information to the manifest change commit. And finally, wrap up it as &lt;code&gt;--context&lt;/code&gt; flag of the pipectl command.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pipectl event register --name&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;event-test --data&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;ghcr.io/pipecd/helloworld:v0.49.0 &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;--context&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;Source-Commit-Hash&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; 6512b1f3fcba7342c11,Source-URL&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;https://github.com/pipe-cd/pipecd/commit/6512b1f3fcba7342c11,PipeCD-Official-Docs&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;https://pipecd.dev/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you&amp;rsquo;re using GitHub as your manifest repo remote storage, you can see it on GitHub UI like this&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/pipecd-commit-context-github-ui.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;With this feature released under &lt;a href=&#34;https://github.com/pipe-cd/pipecd/releases/tag/v0.49.3&#34;&gt;PipeCD v0.49.3&lt;/a&gt;, users now can have a link from CD to CI for tracking back which application code change causes this deployment in CD pipeline.&lt;/p&gt;
+&lt;h2 id=&#34;its-good-but-its-not-enough&#34;&gt;It&amp;rsquo;s good, but it&amp;rsquo;s not enough&lt;/h2&gt;
+&lt;p&gt;After the release of the EventWatcher update, the community provided positive feedback about resolving the connection issues between CI and CD.
+However, we notice some limitations when using PipeCD in very complex projects with many microservices in the same repository.&lt;/p&gt;
+&lt;p&gt;Each event sent to PipeCD to trigger a deployment can actually be shared to trigger multiple deployments. This is obvious, for example, changes related to protos or common shared libraries, such as logging and metrics libraries, lead to multiple deployments at once.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/eventwatcher-trigger-multi-deployments.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;This becomes problematic when a development team includes many people working on the same repository and the number of changes affecting many services is large enough: PipeCD&amp;rsquo;s current UI deployment list makes it difficult to determine exactly which deployments were triggered by which code change.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/problematic-deployment-list-ui.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Naively, we could just add a &lt;code&gt;root_cause_commit_hash&lt;/code&gt; or &lt;code&gt;codebase_commit_hash&lt;/code&gt; field to PipeCD’s deployment model and use this information to filter deployments triggered by the same repository code change in the PipeCD UI.&lt;/p&gt;
+&lt;p&gt;However, if users need to know more than just commit hash, this small change doesn&amp;rsquo;t reliably achieve the goal. What users really want is a link from the code repository to the manifest repository, that the devs (who know the code change), can use to track which deployments shift those changes to the clusters.&lt;/p&gt;
+&lt;p&gt;So we looked back at the design of PipeCD and EventWatcher and took the thinking a step further.&lt;/p&gt;
+&lt;p&gt;We decided to add the concept of Deployment Trace to PipeCD, using the code repository commit hash as the root key. For each code repository commit hash, a Deployment Trace contains the following information:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;commit_hash: The commit hash of the code repository is used as the key&lt;/li&gt;
+&lt;li&gt;code repository information: Includes code change author, URL, branches, commit messages, authors, etc.&lt;/li&gt;
+&lt;li&gt;deployments: A list of deployments triggered by the key commit_hash. Each deployment contains the complete information of the PipeCD deployment (commit, path, pipeline in manifest repository, etc.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This allows users to easily follow the information from the code repository -&amp;gt; manifest repository -&amp;gt; deployment without searching for information step by step. From the perspective of an application engineer making changes to the code repository, it is easy to see which deployment was triggered by a commit, what that deployment was, and how that deployment impacts the service.&lt;/p&gt;
+&lt;p&gt;We are summarizing &lt;a href=&#34;https://github.com/pipe-cd/pipecd/issues/5444&#34;&gt;this GitHub issue&lt;/a&gt; on the design and implementation of deployment tracing. Feel free to add any idea on the issue.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;In this article, we shared the issues we encountered when using PipeCD in a highly complex project, how we solved them through the design and implementation of EventWatcher, and our next steps with deployment tracing.&lt;/p&gt;
+&lt;p&gt;The deployment tracing feature is planned and will be implemented as soon as possible. It is expected to be released around March 2025.
+The PipeCD project is an open-source project; anyone can participate in the development of the project, and we welcome any contributions from the community.&lt;/p&gt;
+&lt;p&gt;If you have any questions or opinions, feel free to talk in &lt;a href=&#34;https://cloud-native.slack.com/&#34;&gt;CNCF Slack&lt;/a&gt; &amp;gt; #pipecd or &lt;a href=&#34;https://docs.google.com/document/d/1AtE0CQYbUV5wLfvAcl9mo9MyTCH52BuU7AngVUvE7vg/edit&#34;&gt;PipeCD Community Meeting&lt;/a&gt;.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

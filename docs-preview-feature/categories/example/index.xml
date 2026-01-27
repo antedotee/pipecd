@@ -1,0 +1,366 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PipeCD – Example</title>
+    <link>https://antedotee.github.io/pipecd/docs-preview-feature/categories/example/</link>
+    <description>Recent content in Example on PipeCD</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 14 Mar 2024 00:00:00 +0000</lastBuildDate>
+    
+	  <atom:link href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/example/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Blog: Control Plane on local by docker-compose</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/blog/2024/03/14/control-plane-on-local-by-docker-compose/</link>
+      <pubDate>Thu, 14 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/blog/2024/03/14/control-plane-on-local-by-docker-compose/</guid>
+      <description>
+        
+        
+        &lt;p&gt;Currently, you can deploy and operate a PipeCD Control Plane on a Kubernetes cluster or &lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/blog/2023/02/07/pipecd-best-practice-02-control-plane-on-ecs/&#34;&gt;on Amazon ECS&lt;/a&gt;.
+However, some developers would like to build a Control Plane more easily for introduction or development.
+This blog shows you how to install a PipeCD Control Plane on local machine easily.&lt;/p&gt;
+&lt;p&gt;This blog is for those who would like to:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;begin using PipeCD and experiment its features instantly, including Control Plane and Piped&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;architecture&#34;&gt;Architecture&lt;/h3&gt;
+&lt;p&gt;The general architecture of PipeCD Control Plane is as below.
+&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/control-plane-components.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note: See &lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs/user-guide/managing-controlplane/architecture-overview/&#34;&gt;Architecture Overview&lt;/a&gt; doc for details.
+In this blog, you will build a Control Plane by these containers:&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Server: pipecd server&lt;/li&gt;
+&lt;li&gt;Ops: pipecd ops&lt;/li&gt;
+&lt;li&gt;Cache: Redis&lt;/li&gt;
+&lt;li&gt;Data Store: MySQL&lt;/li&gt;
+&lt;li&gt;File Store: MinIO&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;installation-of-control-plane&#34;&gt;Installation of Control Plane&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Get the demo codes from &lt;a href=&#34;https://github.com/pipe-cd/demo/blob/main/control_plane/docker-compose/&#34;&gt;https://github.com/pipe-cd/demo/blob/main/control_plane/docker-compose/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Execute the below command for docker-compose.yaml you got in [1.].&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker-compose up
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After executing the above command, you will see logs like below if success.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-log&#34; data-lang=&#34;log&#34;&gt;pipecd-server-1   | successfully loaded control-plane configuration
+pipecd-server-1   | successfully connected to file store
+pipecd-server-1   | successfully connected to data store
+pipecd-server-1   | grpc server will be run without tls
+pipecd-server-1   | grpc server will be run without tls
+pipecd-server-1   | grpc server is running on [::]:9080
+pipecd-server-1   | grpc server is running on [::]:9083
+pipecd-server-1   | grpc server will be run without tls
+pipecd-server-1   | admin server is running on 9085
+pipecd-server-1   | grpc server is running on [::]:9081
+pipecd-server-1   | start running http server on :9082
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;to-confirm-access-the-console-of-the-control-plane&#34;&gt;To confirm: Access the console of the Control Plane&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Access http://localhost:8080 on your web browser.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Enter a value as below and &lt;code&gt;CONTINUE&lt;/code&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Project Name&lt;/code&gt;: &lt;code&gt;control-plane-local&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Enter values as below and &lt;code&gt;LOGIN&lt;/code&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Username&lt;/code&gt;: &lt;code&gt;hello-pipecd&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Password&lt;/code&gt;: &lt;code&gt;hello-pipecd&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;You will see the applications page. Success!&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/control-plane-local-console.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;clean-up&#34;&gt;Clean up&lt;/h3&gt;
+&lt;p&gt;To clean up the Control Plane, execute the below command.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker-compose down
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;Note: By following commands instead of above one, you can keep data such as Piped or applications on the Control Plane even after restarting/updating the server component.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Restart only the server component.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker-compose rm -fsv pipecd-server
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker-compose up pipecd-server
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Blog: PipeCD best practice 02 - control plane on ECS</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/blog/2023/02/07/pipecd-best-practice-02-control-plane-on-ecs/</link>
+      <pubDate>Tue, 07 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/blog/2023/02/07/pipecd-best-practice-02-control-plane-on-ecs/</guid>
+      <description>
+        
+        
+        &lt;p&gt;This blog is a part of PipeCD best practice series, a guideline for you to operate your own PipeCD.
+Currently, you can deploy and operate the PipeCD control plane on a Kubernetes cluster easily, but some developers that would like to introduce PipeCD can not prepare Kubernetes environments. If you have the same problem, this blog is for you. We will show you how to deploy the PipeCD control plane on Amazon ECS.&lt;/p&gt;
+&lt;h3 id=&#34;architecture&#34;&gt;Architecture&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note: Please refer to &lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs/user-guide/managing-controlplane/architecture-overview/&#34;&gt;architecture-overview&lt;/a&gt; docs for definitions of PipeCD components such as server, ops, cache, datastore and filestore.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/control-plane-on-ecs.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Following the above graph for PipeCD control plane runs on Amazon ECS, we have to prepare these next components&lt;/p&gt;
+&lt;h3 id=&#34;secrets-manager&#34;&gt;Secrets Manager&lt;/h3&gt;
+&lt;p&gt;You should put config files (control-plane-config.yaml, envoy-config.yaml) on Secrets Manager because config files contain some credentials such as database passwords.
+The examples of config files for ECS are &lt;a href=&#34;https://github.com/pipe-cd/control-plane-aws-ecs-terraform-demo/tree/main/config&#34;&gt;here&lt;/a&gt;. Please edit these files according to your environment.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;aws secretsmanager create-secret --name control-plane-config \
+--description &amp;#34;Configuration of control plane&amp;#34; \
+--secret-string `base64 control-plane-config.yaml`
+aws secretsmanager create-secret --name envoy-config \
+--description &amp;#34;Configuration of control plane&amp;#34; \
+--secret-string `base64 envoy-config.yaml`
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You should also put encryption key&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;aws secretsmanager create-secret --name encryption-key \
+--description &amp;#34;Encryption key for control plane&amp;#34; \
+--secret-string `openssl rand 64 | base64`
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;rdsdatastore&#34;&gt;RDS(datastore)&lt;/h3&gt;
+&lt;p&gt;It is possible to use RDS as a datastore. Edit your configuration file for the control plane according to your RDS setting.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;datastore&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;MYSQL&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;config&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;url&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;root:password@tcp(endpoint_of_rds:3306) &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;database&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;quickstart&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;rediscache&#34;&gt;Redis(cache)&lt;/h3&gt;
+&lt;p&gt;It is possible to use Redis as a cache. Note the endpoint of Redis for the task definition.&lt;/p&gt;
+&lt;h3 id=&#34;s3filestore&#34;&gt;S3(filestore)&lt;/h3&gt;
+&lt;p&gt;It is possible to use S3 as a filestore. The filestore contains state files that describe your secure infrastructure, so make sure to make the bucket private. Only allow pipecd-server(ECS) to access this bucket.&lt;/p&gt;
+&lt;h3 id=&#34;ecs&#34;&gt;ECS&lt;/h3&gt;
+&lt;p&gt;You need to create two different services for pipecd-server and a pipecd-ops because they have the same ports and different permissions. The pipecd-server can be accessed by external clients such as piped or web clients, so this service includes the pipe-cd gateway and this service must be connected to the application loadbalancer. The pipecd-ops can only be accessed by admin users, so this service must only be accessed via SSM session manager.
+ECS agent sets config files as environment variables in container from secrets manager. Create configuration files from environment variables in the container as below.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;$ENVOY_CONFIG&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;;&lt;/span&gt; &lt;span style=&#34;color:#204a87&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;$ENVOY_CONFIG&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; base64 -d &amp;gt;&amp;gt; envoy-config.yaml
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;Note: Attach IAM policy to get secrets from Secrets Manager to task execution role.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note: If you manage both of RDS and ECS by terraform, you can rewite datastore endpoint in the configuration file.
+&lt;code&gt;sed -i -e s/pipecd-mysql/${var.db_instance_address}/ control-plane-config.yaml;&lt;/code&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note: Attach IAM policy to access filestore to task role.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h4 id=&#34;task-definitions-examples-using-terraform-variables&#34;&gt;task definitions examples (using terraform variables)&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;gateway and server&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{
+name  = &amp;#34;pipecd-gateway&amp;#34;
+image = var.gateway_image_url
+portMappings = [
+  {
+    hostPort      = 9090
+    containerPort = 9090
+    protocol      = &amp;#34;tcp&amp;#34;
+  }
+]
+essential = false
+command = [
+  &amp;#34;/bin/sh -c &amp;#39;echo $ENVOY_CONFIG; echo $ENVOY_CONFIG | base64 -d &amp;gt;&amp;gt; envoy-config.yaml; envoy -c envoy-config.yaml;&amp;#39;&amp;#34;
+]
+entrypoint = [
+  &amp;#34;sh&amp;#34;,
+  &amp;#34;-c&amp;#34;
+]
+secrets = [
+  {
+    &amp;#34;name&amp;#34; : &amp;#34;ENVOY_CONFIG&amp;#34;,
+    &amp;#34;valueFrom&amp;#34; : &amp;#34;arn:aws:secretsmanager:${data.aws_region.current.id}:${data.aws_caller_identity.self.account_id}:secret:${var.envoy_config_secret}&amp;#34;
+  },
+]
+},
+{
+name  = &amp;#34;pipecd-server&amp;#34;
+image = var.server_image_url
+portMappings = [
+]
+command = [
+  &amp;#34;/bin/sh -c &amp;#39;echo $CONTROL_PLANE_CONFIG; echo $CONTROL_PLANE_CONFIG | base64 -d &amp;gt;&amp;gt; control-plane-config.yaml; sed -i -e s/pipecd-mysql/${var.db_instance_address}/ control-plane-config.yaml; echo $ENCRYPTION_KEY &amp;gt;&amp;gt; encryption-key; pipecd server --insecure-cookie=true --cache-address=${var.redis_host}:6379 --config-file=control-plane-config.yaml --enable-grpc-reflection=false --encryption-key-file=encryption-key --log-encoding=humanize --metrics=true;&amp;#39;&amp;#34;
+]
+entrypoint = [
+  &amp;#34;sh&amp;#34;,
+  &amp;#34;-c&amp;#34;
+]
+secrets = [
+  {
+    &amp;#34;name&amp;#34; : &amp;#34;ENCRYPTION_KEY&amp;#34;,
+    &amp;#34;valueFrom&amp;#34; : &amp;#34;arn:aws:secretsmanager:${data.aws_region.current.id}:${data.aws_caller_identity.self.account_id}:secret:${var.encryption_key_secret}&amp;#34;
+  },
+  {
+    &amp;#34;name&amp;#34; : &amp;#34;CONTROL_PLANE_CONFIG&amp;#34;,
+    &amp;#34;valueFrom&amp;#34; : &amp;#34;arn:aws:secretsmanager:${data.aws_region.current.id}:${data.aws_caller_identity.self.account_id}:secret:${var.control_plane_config_secret}&amp;#34;
+  },
+]
+},
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;ops&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{
+name  = &amp;#34;pipecd-ops&amp;#34;
+image = var.ops_image_url
+portMappings = [
+  {
+    &amp;#34;name&amp;#34; : &amp;#34;http&amp;#34;,
+    &amp;#34;protocol&amp;#34; : &amp;#34;tcp&amp;#34;,
+    &amp;#34;containerPort&amp;#34; : 9082,
+    &amp;#34;appProtocol&amp;#34; : &amp;#34;http&amp;#34;
+  },
+  {
+    &amp;#34;name&amp;#34; : &amp;#34;http&amp;#34;,
+    &amp;#34;protocol&amp;#34; : &amp;#34;tcp&amp;#34;,
+    &amp;#34;containerPort&amp;#34; : 9085,
+    &amp;#34;appProtocol&amp;#34; : &amp;#34;http&amp;#34;
+  },
+]
+command = [
+  &amp;#34;/bin/sh -c &amp;#39;echo $CONTROL_PLANE_CONFIG; echo $CONTROL_PLANE_CONFIG | base64 -d &amp;gt;&amp;gt; control-plane-config.yaml; sed -i -e s/pipecd-mysql/${var.db_instance_address}/ control-plane-config.yaml; echo $ENCRYPTION_KEY &amp;gt;&amp;gt; encryption-key; pipecd ops --cache-address=${var.redis_host}:6379 --config-file=control-plane-config.yaml --log-encoding=humanize --metrics=true;&amp;#39;&amp;#34;
+]
+entrypoint = [
+  &amp;#34;sh&amp;#34;,
+  &amp;#34;-c&amp;#34;
+]
+secrets = [
+  {
+    &amp;#34;name&amp;#34; : &amp;#34;ENCRYPTION_KEY&amp;#34;,
+    &amp;#34;valueFrom&amp;#34; : &amp;#34;arn:aws:secretsmanager:${data.aws_region.current.id}:${data.aws_caller_identity.self.account_id}:secret:${var.encryption_key_secret}&amp;#34;
+  },
+  {
+    &amp;#34;name&amp;#34; : &amp;#34;CONTROL_PLANE_CONFIG&amp;#34;,
+    &amp;#34;valueFrom&amp;#34; : &amp;#34;arn:aws:secretsmanager:${data.aws_region.current.id}:${data.aws_caller_identity.self.account_id}:secret:${var.control_plane_config_secret}&amp;#34;
+  },
+]
+},
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;alb&#34;&gt;ALB&lt;/h3&gt;
+&lt;p&gt;You must prepare two target groups for both HTTP and gRPC. Make two hosts and listner rules as below. Listner protocol should be HTTPS becuase it uses gRPC.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/control-plane-alb.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;terraform-example&#34;&gt;Terraform example&lt;/h3&gt;
+&lt;p&gt;PipeCD gives &lt;a href=&#34;https://github.com/pipe-cd/control-plane-aws-ecs-terraform-demo&#34;&gt;control-plane-aws-ecs-terraform-demo&lt;/a&gt;, which we use Terraform to prepare PipeCD controlplane components and install it on air.&lt;/p&gt;
+&lt;h4 id=&#34;prepare&#34;&gt;Prepare&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Prepare SSL certificate
+Prepare your domain and SSL certificate from AWS certificate manager.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Create a s3 bucket for terraform backend
+Write bucket name to &lt;code&gt;00-main.tf&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;terraform {
+  backend &amp;#34;s3&amp;#34; {
+    bucket  = &amp;#34;example-pipecd-control-plane-tfstate&amp;#34; #your bucket name for terraform backend
+    region  = &amp;#34;ap-northeast-1&amp;#34;
+    key     = &amp;#34;tfstate&amp;#34;
+    profile = &amp;#34;pipecd-control-planeg-terraform&amp;#34; #your profile
+  }
+  required_providers {
+    aws = {
+      version = &amp;#34;~&amp;gt; 3.34.0&amp;#34;
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Edit &lt;code&gt;variables.tf&lt;/code&gt; for your project&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;//export
+locals {
+  alb = {
+    certificate_arn = &amp;#34;&amp;#34;
+  }
+  
+  redis = {
+    node_type = &amp;#34;cache.t2.micro&amp;#34;
+  }
+
+  rds = {
+    node_type = &amp;#34;db.t3.micro&amp;#34;
+  }
+
+  ecs = {
+    memory = &amp;#34;1024&amp;#34;
+    cpu = &amp;#34;512&amp;#34;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Create a S3 bucket for filestore and write the bucket name for it to &lt;code&gt;control-plane-config.yaml&lt;/code&gt; and &lt;code&gt;variables.tf&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;apiVersion: &amp;#34;pipecd.dev/v1beta1&amp;#34;
+kind: ControlPlane
+spec:
+  datastore:
+    type: MYSQL
+    config:
+      url: sample:test@tcp(pipecd-mysql:3306)
+      database: quickstart
+  filestore:
+    type: S3
+    config: # edit here
+        bucket: example-pipecd-control-plane-filestore 
+        region: ap-northeast-1
+  projects:
+    - id: quickstart
+        staticAdmin:
+          username: hello-pipecd
+          passwordHash: &amp;#34;$2a$10$ye96mUqUqTnjUqgwQJbJzel/LJibRhUnmzyypACkvrTSnQpVFZ7qK&amp;#34; # bcrypt value of &amp;#34;hello-pipecd&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;//export
+locals {
+  s3 = { # These must be unique in the world.
+    filestore_bucket = &amp;#34;${local.project}-filestore&amp;#34; # edit here
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;Write config of RDS for datastore to &lt;code&gt;control-plane-config.yaml&lt;/code&gt;
+Note: Do not edit hostname (pipecd-mysql) because it will be edited autimaticaly by terraform.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;apiVersion: &amp;#34;pipecd.dev/v1beta1&amp;#34;
+kind: ControlPlane
+spec:
+  datastore:
+    type: MYSQL
+    config: # edit here
+      url: sample:test@tcp(pipecd-mysql:3306)
+      database: quickstart
+  filestore:
+    type: S3
+    config: 
+      bucket: example-pipecd-control-plane-filestore 
+      region: ap-northeast-1
+  projects:
+    - id: quickstart
+      staticAdmin:
+        username: hello-pipecd
+        passwordHash: &amp;#34;$2a$10$ye96mUqUqTnjUqgwQJbJzel/LJibRhUnmzyypACkvrTSnQpVFZ7qK&amp;#34; # bcrypt value of &amp;#34;hello-pipecd&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;Put an encryption key and config file in Secrets Manager and write the path to &lt;code&gt;variables.tf&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;locals {
+  sm = {
+    control_plane_config_secret = &amp;#34;&amp;#34;
+    envoy_config_secret         = &amp;#34;&amp;#34;
+    encryption_key_secret       = &amp;#34;&amp;#34;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;deploy&#34;&gt;Deploy&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;terraform apply
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;login-admin-console&#34;&gt;login admin console&lt;/h4&gt;
+&lt;p&gt;You can login pipecd-ops via ECS exec.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;aws ssm start-session --target ecs:${CLUSTER}_${TASK_ID}_${CONTAINER_ID} --document-name AWS-StartPortForwardingSession --parameters &amp;#39;{&amp;#34;portNumber&amp;#34;:[&amp;#34;9082&amp;#34;],&amp;#34;localPortNumber&amp;#34;:[&amp;#34;19082&amp;#34;]}&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;That&amp;rsquo;s all! Now you have your own PipeCD controlplane and it&amp;rsquo;s ready to go!!&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

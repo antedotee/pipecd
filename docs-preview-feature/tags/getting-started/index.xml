@@ -1,0 +1,65 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PipeCD – Getting Started</title>
+    <link>https://antedotee.github.io/pipecd/docs-preview-feature/tags/getting-started/</link>
+    <description>Recent content in Getting Started on PipeCD</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 12 Apr 2022 00:00:00 +0000</lastBuildDate>
+    
+	  <atom:link href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/getting-started/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Blog: The PipeCD play environment is here!!!</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/blog/2022/04/12/the-pipecd-play-environment-is-here/</link>
+      <pubDate>Tue, 12 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/blog/2022/04/12/the-pipecd-play-environment-is-here/</guid>
+      <description>
+        
+        
+        &lt;p&gt;Good news, PipeCD team&amp;rsquo;s happy to bring you a place where you can have a look at the PipeCD platform in use. We call it the &lt;code&gt;play environment&lt;/code&gt; - &lt;a href=&#34;https://play.pipecd.dev&#34;&gt;https://play.pipecd.dev&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/play-environment-overview.png&#34; alt=&#34;play-environment-view&#34;&gt;&lt;/p&gt;
+&lt;p style=&#34;text-align: center;&#34;&gt;
+PipeCD play environment view
+&lt;/p&gt;
+&lt;p&gt;With this live demo, you can now have a look at the PipeCD platform in use without self preparing &lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs/quickstart/&#34;&gt;quickstart&lt;/a&gt; or such. It’s way easier (and faster) to make a try by clicking around and seeing how you can get when using PipeCD as the CD platform on your own.&lt;/p&gt;
+&lt;h3 id=&#34;how-to-access&#34;&gt;How to access&lt;/h3&gt;
+&lt;p&gt;The PipeCD play environment console is available at &lt;a href=&#34;https://play.pipecd.dev&#34;&gt;https://play.pipecd.dev&lt;/a&gt;. After following the link, you will get the login page as below.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/play-environment-login.png&#34; alt=&#34;play-environment-login&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Type &lt;strong&gt;play&lt;/strong&gt; to the input box as the project name to login and click to &lt;code&gt;Continue&lt;/code&gt; to go to the account sign in page. Followed by &lt;code&gt;LOGIN WITH GITHUB&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/play-environment-github-login.png&#34; alt=&#34;play-environment-login-github&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Then, that&amp;rsquo;s it. Feel free to click around and see what PipeCD can bring to you in real-life use.&lt;/p&gt;
+&lt;h4 id=&#34;some-pages-you-may-feel-interest&#34;&gt;Some pages you may feel interest&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/play-environment-application.png&#34; alt=&#34;play-environment-application&#34;&gt;&lt;/p&gt;
+&lt;p style=&#34;text-align: center;&#34;&gt;
+&lt;a href=&#34;https://play.pipecd.dev/applications/913a0bde-1f38-41e3-9f56-75910b8988a9?project=play&#34; target=&#34;_blank&#34;&gt;Application detail page&lt;/a&gt; - show the application&#39;s state and info
+&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/play-environment-deployment.png&#34; alt=&#34;play-environment-deployment&#34;&gt;&lt;/p&gt;
+&lt;p style=&#34;text-align: center;&#34;&gt;
+&lt;a href=&#34;https://play.pipecd.dev/deployments/89c4a27a-a268-448a-bb94-bc994863b695?project=play&#34; target=&#34;_blank&#34;&gt;Deployment detail page&lt;/a&gt; - show the deployment&#39;s stages and its log
+&lt;/p&gt;
+&lt;p&gt;You can also have a look at &lt;a href=&#34;https://pipecd.dev/docs/user-guide/plan-preview/&#34;&gt;PlanPreview&lt;/a&gt; feature example, via the play project application configuration repository named &lt;a href=&#34;https://github.com/pipe-cd/examples&#34;&gt;examples&lt;/a&gt; at &lt;a href=&#34;https://github.com/pipe-cd/examples/pull/108#issuecomment-1091098475&#34;&gt;PR #108 comment&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/play-plan-preview.png&#34; alt=&#34;play-plan-preview&#34;&gt;&lt;/p&gt;
+&lt;p style=&#34;text-align: center;&#34;&gt;
+Plan preview - give the early feedback by showing the changes which will be applied on PR merged
+&lt;/p&gt;
+&lt;h3 id=&#34;notes-for-the-pipecd-play-environment&#34;&gt;Notes for the PipeCD play environment&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Since the limitation of the resources, you can only log in with the &lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs/operator-manual/control-plane/auth/#role-based-access-control-rbac&#34;&gt;Viewer role&lt;/a&gt;. This means you can only click around and see PipeCD team prepared examples, &lt;strong&gt;triggering new deployments or creating new resources are disabled&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Currently, only applications of kinds: &lt;code&gt;KUBERNETES&lt;/code&gt;, &lt;code&gt;CLOUDRUN&lt;/code&gt; and &lt;code&gt;TERRAFORM&lt;/code&gt; are prepared and available to see on the play environment console. We will add example applications of other kinds (&lt;code&gt;LAMBDA&lt;/code&gt;, &lt;code&gt;ECS&lt;/code&gt;, etc.) later.&lt;/li&gt;
+&lt;li&gt;The &lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs/user-guide/adding-an-application/&#34;&gt;application configuration&lt;/a&gt; files for those examples on the play environment are published at &lt;a href=&#34;https://github.com/pipe-cd/examples&#34;&gt;pipe-cd/examples&lt;/a&gt; repository. Those configuration files are &lt;strong&gt;real-life useable&lt;/strong&gt; configurations, but only on our cluster, since the encrypted credentials placed in those files are ours. You can replace those and use on your own.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Happy PipeCD-ing 👋&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

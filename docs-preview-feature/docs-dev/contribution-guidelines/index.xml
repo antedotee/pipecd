@@ -1,0 +1,255 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PipeCD – Contribute</title>
+    <link>https://antedotee.github.io/pipecd/docs-preview-feature/docs-dev/contribution-guidelines/</link>
+    <description>Recent content in Contribute on PipeCD</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+	  <atom:link href="https://antedotee.github.io/pipecd/docs-preview-feature/docs-dev/contribution-guidelines/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs-Dev: Contributing</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/docs-dev/contribution-guidelines/contributing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/docs-dev/contribution-guidelines/contributing/</guid>
+      <description>
+        
+        
+        &lt;p&gt;PipeCD is an open source project that anyone in the community can use, improve, and enjoy. We&amp;rsquo;d love you to join us! &lt;a href=&#34;https://github.com/pipe-cd/pipecd/tree/master/CONTRIBUTING.md&#34;&gt;Contributing to PipeCD&lt;/a&gt; is the best place to start with.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs-Dev: Architectural overview</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/docs-dev/contribution-guidelines/architectural-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/docs-dev/contribution-guidelines/architectural-overview/</guid>
+      <description>
+        
+        
+        &lt;p&gt;&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/architecture-overview.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p style=&#34;text-align: center;&#34;&gt;
+Component Architecture
+&lt;/p&gt;
+&lt;h3 id=&#34;piped&#34;&gt;Piped&lt;/h3&gt;
+&lt;p&gt;A single binary component runs in your cluster, your local network to handle the deployment tasks.
+It can be run inside a Kubernetes cluster by simply starting a Pod or a Deployment.
+This component is designed to be stateless, so it can also be run in a single VM or even your local machine.&lt;/p&gt;
+&lt;h3 id=&#34;control-plane&#34;&gt;Control Plane&lt;/h3&gt;
+&lt;p&gt;A centralized component manages deployment data and provides gRPC API for connecting &lt;code&gt;piped&lt;/code&gt;s as well as all web-functionalities of PipeCD such as
+authentication, showing deployment list/details, application list/details, delivery insights&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Control Plane contains the following components:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;server&lt;/code&gt;: a service to provide api for piped, web and serve static assets for web.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ops&lt;/code&gt;: a service to provide administrative features for Control Plane owner like adding/managing projects.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cache&lt;/code&gt;: a redis cache service for caching internal data.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;datastore&lt;/code&gt;: data storage for storing deployment, application data
+&lt;ul&gt;
+&lt;li&gt;this can be a fully-managed service such as &lt;code&gt;Firestore&lt;/code&gt;, &lt;code&gt;Cloud SQL&lt;/code&gt;&amp;hellip;&lt;/li&gt;
+&lt;li&gt;or a self-managed such as &lt;code&gt;MySQL&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;filestore&lt;/code&gt;: file storage for storing logs, application states
+&lt;ul&gt;
+&lt;li&gt;this can a fully-managed service such as &lt;code&gt;GCS&lt;/code&gt;, &lt;code&gt;S3&lt;/code&gt;&amp;hellip;&lt;/li&gt;
+&lt;li&gt;or a self-managed service such as &lt;code&gt;Minio&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For more information, see &lt;a href=&#34;../../user-guide/managing-controlplane/architecture-overview/&#34;&gt;Architecture overview of Control Plane&lt;/a&gt;.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs-Dev: Contribute to PipeCD Blogs</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/docs-dev/contribution-guidelines/contributing-blogs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/docs-dev/contribution-guidelines/contributing-blogs/</guid>
+      <description>
+        
+        
+        &lt;p&gt;We welcome blog contributions from the community! Blog posts are a great way to share your experiences, tutorials, and insights about PipeCD with other users.&lt;/p&gt;
+&lt;h2 id=&#34;what-makes-a-good-blog-post&#34;&gt;What makes a good blog post?&lt;/h2&gt;
+&lt;p&gt;Blog posts can cover a variety of topics, including:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Announcements&lt;/strong&gt;: New features, releases, or project updates&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tutorials&lt;/strong&gt;: Step-by-step guides on using PipeCD features&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Use cases&lt;/strong&gt;: How you or your organization uses PipeCD&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Best practices&lt;/strong&gt;: Tips and tricks for getting the most out of PipeCD&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integrations&lt;/strong&gt;: How to integrate PipeCD with other tools&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;where-blog-posts-live&#34;&gt;Where blog posts live&lt;/h2&gt;
+&lt;p&gt;Blog posts are located in the &lt;code&gt;/docs/content/en/blog/&lt;/code&gt; directory within the &lt;a href=&#34;https://github.com/pipe-cd/pipecd&#34;&gt;pipe-cd/pipecd repository&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;blog-post-format&#34;&gt;Blog post format&lt;/h2&gt;
+&lt;p&gt;Each blog post is a Markdown file with YAML front matter. Here&amp;rsquo;s the structure:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;---&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;date&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;2025-01-03&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;title&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Your Blog Post Title&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;linkTitle&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Short Title for Navigation&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;weight&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;980&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;description&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;A brief description of your post&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;author&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;Your Name ([@your-github-handle](https://github.com/your-github-handle))&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;categories&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Announcement&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;tags&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Tag1&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Tag2&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;---&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;Your content here...&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;front-matter-fields&#34;&gt;Front matter fields&lt;/h3&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Field&lt;/th&gt;
+          &lt;th&gt;Required&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;date&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+          &lt;td&gt;Publication date in &lt;code&gt;YYYY-MM-DD&lt;/code&gt; format&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;title&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+          &lt;td&gt;Full title of your blog post&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;linkTitle&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+          &lt;td&gt;Shorter title used in navigation menus&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;weight&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+          &lt;td&gt;Controls ordering (lower = newer, typically use ~980-990)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;description&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+          &lt;td&gt;Brief summary for SEO and previews&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;author&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+          &lt;td&gt;Your name with GitHub profile link&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;categories&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+          &lt;td&gt;One of: &lt;code&gt;Announcement&lt;/code&gt;, &lt;code&gt;Tutorial&lt;/code&gt;, &lt;code&gt;Release&lt;/code&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;tags&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+          &lt;td&gt;Relevant keywords for your post&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;content-guidelines&#34;&gt;Content guidelines&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Use clear, concise language&lt;/li&gt;
+&lt;li&gt;Include code examples where appropriate (use fenced code blocks with language identifiers)&lt;/li&gt;
+&lt;li&gt;Add images to &lt;code&gt;/docs/static/images/&lt;/code&gt; and reference them as &lt;code&gt;![alt text](/images/your-image.png)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Structure your post with headings (&lt;code&gt;##&lt;/code&gt;, &lt;code&gt;###&lt;/code&gt;) for readability&lt;/li&gt;
+&lt;li&gt;Include a conclusion or summary section&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;how-to-submit-your-blog-post&#34;&gt;How to submit your blog post&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Fork and clone&lt;/strong&gt; the &lt;a href=&#34;https://github.com/pipe-cd/pipecd&#34;&gt;pipecd repository&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Create a branch&lt;/strong&gt; for your blog post:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git checkout -b blog/your-post-title
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Create your blog post&lt;/strong&gt; file in &lt;code&gt;/docs/content/en/blog/&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;touch docs/content/en/blog/your-post-title.md
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Add any images&lt;/strong&gt; to &lt;code&gt;/docs/static/images/&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Preview locally&lt;/strong&gt; by running:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;make run/site
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then visit &lt;code&gt;http://localhost:1313/blog/&lt;/code&gt; to see your post.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Commit and push&lt;/strong&gt; your changes:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git add .
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git commit -s -m &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;blog: add post about your-topic&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git push origin blog/your-post-title
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Open a Pull Request&lt;/strong&gt; against the &lt;code&gt;master&lt;/code&gt; branch&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;review-process&#34;&gt;Review process&lt;/h2&gt;
+&lt;p&gt;A maintainer will review your blog post for:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Technical accuracy&lt;/li&gt;
+&lt;li&gt;Clarity and readability&lt;/li&gt;
+&lt;li&gt;Adherence to the format guidelines&lt;/li&gt;
+&lt;li&gt;Appropriate use of images and code examples&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Feel free to reach out on the &lt;a href=&#34;https://cloud-native.slack.com/&#34;&gt;#pipecd Slack channel&lt;/a&gt; if you have questions or want feedback on your draft before submitting.&lt;/p&gt;
+&lt;p&gt;Thank you for contributing to the PipeCD blog!&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs-Dev: Contribute to PipeCD Documentation</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/docs-dev/contribution-guidelines/contributing-documentation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/docs-dev/contribution-guidelines/contributing-documentation/</guid>
+      <description>
+        
+        
+        &lt;p&gt;Welcome! We are so happy you&amp;rsquo;re interested in helping improve our documentation. Your contributions make the project better for everyone.&lt;/p&gt;
+&lt;p&gt;This guide explains how you can contribute to the PipeCD Documentation, which resides on our official website, &lt;a href=&#34;https://pipecd.dev&#34;&gt;https://pipecd.dev&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;where-to-find-the-docs&#34;&gt;Where to find the docs&lt;/h2&gt;
+&lt;p&gt;Our documentation is located in the &lt;code&gt;/docs&lt;/code&gt; folder within the &lt;a href=&#34;https://github.com/pipe-cd/pipecd&#34;&gt;pipe-cd/pipecd repository&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The content files are written in Markdown and live inside &lt;code&gt;/docs/content/en/&lt;/code&gt;. You&amp;rsquo;ll notice two types of documentation folders:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/docs-dev/&lt;/code&gt;: This is for documentation related to unreleased, in-development features.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/docs-v0.x.x/&lt;/code&gt; (and &lt;code&gt;/docs-v1.0.x/&lt;/code&gt;): These folders contain the documentation for specific released versions of PipeCD.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;how-to-build-the-docs-locally&#34;&gt;How to build the docs locally&lt;/h2&gt;
+&lt;p&gt;To preview your changes as you work, you must run the documentation website on your local machine.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Install Prerequisite:&lt;/strong&gt; You must have the &lt;strong&gt;extended&lt;/strong&gt; version of &lt;a href=&#34;https://gohugo.io/getting-started/installing/&#34;&gt;Hugo (v0.92.1 or higher)&lt;/a&gt; installed.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Run the Server:&lt;/strong&gt; From the root of the &lt;code&gt;pipecd&lt;/code&gt; repository, run the following command:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;make run/site
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Preview:&lt;/strong&gt; Open your browser and go to &lt;code&gt;http://localhost:1313&lt;/code&gt; to see the live-reloading site.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;how-to-submit-your-changes-the-pr-process&#34;&gt;How to submit your changes (The PR Process)&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Create a Branch:&lt;/strong&gt; Create a new branch for your changes (e.g., &lt;code&gt;git checkout -b my-docs-fix&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Make Your Changes:&lt;/strong&gt; Edit the necessary documentation files. If you are fixing an issue in the current documentation, remember to edit the file in both the &lt;code&gt;/docs-dev/&lt;/code&gt; and the latest &lt;code&gt;/docs-vx.y.z/&lt;/code&gt; folders.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Commit and Push:&lt;/strong&gt; Commit your changes with a clear message and push your branch to your fork.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Open a Pull Request:&lt;/strong&gt; Go to the PipeCD repository and open a Pull Request. In the description, please link to the issue you are fixing (e.g., &lt;code&gt;Addresses #6124&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Review:&lt;/strong&gt; A maintainer will review your PR, provide feedback, and merge it.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Thank you for contributing!&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

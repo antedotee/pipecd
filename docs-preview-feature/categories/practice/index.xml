@@ -1,0 +1,66 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PipeCD – Practice</title>
+    <link>https://antedotee.github.io/pipecd/docs-preview-feature/categories/practice/</link>
+    <description>Recent content in Practice on PipeCD</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 29 Dec 2021 00:00:00 +0000</lastBuildDate>
+    
+	  <atom:link href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/practice/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Blog: PipeCD best practice 01 - operate your own PipeCD cluster</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/blog/2021/12/29/pipecd-best-practice-01-operate-your-own-pipecd-cluster/</link>
+      <pubDate>Wed, 29 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/blog/2021/12/29/pipecd-best-practice-01-operate-your-own-pipecd-cluster/</guid>
+      <description>
+        
+        
+        &lt;p&gt;PipeCD is an open source project, you can freely use the released versions of PipeCD to create and operate a continuous delivery system for your service or company. &lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs/quickstart/&#34;&gt;Quickstart&lt;/a&gt; docs - a complete guide for you to install required components of PipeCD and deploy a simple application via PipeCD is a good point to get started. However, for the sake of the simplicity of that tutorial, some points to keep in mind when operating a PipeCD cluster have been omitted. You will review the PipeCD architecture again and get some tips on how to operate a PipeCD cluster in this post.&lt;/p&gt;
+&lt;h3 id=&#34;again-review-the-pipecd-architecture&#34;&gt;Again, review the PipeCD architecture&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/architecture-overview-with-roles.png&#34; alt=&#34;images&#34;&gt;&lt;/p&gt;
+&lt;p style=&#34;text-align: center;&#34;&gt;
+Component Architecture
+&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note: Please refer to &lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs/concepts/&#34;&gt;concepts&lt;/a&gt; docs for definitions of PipeCD components such as Control Plane, Piped, Application, etc.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;At a glance, PipeCD is composed of 2 components, the Control Plane and the Piped(s). As the figure above, depending on your task/role, you need to work with different components of PipeCD.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;As a operator - platform team, most of your time working with PipeCD is to operate the PipeCD Control Plane. You may also need to cooperate with the product team, helping them install Piped(s) to their applications running cluster depending on your company team&amp;rsquo;s structure. The space surrounded by a &lt;span style=&#34;color: green;&#34;&gt;green border&lt;/span&gt; shows the operators working area.&lt;/li&gt;
+&lt;li&gt;As a developer - product team, most of your time working with PipeCD is to deploy, manage and observe your applications via application configuration files and PipeCD web console. You may also need to cooperate with the platform team to install Piped(s) to your applications running cluster if necessary. The space surrounded by a &lt;span style=&#34;color: blue;&#34;&gt;blue border&lt;/span&gt; shows the developers working area.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;tips-to-operate-pipecd-cluster&#34;&gt;Tips to operate PipeCD cluster&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Only a single Control Plane needs to be installed and will be operated by the operators (platform team). The installed Control Plane doesn&amp;rsquo;t have to be in the same cluster as your applications running cluster or the Piped installed cluster. Just make sure the Piped(s) can connect to the Control Plane via outbound requests is enough.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Developers from the product team may need to self-install piped into their applications running cluster if the platform team does not manage those credentials.&lt;br&gt;
+&lt;br&gt;
+Once the Piped - the runner is installed successfully, developers only need to care about &lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs/user-guide/adding-an-application/&#34;&gt;app configuration&lt;/a&gt; - which defines the pipeline so that piped(s) can use them to deploy your applications. Interaction with the applications is mainly done via the PipeCD web console and the configuration files stored on Git.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;As an &lt;strong&gt;operator&lt;/strong&gt;, PipeCD &lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs/operator-manual/control-plane/&#34;&gt;control-plane&lt;/a&gt; and &lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs/operator-manual/piped/&#34;&gt;piped&lt;/a&gt;(s) are what you should care about. As a &lt;strong&gt;developer&lt;/strong&gt;, you should care about &lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs/operator-manual/piped/&#34;&gt;piped&lt;/a&gt; which installed in your applications running cluster and your &lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs/user-guide/adding-an-application/&#34;&gt;applications&amp;rsquo; PipeCD configurations&lt;/a&gt;.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;It is possible to use a single piped to manage deployments of all the applications to the clusters other than the one in which piped is being installed. However, as security best practices and avoid generating cluster credentials, &lt;strong&gt;we highly recommend running each Piped inside each cluster and that Piped will only manage the applications on that cluster&lt;/strong&gt;. In case you want to deploy applications that are required to be installed across clusters/regions/environments, and want to follow this rule of thumb, please refer to the &lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs/user-guide/deployment-chain/&#34;&gt;deployment-chain&lt;/a&gt; feature.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Credentials used by piped(s) while deploying your applications should be managed by the developers of the production team themselves. You can refer to the &lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs/user-guide/secret-management/&#34;&gt;secret management&lt;/a&gt; feature supported by PipeCD for this purpose.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

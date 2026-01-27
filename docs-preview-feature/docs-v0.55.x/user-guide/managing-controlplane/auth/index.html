@@ -1,0 +1,1090 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.148.2">
+
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+
+
+<link rel="shortcut icon" href="/pipecd/docs-preview-feature/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/pipecd/docs-preview-feature/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/pipecd/docs-preview-feature/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/pipecd/docs-preview-feature/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/pipecd/docs-preview-feature/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/pipecd/docs-preview-feature/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/pipecd/docs-preview-feature/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/pipecd/docs-preview-feature/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/pipecd/docs-preview-feature/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/pipecd/docs-preview-feature/favicons/android-192x192.png" sizes="192x192">
+
+<title>Authentication and authorization | PipeCD</title><meta property="og:url" content="https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-controlplane/auth/">
+  <meta property="og:site_name" content="PipeCD">
+  <meta property="og:title" content="Authentication and authorization">
+  <meta property="og:description" content="This page describes about PipeCD Authentication and Authorization.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs-v0.55.x">
+    <meta property="article:modified_time" content="2025-10-08T15:06:34+07:00">
+    <meta property="og:image" content="https://antedotee.github.io/pipecd/docs-preview-feature/images/ogp-logo.png">
+
+  <meta itemprop="name" content="Authentication and authorization">
+  <meta itemprop="description" content="This page describes about PipeCD Authentication and Authorization.">
+  <meta itemprop="dateModified" content="2025-10-08T15:06:34+07:00">
+  <meta itemprop="wordCount" content="1066">
+  <meta itemprop="image" content="https://antedotee.github.io/pipecd/docs-preview-feature/images/ogp-logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://antedotee.github.io/pipecd/docs-preview-feature/images/ogp-logo.png">
+  <meta name="twitter:title" content="Authentication and authorization">
+  <meta name="twitter:description" content="This page describes about PipeCD Authentication and Authorization.">
+
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDHG400SFD"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-QDHG400SFD');
+        }
+      </script>
+
+
+
+
+
+<link rel="preload" href="/pipecd/docs-preview-feature/scss/main.min.49ddf2fc25f3ed680b088270f5ef01a4f0ab0ea95f7758f7bac8da7f739df15b.css" as="style">
+<link href="/pipecd/docs-preview-feature/scss/main.min.49ddf2fc25f3ed680b088270f5ef01a4f0ab0ea95f7758f7bac8da7f739df15b.css" rel="stylesheet" integrity="">
+
+
+<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"
+  ></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"
+  defer
+  ></script>
+
+<script 
+  src="https://unpkg.com/medium-zoom@1.0.6/dist/medium-zoom.min.js" 
+  integrity="sha384-vXRaoKYMBDPb5PpsIJM2Vm00aBW5eV9iCza59Nhntsn7KSDO7q+1yQEQWoLpYmaf"
+  crossorigin="anonymous"
+  ></script>
+<meta name="google-site-verification" content="eyAD8gRYGv-Uw5nHkjGFPtdbi3LpbjFF4hiFw_UpikY" />
+
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+	
+    <a class="navbar-brand" href="/pipecd/docs-preview-feature/">
+		<span class="navbar-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 235.59 117"><defs><style>.cls-1{fill:none}.cls-2{fill:#fff}.cls-3{fill:#28beeb}</style></defs><g id="pipecd-logo"><rect class="cls-1" width="235.59" height="117"/><path class="cls-2" d="M42 74.23a.4.4.0 00.12.33l20.1 20.12C64.76 97.22 76.43 85.56 73.88 83L53.79 62.92a.43.43.0 00-.32-.12c-.84.06-3.18.62-7 4.46S42.06 73.47 42 74.23z"/><path class="cls-2" d="M47.51 44.09c0-.72-.41-3.09-4.46-7.14-3.4-3.4-5.67-4.23-6.67-4.43a.47.47.0 00-.42.13 25.28 25.28.0 000 35.76l2.87 2.87a.21.21.0 00.35-.06 21.61 21.61.0 014.75-6.49A21.57 21.57.0 0150.43 60a.21.21.0 00.06-.35l-2.87-2.87A8.79 8.79.0 0147 45C47.31 44.61 47.51 44.4 47.51 44.09z"/><path class="cls-3" d="M73.37 57.33h-.14a12.85 12.85.0 01-8.56-4.64.42.42.0 00-.66.0 10 10 0 01-.75.86l-5.58 5.57a1.39 1.39.0 000 2l9.72 9.72a1.39 1.39.0 001.95.0l4.27-4.28c3-3 6-6.66 6.82-9.59a.42.42.0 00-.54-.53A14.58 14.58.0 0173.37 57.33z"/><path class="cls-2" d="M73.67 53.77c3.74.22 6-1 7.33-2.28a4.83 4.83.0 001.25-2.26A25.26 25.26.0 0039.12 29.49c-.15.15.0.18.0.19a21.91 21.91.0 016.46 4.74 21.25 21.25.0 014.82 6.64c.13.26.24.19.6-.11a9 9 0 0111.8-.27 8.74 8.74.0 013 5.86 5.82 5.82.0 00.38 1.71A10.78 10.78.0 0067.11 50a9 9 0 006.56 3.77z"/><path class="cls-2" d="M107.5 42.87a5.58 5.58.0 00-1.83-1.4 10 10 0 00-2.38-.81 17.36 17.36.0 00-2.5-.37c-.82.0-1.65-.08-2.51-.08h-9V72.36h7.54V59.84c.52.0 1.19.0 2 0a33.57 33.57.0 003.66-.17 8.76 8.76.0 002.81-.82 5.93 5.93.0 002.08-1.52 7.41 7.41.0 001.31-2.18 12.23 12.23.0 00.66-2.53 18.55 18.55.0 00.2-2.73 16.38 16.38.0 00-.43-3.92 7.2 7.2.0 00-1.61-3.1zm-5.64 8.93a3.12 3.12.0 01-.75 1.44 3.16 3.16.0 01-1.48.66 11.05 11.05.0 01-2.08.16h-.69V46h.82a10.86 10.86.0 013 .26 2 2 0 011.13 1.42 8.6 8.6.0 01.28 2.31A8 8 0 01101.86 51.8z"/><path class="cls-2" d="M112.6 51.82V72.36h6.81V51.82a10.33 10.33.0 00-6.81.0z"/><path class="cls-2" d="M112.6 48.88a11.15 11.15.0 016.81.0V40.21H112.6z"/><path class="cls-2" d="M139.74 50.28a5.33 5.33.0 00-1.8-1.91 5.16 5.16.0 00-2.77-.7 6.32 6.32.0 00-5.57 3.6h-.09V48.35h-6.34V80.46H130V70.09h.09a6.82 6.82.0 002.44 2.31 5.25 5.25.0 005.51-.1 5.38 5.38.0 001.82-2.08 9.92 9.92.0 00.9-2.79 19.14 19.14.0 00.26-3.21V55.9a14.64 14.64.0 00-.3-3A9.45 9.45.0 00139.74 50.28zM134.18 63.4c0 .6.0 1.13.0 1.59a4.21 4.21.0 01-.26 1.26 2.11 2.11.0 01-.64.94 1.7 1.7.0 01-1.16.37 1.68 1.68.0 01-1.63-1.29 9.21 9.21.0 01-.47-3.13V57.48a8.34 8.34.0 01.47-3.1 1.75 1.75.0 011.76-1.14 1.5 1.5.0 011.09.39 2.19 2.19.0 01.61 1 5.65 5.65.0 01.23 1.2c0 .4.0.86.0 1.37z"/><path class="cls-2" d="M159.2 49.25a9.37 9.37.0 00-2.89-1.2 15.93 15.93.0 00-3.56-.38 14.28 14.28.0 00-3.73.45 7.89 7.89.0 00-2.88 1.39A6.35 6.35.0 00144.26 52a9.65 9.65.0 00-.69 3.86v9.77a7.66 7.66.0 00.71 3.41 6.15 6.15.0 002 2.34 8.64 8.64.0 002.92 1.31 15 15 0 003.58.4c2.88.0 5.1-.73 6.64-2.1s2.32-4 2.32-6.71c0 0-.05-.42-.05-.57a17.82 17.82.0 00-6.67-.23 8.1 8.1.0 01-.59 3.83c-.27.57-.91.85-1.91.85a2 2 0 01-1.59-.75 3 3 0 01-.51-1.78V61.62a34.51 34.51.0 0111.53-.15V54.61a6.56 6.56.0 00-.73-3.19A5.85 5.85.0 00159.2 49.25zm-8.81 7.33v-1.2a4.49 4.49.0 01.53-2.33 2.39 2.39.0 013.63-.09 2.85 2.85.0 01.56 1.65v1.67A21.18 21.18.0 00150.39 56.58z"/><path class="cls-3" d="M177.63 58.07v4.65a14.72 14.72.0 01-.08 1.67 5.1 5.1.0 01-.37 1.43 2.56 2.56.0 01-.85 1.1 2.47 2.47.0 01-1.48.43 2.63 2.63.0 01-2.06-.73 3.16 3.16.0 01-.64-2.15v-15.9a4.18 4.18.0 01.62-2.53 2.73 2.73.0 012.3-.82 2 2 0 011.75 1.08c.43.71.65 3.47.65 4.82l.12 3.21a10.68 10.68.0 017.42.0V50.47c0-3.2-.88-7.28-2.66-8.78s-4.31-2.25-7.63-2.25-6 .83-7.65 2.5-2.47 4.26-2.47 7.74V62.89q0 5.06 2.3 7.65t7.35 2.59c3.72.0 6.46-.83 8.23-2.51a9 9 0 002.66-6.88l-.13-5.67A8.19 8.19.0 00177.63 58.07z"/><path class="cls-3" d="M207.3 44.88a5.75 5.75.0 00-2.7-3.17 9.81 9.81.0 00-3.69-1.22 35.47 35.47.0 00-4.8-.28h-8.19V72.36h10.16a20.48 20.48.0 003.69-.3 8 8 0 003-1.2c2.12-1.31 3.19-3.63 3.22-6.94V49.64A14.71 14.71.0 00207.3 44.88zm-7.59 20.71c-.51.68-1.58 1-3.21 1a3.43 3.43.0 01-.47-.05h-.56V46a21 21 0 012.46.18 3.23 3.23.0 011.44.51 2.27 2.27.0 01.82 1.18 7.53 7.53.0 01.25 2.21V61.43a6.29 6.29.0 010 .73A5.81 5.81.0 01199.71 65.59z"/></g></svg></span>
+	</a>
+	
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/pipecd/docs-preview-feature/docs/" ><span>Documentation</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				<a class="nav-link" href="https://github.com/pipe-cd/tutorial" target="_blank" ><span>Tutorial</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/pipecd/docs-preview-feature/blog/" ><span>Blog</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/pipecd/docs-preview-feature/community/" ><span>Community</span></a>
+			</li>
+			
+			
+			<li class="nav-item dropdown d-none d-lg-block">
+				<a class="nav-link dropdown-toggle navbar-version-menu" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	v1.0.x
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="/docs-dev/">dev</a>
+	
+	<a class="dropdown-item" href="/docs-v1.0.x/">v1.0.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.55.x/">v0.55.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.54.x/">v0.54.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.53.x/">v0.53.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.52.x/">v0.52.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.51.x/">v0.51.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.50.x/">v0.50.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.49.x/">v0.49.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.48.x/">v0.48.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.47.x/">v0.47.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.46.x/">v0.46.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.45.x/">v0.45.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.44.x/">v0.44.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.43.x/">v0.43.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.42.x/">v0.42.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.41.x/">v0.41.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.40.x/">v0.40.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.39.x/">v0.39.x</a>
+	
+</div>
+
+			</li>
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block"><input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/pipecd/docs-preview-feature/offline-search-index.64759ff0975161e31e7dbaaa6598cfa7.json"
+  data-offline-search-base-href="/"
+  data-offline-search-max-results="10"
+>
+</div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  <form class="td-sidebar__search d-flex align-items-center">
+    <input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/pipecd/docs-preview-feature/offline-search-index.64759ff0975161e31e7dbaaa6598cfa7.json"
+  data-offline-search-base-href="/"
+  data-offline-search-max-results="10"
+>
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="collapse td-sidebar-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pr-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-pipecddocs-preview-featuredocs-v055x-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/" title="Welcome to PipeCD" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-pipecddocs-preview-featuredocs-v055x"><span class="">Documentation [v0.55.x]</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v055xoverview-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/overview/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v055xoverview"><span class="">Overview</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v055xconcepts-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/concepts/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v055xconcepts"><span class="">Concepts</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v055xquickstart-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/quickstart/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v055xquickstart"><span class="">Quickstart</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-pipecddocs-preview-featuredocs-v055xinstallation-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/installation/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v055xinstallation"><span class="">Installation</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-pipecddocs-preview-featuredocs-v055xinstallationinstall-control-plane-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/installation/install-control-plane/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v055xinstallationinstall-control-plane"><span class="">Install Control Plane</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xinstallationinstall-control-planeinstalling-controlplane-on-k8s-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/installation/install-control-plane/installing-controlplane-on-k8s/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xinstallationinstall-control-planeinstalling-controlplane-on-k8s"><span class="">Installing Control Plane on Kubernetes</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xinstallationinstall-control-planeinstalling-controlplane-on-ecs-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/installation/install-control-plane/installing-controlplane-on-ecs/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xinstallationinstall-control-planeinstalling-controlplane-on-ecs"><span class="">Installing Control Plane on ECS</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-pipecddocs-preview-featuredocs-v055xinstallationinstall-piped-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/installation/install-piped/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v055xinstallationinstall-piped"><span class="">Install Piped</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xinstallationinstall-pipedinstalling-on-kubernetes-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/installation/install-piped/installing-on-kubernetes/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xinstallationinstall-pipedinstalling-on-kubernetes"><span class="">Installing on Kubernetes cluster</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xinstallationinstall-pipedinstalling-on-google-cloud-vm-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/installation/install-piped/installing-on-google-cloud-vm/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xinstallationinstall-pipedinstalling-on-google-cloud-vm"><span class="">Installing on Google Cloud VM</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xinstallationinstall-pipedinstalling-on-cloudrun-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/installation/install-piped/installing-on-cloudrun/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xinstallationinstall-pipedinstalling-on-cloudrun"><span class="">Installing on Cloud Run</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xinstallationinstall-pipedinstalling-on-fargate-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/installation/install-piped/installing-on-fargate/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xinstallationinstall-pipedinstalling-on-fargate"><span class="">Installing on ECS Fargate</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xinstallationinstall-pipedinstalling-on-single-machine-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/installation/install-piped/installing-on-single-machine/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xinstallationinstall-pipedinstalling-on-single-machine"><span class="">Installing on a single machine</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xinstallationinstall-pipedrequired-permissions-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/installation/install-piped/required-permissions/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xinstallationinstall-pipedrequired-permissions"><span class="">Required Permissions</span></a>
+</li>
+  </ul>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-pipecddocs-preview-featuredocs-v055xuser-guide-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v055xuser-guide"><span class="">User Guide</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-application-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-application/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-application"><span class="">Managing application</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationadding-an-application-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-application/adding-an-application/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationadding-an-application"><span class="">Adding an application</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationdefining-app-configuration-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-application/defining-app-configuration/" title="Defining application&#39;s configuration" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationdefining-app-configuration"><span class="">Defining app configuration</span></a>
+  <ul class="ul-4 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationdefining-app-configurationkubernetes-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-application/defining-app-configuration/kubernetes/" title="Configuring Kubernetes application" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationdefining-app-configurationkubernetes"><span class="">Kubernetes</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationdefining-app-configurationterraform-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-application/defining-app-configuration/terraform/" title="Configuring Terraform application" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationdefining-app-configurationterraform"><span class="">Terraform</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationdefining-app-configurationcloudrun-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-application/defining-app-configuration/cloudrun/" title="Configuring Cloud Run application" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationdefining-app-configurationcloudrun"><span class="">Cloud Run</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationdefining-app-configurationlambda-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-application/defining-app-configuration/lambda/" title="Configuring Lambda application" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationdefining-app-configurationlambda"><span class="">Lambda</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationdefining-app-configurationecs-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-application/defining-app-configuration/ecs/" title="Configuring ECS application" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationdefining-app-configurationecs"><span class="">ECS</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationcustomizing-deployment-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-application/customizing-deployment/" title="Customizing application&#39;s deployment pipeline" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationcustomizing-deployment"><span class="">Customizing deployment</span></a>
+  <ul class="ul-4 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationcustomizing-deploymentadding-a-wait-stage-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-application/customizing-deployment/adding-a-wait-stage/" title="Adding a wait stage" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationcustomizing-deploymentadding-a-wait-stage"><span class="">Wait stage</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationcustomizing-deploymentadding-a-manual-approval-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-application/customizing-deployment/adding-a-manual-approval/" title="Adding a manual approval stage" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationcustomizing-deploymentadding-a-manual-approval"><span class="">Manual approval stage</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationcustomizing-deploymentautomated-deployment-analysis-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-application/customizing-deployment/automated-deployment-analysis/" title="Adding an automated deployment analysis stage" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationcustomizing-deploymentautomated-deployment-analysis"><span class="">Automated deployment analysis stage</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationcustomizing-deploymentcustom-sync-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-application/customizing-deployment/custom-sync/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationcustomizing-deploymentcustom-sync"><span class="">Custom Sync</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationcustomizing-deploymentscript-run-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-application/customizing-deployment/script-run/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationcustomizing-deploymentscript-run"><span class="">Script Run stage</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationtriggering-a-deployment-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-application/triggering-a-deployment/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationtriggering-a-deployment"><span class="">Triggering a deployment</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationcancelling-a-deployment-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-application/cancelling-a-deployment/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationcancelling-a-deployment"><span class="">Cancelling a deployment</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationrolling-back-a-deployment-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-application/rolling-back-a-deployment/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationrolling-back-a-deployment"><span class="">Rolling back a deployment</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationapplication-live-state-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-application/application-live-state/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationapplication-live-state"><span class="">Application live state</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationconfiguration-drift-detection-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-application/configuration-drift-detection/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationconfiguration-drift-detection"><span class="">Configuration drift detection</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationsecret-management-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-application/secret-management/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationsecret-management"><span class="">Secret management</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationmanifest-attachment-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-application/manifest-attachment/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationmanifest-attachment"><span class="">Manifest attachment</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationdeployment-chain-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-application/deployment-chain/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-applicationdeployment-chain"><span class="">Deployment chain</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-piped-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-piped/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-piped"><span class="">Managing Piped</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-pipedremote-upgrade-remote-config-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-piped/remote-upgrade-remote-config/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-pipedremote-upgrade-remote-config"><span class="">Remote upgrade and remote config</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-pipedadding-a-git-repository-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-piped/adding-a-git-repository/" title="Adding a git repository" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-pipedadding-a-git-repository"><span class="">Adding git repository</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-pipedadding-a-platform-provider-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-piped/adding-a-platform-provider/" title="Adding a platform provider" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-pipedadding-a-platform-provider"><span class="">Adding platform provider</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-pipedadding-helm-chart-repository-or-registry-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-piped/adding-helm-chart-repository-or-registry/" title="Adding a Helm chart repository or registry" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-pipedadding-helm-chart-repository-or-registry"><span class="">Adding Helm chart repo or registry</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-pipedadding-an-analysis-provider-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-piped/adding-an-analysis-provider/" title="Adding an analysis provider" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-pipedadding-an-analysis-provider"><span class="">Adding analysis provider</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-pipedconfiguring-event-watcher-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-piped/configuring-event-watcher/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-pipedconfiguring-event-watcher"><span class="">Configuring event watcher</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-pipedconfiguring-notifications-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-piped/configuring-notifications/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-pipedconfiguring-notifications"><span class="">Configuring notifications</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-pipedconfiguration-reference-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-piped/configuration-reference/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-pipedconfiguration-reference"><span class="">Configuration reference</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-pipedusing-pprof-in-piped-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-piped/using-pprof-in-piped/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-pipedusing-pprof-in-piped"><span class="">Using Pprof in Piped</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-pipedruntime-options-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-piped/runtime-options/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-pipedruntime-options"><span class="">Runtime Options</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-controlplane-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-controlplane/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-controlplane"><span class="">Managing Control Plane</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-controlplanearchitecture-overview-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-controlplane/architecture-overview/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-controlplanearchitecture-overview"><span class="">Architecture overview</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-controlplaneadding-a-project-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-controlplane/adding-a-project/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-controlplaneadding-a-project"><span class="">Adding a project</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-controlplaneauth-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-controlplane/auth/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-controlplaneauth"><span class="td-sidebar-nav-active-item">Authentication and authorization</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-controlplaneregistering-a-piped-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-controlplane/registering-a-piped/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-controlplaneregistering-a-piped"><span class="">Registering a piped</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-controlplaneconfiguration-reference-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-controlplane/configuration-reference/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemanaging-controlplaneconfiguration-reference"><span class="">Configuration reference</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v055xuser-guideevent-watcher-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/event-watcher/" title="Connect between CI and CD with event watcher" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guideevent-watcher"><span class="">Event watcher</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v055xuser-guidedeployment-trace-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/deployment-trace/" title="Better connect between CI and CD with Deployment Trace" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidedeployment-trace"><span class="">Deployment Trace</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v055xuser-guideplan-preview-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/plan-preview/" title="Confidently review your changes with Plan Preview" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guideplan-preview"><span class="">Plan preview</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v055xuser-guideinsights-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/insights/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guideinsights"><span class="">Insights</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemetrics-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/metrics/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidemetrics"><span class="">Metrics</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v055xuser-guidecommand-line-tool-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/command-line-tool/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guidecommand-line-tool"><span class="">Command-line tool: pipectl</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v055xuser-guideterraform-provider-pipecd-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/terraform-provider-pipecd/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guideterraform-provider-pipecd"><span class="">PipeCD Terraform provider</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v055xuser-guideconfiguration-reference-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/configuration-reference/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guideconfiguration-reference"><span class="">Configuration reference</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-pipecddocs-preview-featuredocs-v055xuser-guideexamples-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/examples/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v055xuser-guideexamples"><span class="">Examples</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guideexamplesk8s-app-canary-with-istio-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/examples/k8s-app-canary-with-istio/" title="Canary deployment for Kubernetes app with Istio" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guideexamplesk8s-app-canary-with-istio"><span class="">Canary k8s app with Istio</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guideexamplesk8s-app-bluegreen-with-istio-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/examples/k8s-app-bluegreen-with-istio/" title="BlueGreen deployment for Kubernetes app with Istio" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guideexamplesk8s-app-bluegreen-with-istio"><span class="">BlueGreen k8s app with Istio</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guideexamplesk8s-app-canary-with-pod-selector-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/examples/k8s-app-canary-with-pod-selector/" title="Canary deployment for Kubernetes app with PodSelector" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guideexamplesk8s-app-canary-with-pod-selector"><span class="">Canary k8s app with PodSelector</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xuser-guideexamplesk8s-app-bluegreen-with-pod-selector-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/examples/k8s-app-bluegreen-with-pod-selector/" title="BlueGreen deployment for Kubernetes app with PodSelector" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xuser-guideexamplesk8s-app-bluegreen-with-pod-selector"><span class="">BlueGreen k8s app with PodSelector</span></a>
+</li>
+  </ul>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-pipecddocs-preview-featuredocs-v055xcontribution-guidelines-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/contribution-guidelines/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v055xcontribution-guidelines"><span class="">Contributor Guide</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xcontribution-guidelinescontributing-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/contribution-guidelines/contributing/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xcontribution-guidelinescontributing"><span class="">Contributing</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v055xcontribution-guidelinesarchitectural-overview-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/contribution-guidelines/architectural-overview/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v055xcontribution-guidelinesarchitectural-overview"><span class="">Architectural overview</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v055xexamples-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/examples/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v055xexamples"><span class="">Examples</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v055xfeature-status-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/feature-status/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v055xfeature-status"><span class="">Feature Status</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v055xfaq-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.55.x/faq/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v055xfaq"><span class="">FAQ</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v055xreleases-li">
+  <a href="https://github.com/pipe-cd/pipecd/releases" target="_blank" rel="noopener" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v055xreleases"><span class="">Releases ⧉</span></a>
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+          </aside>
+          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+            
+
+
+
+
+
+<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+
+
+  
+    
+      
+    
+    
+    
+      
+    
+    
+  
+
+
+
+<a href="https://github.com/pipe-cd/pipecd/edit/master/docs/content/en/docs-v0.55.x/user-guide/managing-controlplane/auth.md" target="_blank" rel="noreferrer"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+<a href="https://github.com/pipe-cd/pipecd/issues/new?title=Authentication%20and%20authorization" target="_blank" rel="noreferrer"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+
+
+<a href="https://github.com/pipe-cd/pipecd/issues/new" target="_blank" rel="noreferrer"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
+
+</div>
+
+
+
+            
+
+
+<div class="td-toc"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#static-admin">Static Admin</a></li>
+        <li><a href="#single-sign-on-sso">Single Sign-On (SSO)</a></li>
+        <li><a href="#role-based-access-control-rbac">Role-Based Access Control (RBAC)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+
+
+
+            
+
+	
+		
+
+
+
+  
+  
+    <div class="taxonomy taxonomy-terms-cloud taxo-categories">
+      
+        <h5 class="taxonomy-title">Categories</h5>
+      
+      <ul class="taxonomy-terms">
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/announcement/" data-taxonomy-term="announcement"><span class="taxonomy-label">Announcement</span><span class="taxonomy-count">17</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/contributing/" data-taxonomy-term="contributing"><span class="taxonomy-label">Contributing</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/example/" data-taxonomy-term="example"><span class="taxonomy-label">Example</span><span class="taxonomy-count">2</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/introduction/" data-taxonomy-term="introduction"><span class="taxonomy-label">Introduction</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/practice/" data-taxonomy-term="practice"><span class="taxonomy-label">Practice</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/tutorial/" data-taxonomy-term="tutorial"><span class="taxonomy-label">Tutorial</span><span class="taxonomy-count">1</span></a></li>
+        
+      </ul>
+    </div>
+  
+
+	
+		
+
+
+
+  
+  
+    <div class="taxonomy taxonomy-terms-cloud taxo-tags">
+      
+        <h5 class="taxonomy-title">Tags</h5>
+      
+      <ul class="taxonomy-terms">
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/ai/" data-taxonomy-term="ai"><span class="taxonomy-label">AI</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/aws/" data-taxonomy-term="aws"><span class="taxonomy-label">AWS</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/cncf/" data-taxonomy-term="cncf"><span class="taxonomy-label">CNCF</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/conference/" data-taxonomy-term="conference"><span class="taxonomy-label">Conference</span><span class="taxonomy-count">2</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/control-plane/" data-taxonomy-term="control-plane"><span class="taxonomy-label">Control Plane</span><span class="taxonomy-count">3</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/dev-setup/" data-taxonomy-term="dev-setup"><span class="taxonomy-label">Dev Setup</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/developer-experience/" data-taxonomy-term="developer-experience"><span class="taxonomy-label">Developer Experience</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/ecosystem/" data-taxonomy-term="ecosystem"><span class="taxonomy-label">Ecosystem</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/feature-guide/" data-taxonomy-term="feature-guide"><span class="taxonomy-label">Feature Guide</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/feature-improvement/" data-taxonomy-term="feature-improvement"><span class="taxonomy-label">Feature Improvement</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/getting-started/" data-taxonomy-term="getting-started"><span class="taxonomy-label">Getting Started</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/go/" data-taxonomy-term="go"><span class="taxonomy-label">Go</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/kubernetes/" data-taxonomy-term="kubernetes"><span class="taxonomy-label">Kubernetes</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/local-development/" data-taxonomy-term="local-development"><span class="taxonomy-label">Local Development</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/new-feature/" data-taxonomy-term="new-feature"><span class="taxonomy-label">New Feature</span><span class="taxonomy-count">5</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/news/" data-taxonomy-term="news"><span class="taxonomy-label">News</span><span class="taxonomy-count">8</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/plugin/" data-taxonomy-term="plugin"><span class="taxonomy-label">Plugin</span><span class="taxonomy-count">2</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/terraform/" data-taxonomy-term="terraform"><span class="taxonomy-label">Terraform</span><span class="taxonomy-count">1</span></a></li>
+        
+      </ul>
+    </div>
+  
+
+	
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.55.x/">Documentation [v0.55.x]</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/">User Guide</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-controlplane/">Managing Control Plane</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.55.x/user-guide/managing-controlplane/auth/">Authentication and authorization</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>Authentication and authorization</h1>
+	<div class="lead">This page describes about PipeCD Authentication and Authorization.</div>
+	<header class="article-meta">
+		
+		
+			
+				
+
+
+			
+				
+
+
+			
+		
+		
+	</header>    
+	<p><img src="/images/settings-project-v0.38.x.png" alt=""></p>
+<h3 id="static-admin">Static Admin</h3>
+<p>When the PipeCD owner <a href="../adding-a-project/">adds a new project</a>, an admin account will be automatically generated for the project. After that, PipeCD owner sends that static admin information including username, password strings to the project admin, who can use that information to log in to PipeCD web with the admin role.</p>
+<p>After logging, the project admin should change the provided username and password. Or disable the static admin account after configuring the single sign-on for the project.</p>
+<h3 id="single-sign-on-sso">Single Sign-On (SSO)</h3>
+<p>Single sign-on (SSO) allows users to log in to PipeCD by relying on a trusted third-party service.</p>
+<p>The project can be configured to use a shared SSO configuration (shared OAuth application) instead of needing a new one. In that case, while creating the project, the PipeCD owner specifies the name of the shared SSO configuration should be used, and then the project admin can skip configuring SSO at the settings page.</p>
+<p><strong>Supported service</strong></p>
+<ul>
+<li>GitHub</li>
+<li>Generic OIDC</li>
+</ul>
+<blockquote>
+<p>Note: In the future, we want to support such as Google Gmail, Bitbucket&hellip;</p></blockquote>
+<h4 id="github">Github</h4>
+<p>Before configuring the SSO, you need an OAuth application of the using service. For example, GitHub SSO requires creating a GitHub OAuth application as described in this page:</p>
+<p><a href="https://docs.github.com/en/developers/apps/creating-an-oauth-app">https://docs.github.com/en/developers/apps/creating-an-oauth-app</a></p>
+<p>The authorization callback URL should be <code>https://YOUR_PIPECD_ADDRESS/auth/callback</code>.</p>
+<p><img src="/images/settings-update-sso.png" alt=""></p>
+<h4 id="generic-oidc">Generic OIDC</h4>
+<p>PipeCD supports any OIDC provider, with tested providers including Keycloak, Auth0, and AWS Cognito. The only supported authentication flow currently is the Authorization Code Grant.</p>
+<p>Requirements and Troubleshooting:</p>
+<ul>
+<li>
+<p>The OIDC provider must provide claims for user&rsquo;s roles and username.</p>
+</li>
+<li>
+<p>Roles claim value must use same values as pre-configured project RBAC Roles.</p>
+</li>
+<li>
+<ul>
+<li>Claims can be retreived from the IdToken or UserInfo endpoint. The UserInfo endpoint will be used if issuer supports it.</li>
+</ul>
+</li>
+<li>
+<p>You can use set a custom claim key name for roles and username in the OIDC provider. Using <code>usernameClaimKey</code> and <code>rolesClaimKey</code> in the configuration. If not set, the default value will be chosen in the following order:</p>
+<ul>
+<li>Supported Claims Key for Username (in order of priority): <code>username</code>, <code>preferred_username</code>,<code>name</code>, <code>cognito:username</code></li>
+<li>Supported Claims Key for Role (in order of priority): <code>groups</code>, <code>roles</code>, <code>cognito:groups</code>, <code>custom:roles</code>, <code>custom:groups</code></li>
+</ul>
+</li>
+<li>
+<p>If no usable claims are found, <code>Unable to find user</code> error will be shown.</p>
+</li>
+<li>
+<p>If no roles are found, user can not access any resources. (If <code>allowStrayAsViewer</code> is set to <code>true</code>, user can access as a viewer)</p>
+</li>
+</ul>
+<p>Provider Configuration Examples:</p>
+<h5 id="keycloak">Keycloak</h5>
+<ul>
+<li>
+<p><strong>Client authentication</strong>: On</p>
+</li>
+<li>
+<p><strong>Valid redirect URIs</strong>: <code>https://YOUR_PIPECD_ADDRESS/auth/callback</code></p>
+</li>
+<li>
+<p><strong>Client scopes</strong>: Add a new mapper to the <code>&lt;client-id&gt;-dedicated</code> scope. For instance, map Group Membership information to the groups claim (Full group path should be off).</p>
+</li>
+<li>
+<p><strong>Control Plane configuration</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;pipecd.dev/v1beta1&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ControlPlane</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">sharedSSOConfigs</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">oidc</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">provider</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">OIDC</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">oidc</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">clientId</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">&lt;CLIENT_ID&gt;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">clientSecret</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">&lt;CLIENT_SECRET&gt;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">issuer</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://&lt;KEYCLOAK_ADDRESS&gt;/realms/&lt;REALM&gt;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">redirectUri</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://&lt;PIPECD_ADDRESS&gt;/auth/callback</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">scopes</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span>- <span style="color:#000">openid</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span>- <span style="color:#000">profile</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div></li>
+</ul>
+<h5 id="okta">Okta</h5>
+<ul>
+<li>
+<p><strong>Allowed Callback URLs</strong>: <code>https://YOUR_PIPECD_ADDRESS/auth/callback</code></p>
+</li>
+<li>
+<p><strong>Control Plane configuration</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;pipecd.dev/v1beta1&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ControlPlane</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">sharedSSOConfigs</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">oidc</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">provider</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">OIDC</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">oidc</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">clientId</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">&lt;CLIENT_ID&gt;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">clientSecret</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">&lt;CLIENT_SECRET&gt;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">issuer</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://&lt;OKTA_ID&gt;.okta.com</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">redirectUri</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://&lt;PIPECD_ADDRESS&gt;/auth/callback</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">scopes</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span>- <span style="color:#000">openid</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span>- <span style="color:#000">profile</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span>- <span style="color:#000">groups</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div></li>
+</ul>
+<h5 id="auth0">Auth0</h5>
+<ul>
+<li>
+<p><strong>Allowed Callback URLs</strong>: <code>https://YOUR_PIPECD_ADDRESS/auth/callback</code></p>
+</li>
+<li>
+<p><strong>Control Plane configuration</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;pipecd.dev/v1beta1&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ControlPlane</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">sharedSSOConfigs</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">oidc</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">provider</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">OIDC</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">oidc</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">clientId</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">&lt;CLIENT_ID&gt;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">clientSecret</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">&lt;CLIENT_SECRET&gt;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">issuer</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://&lt;AUTH0_ADDRESS&gt;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">redirectUri</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://&lt;PIPECD_ADDRESS&gt;/auth/callback</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">scopes</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span>- <span style="color:#000">openid</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span>- <span style="color:#000">profile</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div></li>
+<li>
+<p><strong>Roles/Groups Claims</strong>
+For Role or Groups information mapping using Auth0 Actions, here is an example for setting <code>custom:roles</code>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#000">exports</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">onExecutePostLogin</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">async</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#000">event</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">api</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">=&gt;</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">let</span> <span style="color:#000">namespace</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;custom&#34;</span><span style="color:#000;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#000">namespace</span> <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> <span style="color:#ce5c00;font-weight:bold">!</span><span style="color:#000">namespace</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">endsWith</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;/&#34;</span><span style="color:#000;font-weight:bold">))</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">namespace</span> <span style="color:#ce5c00;font-weight:bold">+=</span> <span style="color:#4e9a06">&#34;:&#34;</span><span style="color:#000;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">api</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">idToken</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">setCustomClaim</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">namespace</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#4e9a06">&#34;roles&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">event</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">authorization</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">roles</span><span style="color:#000;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">};</span>
+</span></span></code></pre></div></li>
+</ul>
+<h5 id="aws-cognito">AWS Cognito</h5>
+<ul>
+<li>
+<p><strong>Allowed Callback URLs</strong>: <code>https://YOUR_PIPECD_ADDRESS/auth/callback</code></p>
+</li>
+<li>
+<p><strong>Control Plane configuration</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;pipecd.dev/v1beta1&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ControlPlane</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">sharedSSOConfigs</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">oidc</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">provider</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">OIDC</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">oidc</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">clientId</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">&lt;CLIENT_ID&gt;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">clientSecret</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">&lt;CLIENT_SECRET&gt;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">issuer</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://cognito-idp.&lt;AWS_REGION&gt;.amazonaws.com/&lt;USER_POOL_ID&gt;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">redirectUri</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://&lt;PIPECD_ADDRESS&gt;/auth/callback</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">scopes</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span>- <span style="color:#000">openid</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span>- <span style="color:#000">profile</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div></li>
+</ul>
+<h5 id="custom-claims-key">Custom Claims Key</h5>
+<p>In some cases, the OIDC provider may not provide the claims with the default key names like <code>groups</code>. You can set the custom claim key name for roles and username in the control plane configuration to map the claims from the OIDC provider. <strong>To be cautious, OIDC providers can not be used if issuer discovery is not supported.</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;pipecd.dev/v1beta1&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ControlPlane</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">sharedSSOConfigs</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">oidc</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">provider</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">OIDC</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">oidc</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">clientId</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">&lt;CLIENT_ID&gt;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">clientSecret</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">&lt;CLIENT_SECRET&gt;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">issuer</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://&lt;OIDC_ADDRESS&gt;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">redirectUri</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://&lt;PIPECD_ADDRESS&gt;/auth/callback</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">scopes</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span>- <span style="color:#000">openid</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span>- <span style="color:#000">profile</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">usernameClaimKey</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">username</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># change to your custom claim key</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">rolesClaimKey</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">roles</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># change to your custom claim key</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">avatarUrlClaimKey</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">picture</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># change to your custom claim key</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>(Optional) You can choose to use the avatar URL from the OIDC provider. Using <code>avatarUrlClaimKey</code> in the configuration. If not set, the default value will be chosen in the following order: <code>picture</code>, <code>avatar_url</code></p>
+<h5 id="custom-oidc-configuration">Custom OIDC Configuration</h5>
+<p>If you want to set your custom endpoint without using the endpoint from the issuer, you can set the <code>authorization_endpoint</code>, <code>token_endpoint</code>, <code>userinfo_endpoint</code> in the control plane configuration.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;pipecd.dev/v1beta1&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ControlPlane</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">sharedSSOConfigs</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">oidc</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">provider</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">OIDC</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">oidc</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">clientId</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">&lt;CLIENT_ID&gt;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">clientSecret</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">&lt;CLIENT_SECRET&gt;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">issuer</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://&lt;OIDC_ADDRESS&gt;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">redirectUri</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://&lt;PIPECD_ADDRESS&gt;/auth/callback</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">scopes</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span>- <span style="color:#000">openid</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span>- <span style="color:#000">profile</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">authorization_endpoint</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://&lt;OIDC_ADDRESS&gt;/authorize</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># change to your custom endpoint</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">token_endpoint</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://&lt;OIDC_ADDRESS&gt;/token</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># change to your custom endpoint</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">userinfo_endpoint</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://&lt;OIDC_ADDRESS&gt;/userinfo</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># change to your custom endpoint</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><h3 id="role-based-access-control-rbac">Role-Based Access Control (RBAC)</h3>
+<p>Role-based access control (RBAC) allows restricting access on the PipeCD web-based on the roles of user groups within the project. Before using this feature, the SSO must be configured.</p>
+<p>PipeCD provides three built-in roles:</p>
+<ul>
+<li><code>Viewer</code>: has only permissions to view existing resources or data.</li>
+<li><code>Editor</code>: has all viewer permissions, plus permissions for actions that modify state, such as manually syncing application, canceling deployment&hellip;</li>
+<li><code>Admin</code>: has all editor permissions, plus permissions for updating project configurations.</li>
+</ul>
+<h4 id="configuring-the-pipecds-roles">Configuring the PipeCD&rsquo;s roles</h4>
+<p>The below table represents PipeCD&rsquo;s resources with actions on those resources.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">resource</th>
+          <th style="text-align: center">get</th>
+          <th style="text-align: center">list</th>
+          <th style="text-align: center">create</th>
+          <th style="text-align: center">update</th>
+          <th style="text-align: center">delete</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">application</td>
+          <td style="text-align: center">○</td>
+          <td style="text-align: center">○</td>
+          <td style="text-align: center">○</td>
+          <td style="text-align: center">○</td>
+          <td style="text-align: center">○</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">deployment</td>
+          <td style="text-align: center">○</td>
+          <td style="text-align: center">○</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">○</td>
+          <td style="text-align: center"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">event</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">○</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">piped</td>
+          <td style="text-align: center">○</td>
+          <td style="text-align: center">○</td>
+          <td style="text-align: center">○</td>
+          <td style="text-align: center">○</td>
+          <td style="text-align: center"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">project</td>
+          <td style="text-align: center">○</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">○</td>
+          <td style="text-align: center"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">apiKey</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">○</td>
+          <td style="text-align: center">○</td>
+          <td style="text-align: center">○</td>
+          <td style="text-align: center"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">insight</td>
+          <td style="text-align: center">○</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+      </tr>
+  </tbody>
+</table>
+<p>Each role is defined as a combination of multiple policies under this format.</p>
+<pre tabindex="0"><code>resources=RESOURCE_NAMES;actions=ACTION_NAMES
+</code></pre><p>The <code>*</code> represents all resources and all actions for a resource.</p>
+<pre tabindex="0"><code>resources=*;actions=ACTION_NAMES
+resources=RESOURCE_NAMES;actions=*
+resources=*;actions=*
+</code></pre><h4 id="configuring-the-pipecds-user-groups">Configuring the PipeCD&rsquo;s user groups</h4>
+<p>User Group represents a relation with a specific team (GitHub)/group (Google) and an arbitrary role. All users belong to a team/group will have all permissions of that team/group.</p>
+<p>In case of using the GitHub team as a PipeCD user group, the PipeCD user group must be set in lowercase. For example, if your GitHub team is named <code>ORG/ABC-TEAM</code>, the PipeCD user group would be set as <code>ORG/abc-team</code>. (It&rsquo;s follow the GitHub team URL as github.com/orgs/{organization-name}/teams/{TEAM-NAME})</p>
+<p>Note: You CANNOT assign multiple roles to a team/group, should create a new role with suitable permissions instead.</p>
+<p><img src="/images/settings-add-user-group.png" alt=""></p>
+
+	
+		<style>
+  .feedback--answer {
+    display: inline-block;
+  }
+  .feedback--answer-no {
+    margin-left: 1em;
+  }
+  .feedback--response {
+    display: none;
+    margin-top: 1em;
+  }
+  .feedback--response__visible {
+    display: block;
+  }
+</style>
+<div class="d-print-none">
+<h2 class="feedback--title">Feedback</h2>
+<p class="feedback--question">Was this page helpful?</p>
+<button class="btn btn-primary mb-4 feedback--answer feedback--answer-yes">Yes</button>
+<button class="btn btn-primary mb-4 feedback--answer feedback--answer-no">No</button>
+<p class="feedback--response feedback--response-yes">
+  Glad to hear it! Please <a href="https://github.com/pipe-cd/pipecd/issues/new">tell us how we can improve</a>.
+</p>
+<p class="feedback--response feedback--response-no">
+  Sorry to hear that. Please <a href="https://github.com/pipe-cd/pipecd/issues/new">tell us how we can improve</a>.
+</p>
+</div>
+<script>
+  const yesButton = document.querySelector('.feedback--answer-yes');
+  const noButton = document.querySelector('.feedback--answer-no');
+  const yesResponse = document.querySelector('.feedback--response-yes');
+  const noResponse = document.querySelector('.feedback--response-no');
+  const disableButtons = () => {
+    yesButton.disabled = true;
+    noButton.disabled = true;
+  };
+  const sendFeedback = (value) => {
+    if (typeof ga !== 'function') return;
+    const args = {
+      command: 'send',
+      hitType: 'event',
+      category: 'Helpful',
+      action: 'click',
+      label: window.location.pathname,
+      value: value
+    };
+    ga(args.command, args.hitType, args.category, args.action, args.label, args.value);
+  };
+  yesButton.addEventListener('click', () => {
+    yesResponse.classList.add('feedback--response__visible');
+    disableButtons();
+    sendFeedback(1);
+  });
+  noButton.addEventListener('click', () => {
+    noResponse.classList.add('feedback--response__visible');
+    disableButtons();
+    sendFeedback(0);
+  });
+</script>
+
+		<br />
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">
+  Last modified October 8, 2025: <a href="https://github.com/pipe-cd/pipecd/commit/bc3d5e06645fac18b2d9b4af89b037b7396dd40d">Release v0.55.0 (#6298) (bc3d5e066)</a>
+</div>
+
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+
+
+
+
+
+
+<div class="bg-dark row d-print-none">
+  <div class="container-fluid py-3 mx-sm-5">
+    <div class="row">
+      <div class="col-8 py-3 order-sm-2 text-white">
+        <a href="https://www.cncf.io/projects/pipecd/" target="_blank">
+          <img src="https://www.cncf.io/wp-content/uploads/2022/05/CNCF_logo_white.svg" alt="cncf logo" width="250">
+          <div class="py-2 text-white">PipeCD is a Cloud Native Computing Foundation sandbox project.</div>
+        </a>
+      </div>
+      <div class="col-4 order-sm-3 d-flex align-items-center justify-content-center">
+        
+        
+        <ul class="list-inline mb-0">
+          
+          <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+            <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://github.com/pipe-cd">
+              <i class="fab fa-github text-white"></i>
+            </a>
+          </li>
+          
+          <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Slack" aria-label="Slack">
+            <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://slack.cncf.io">
+              <i class="fab fa-slack text-white"></i>
+            </a>
+          </li>
+          
+          <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Developer mailing list" aria-label="Developer mailing list">
+            <a class="text-white" target="_blank" rel="noopener noreferrer" href="mailto:pipecd.dev@gmail.com">
+              <i class="fa fa-envelope text-white"></i>
+            </a>
+          </li>
+          
+        </ul>
+        
+        
+        <ul class="list-inline mb-0">
+          
+          <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Twitter" aria-label="Twitter">
+            <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://twitter.com/pipecd_dev">
+              <i class="fab fa-twitter text-white"></i>
+            </a>
+          </li>
+          
+          <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Stack Overflow" aria-label="Stack Overflow">
+            <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://stackoverflow.com/questions/tagged/pipecd">
+              <i class="fab fa-stack-overflow text-white"></i>
+            </a>
+          </li>
+          
+          <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="User mailing list" aria-label="User mailing list">
+            <a class="text-white" target="_blank" rel="noopener noreferrer" href="mailto:pipecd.dev@gmail.com">
+              <i class="fa fa-envelope text-white"></i>
+            </a>
+          </li>
+          
+        </ul>
+        
+        
+      </div>
+    </div>
+    <div class="border-top text-center py-3 text-white">
+      <small>Copyright The PipeCD Authors.</small>
+      <br>
+      <small>The Linux Foundation® (TLF) has registered trademarks and uses trademarks. For a list of TLF trademarks,
+        see <a href="https://www.linuxfoundation.org/trademark-usage/">Trademark Usage</a>.</small>
+    </div>
+  </div>
+</div>
+
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+<script defer src="/pipecd/docs-preview-feature/js/medium-zoom.js" integrity="" crossorigin="anonymous"></script>
+
+
+
+<script src="/pipecd/docs-preview-feature/js/main.min.eaef49e7f859bb90335b315ee6e17dfd8c836ce241ac5e7a61330cd36a7d2f56.js" integrity="sha256-6u9J5/hZu5AzWzFe5uF9/YyDbOJBrF56YTMM02p9L1Y=" crossorigin="anonymous"></script>
+
+
+
+
+
+  </body>
+</html>

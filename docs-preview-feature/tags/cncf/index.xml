@@ -1,0 +1,38 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PipeCD – CNCF</title>
+    <link>https://antedotee.github.io/pipecd/docs-preview-feature/tags/cncf/</link>
+    <description>Recent content in CNCF on PipeCD</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 19 May 2023 00:00:00 +0000</lastBuildDate>
+    
+	  <atom:link href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/cncf/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Blog: CNCF Sandbox admission 🎉</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/blog/2023/05/19/cncf-sandbox-admission/</link>
+      <pubDate>Fri, 19 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/blog/2023/05/19/cncf-sandbox-admission/</guid>
+      <description>
+        
+        
+        &lt;p&gt;&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/pipecd-cncf-sandbox.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Today the whole PipeCD team is overjoyed because &lt;strong&gt;the PipeCD project has just been accepted into the &lt;a href=&#34;https://www.cncf.io/sandbox-projects/&#34;&gt;CNCF Sandbox&lt;/a&gt; program!!!&lt;/strong&gt; 🥳&lt;/p&gt;
+&lt;p&gt;This is a great achievement for the whole team and is the beginning of our journey into CNCF. Also, many thanks to the CNCF TOC (Technical Oversight Committee) for the feedback they provided during the project evaluation.&lt;/p&gt;
+&lt;p&gt;The CNCF Sandbox admission is going to be the cherry on the top of the project milestone, and hope this accelerates further development of the PipeCD project and community.&lt;/p&gt;
+&lt;p&gt;We are in the middle of the &lt;a href=&#34;https://github.com/cncf/toc/issues/1053&#34;&gt;onboarding process&lt;/a&gt;, and everyone is so excited about that.&lt;/p&gt;
+&lt;p&gt;Stay tuned for more news and happy PipeCD-ing!!!&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

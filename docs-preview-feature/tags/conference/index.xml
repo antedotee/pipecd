@@ -1,0 +1,78 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PipeCD – Conference</title>
+    <link>https://antedotee.github.io/pipecd/docs-preview-feature/tags/conference/</link>
+    <description>Recent content in Conference on PipeCD</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 09 Aug 2024 00:00:00 +0000</lastBuildDate>
+    
+	  <atom:link href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/conference/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Blog: PipeCD at CNCF KubeCon Hong Kong 2024</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/blog/2024/08/09/pipecd-at-cncf-kubecon-hong-kong-2024/</link>
+      <pubDate>Fri, 09 Aug 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/blog/2024/08/09/pipecd-at-cncf-kubecon-hong-kong-2024/</guid>
+      <description>
+        
+        
+        &lt;p&gt;&lt;a href=&#34;https://events.linuxfoundation.org/kubecon-cloudnativecon-open-source-summit-ai-dev-china/&#34;&gt;KubeCon Hong Kong 2024&lt;/a&gt; is only two weeks away!
+PipeCD team is excited to announce upcoming activities at KubeCon. Let&amp;rsquo;s come to meet each other and share insights and knowledge 🙌&lt;/p&gt;
+&lt;h3 id=&#34;pipecds-session-with-karmada&#34;&gt;PipeCD&amp;rsquo;s session with Karmada&lt;/h3&gt;
+&lt;p&gt;We will have a presentation as below.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Title: &lt;strong&gt;&lt;a href=&#34;https://sched.co/1eYYs&#34;&gt;Unlocking Scalability and Simplifying Multi-Cloud Management with Karmada and PipeCD&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Speakers: &lt;a href=&#34;https://github.com/khanhtc1202&#34;&gt;@khanhtc1202&lt;/a&gt;(from PipeCD) and &lt;a href=&#34;https://kccncossaidevchn2024.sched.com/speaker/qdurenhongcai?iframe=no&#34;&gt;Hongcai Ren&lt;/a&gt;(from &lt;a href=&#34;https://github.com/karmada-io/karmada&#34;&gt;Karmada&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;DateTime: Thursday August 22, 2024 11:50 - 12:25 HKT&lt;/li&gt;
+&lt;li&gt;Venue: Level 1 | Hung Hom Room 7&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;pipecds-booth&#34;&gt;PipeCD&amp;rsquo;s booth&lt;/h3&gt;
+&lt;p&gt;We will also be around the project booth. Let&amp;rsquo;s come and discuss!&lt;/p&gt;
+&lt;p&gt;Booth information:&lt;/p&gt;
+ &lt;!-- TODO: Input the booth info --&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Project: PipeCDi
+Kiosk #: TBA
+Kiosk Shift: TBA
+Location: TBA
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;That&amp;rsquo;s all! Have a great KubeCon 🙌&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Blog: PipeCD at CNCF KubeCon EU 2024</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/blog/2024/03/16/pipecd-at-cncf-kubecon-eu-2024/</link>
+      <pubDate>Sat, 16 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/blog/2024/03/16/pipecd-at-cncf-kubecon-eu-2024/</guid>
+      <description>
+        
+        
+        &lt;p&gt;KubeCon EU 2024 is only four more weeks away!
+PipeCD team is excited to announce upcoming activities at KubeCon. Let&amp;rsquo;s come to meet each other and share insights and knowledge. We&amp;rsquo;re excited to see you there 🙌&lt;/p&gt;
+&lt;h3 id=&#34;pipecds-presentations&#34;&gt;PipeCD&amp;rsquo;s presentations&lt;/h3&gt;
+&lt;p&gt;We will have two presentations at KubeCon EU 2024.&lt;/p&gt;
+&lt;p&gt;On Tuesday, &lt;a href=&#34;https://github.com/khanhtc1202&#34;&gt;@khanhtc1202&lt;/a&gt; will give &lt;a href=&#34;https://sched.co/1aQX4&#34;&gt;Effective centric CD pipeline: Toward PipeCD v1.0&lt;/a&gt; in the form of a lightning talk.&lt;/p&gt;
+&lt;p&gt;On Thursday, developer team host a workshop as &lt;a href=&#34;https://sched.co/1Yheb&#34;&gt;🚨 Contribfest: PipeCD Contribfest&lt;/a&gt;, hope to see you guys that time with 💻.&lt;/p&gt;
+&lt;h3 id=&#34;pipecds-booth&#34;&gt;PipeCD&amp;rsquo;s booth&lt;/h3&gt;
+&lt;p&gt;PipeCD team also be around the project booth, let&amp;rsquo;s come and discuss.&lt;/p&gt;
+&lt;p&gt;Booth information&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Project: PipeCD
+Kiosk #: PP16-A
+Kiosk Shift: Part-time - AM (Fri)
+Location: Solutions Showcase | Level 7.2 | Hall 7.2 | Project Pavilion
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;That&amp;rsquo;s all! Have a great KubeCon 🙌&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

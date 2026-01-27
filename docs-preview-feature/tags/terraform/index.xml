@@ -1,0 +1,87 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PipeCD – Terraform</title>
+    <link>https://antedotee.github.io/pipecd/docs-preview-feature/tags/terraform/</link>
+    <description>Recent content in Terraform on PipeCD</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 27 Jul 2023 00:00:00 +0000</lastBuildDate>
+    
+	  <atom:link href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/terraform/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Blog: Terraform Provider for PipeCD is Out!</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/blog/2023/07/27/terraform-provider-for-pipecd-is-out/</link>
+      <pubDate>Thu, 27 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/blog/2023/07/27/terraform-provider-for-pipecd-is-out/</guid>
+      <description>
+        
+        
+        &lt;p&gt;Now PipeCD resources can be managed by Terraform🎉&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/pipe-cd/terraform-provider-pipecd&#34;&gt;terraform-provider-pipecd&lt;/a&gt;, which is a Terraform provider for PipeCD, has been released!
+Thanks to &lt;a href=&#34;https://github.com/arabian9ts&#34;&gt;@arabian9ts&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/kuro_m88&#34;&gt;@kurochan&lt;/a&gt;, and &lt;a href=&#34;https://twitter.com/sivchari&#34;&gt;@sivchari&lt;/a&gt; for creating this provider!&lt;/p&gt;
+&lt;p&gt;Until now, there were two methods for adding or updating piped and applications in PipeCD: manually accessing the Control Plane through a browser or using the provided CLI, pipectl. While these methods were intuitive and easy to understand, they had the drawback of being prone to operational errors as the number of managed piped and applications increased. Even incorporating pipectl into shell scripts resulted in a procedural approach. It&amp;rsquo;s not very cool to have a tool that provides GitOps capabilities but can&amp;rsquo;t be managed using GitOps principles, right?&lt;/p&gt;
+&lt;p&gt;The newly released terraform-provider-pipecd addresses these issues. With this provider, you can easily deploy PipeCD resources using the declarative syntax of Terraform.&lt;/p&gt;
+&lt;p&gt;Using terraform-provider-pipecd, you can enjoy the following benefits:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Easy deployment&lt;/strong&gt;: It simplifies the process of deploying PipeCD.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Declarative code management&lt;/strong&gt;: By managing it as code, you can track changes and reviews through pull requests.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integration with continuous deployment&lt;/strong&gt;: When combined with CI/CD tools, it enables automation of configuration testing and the addition or modification of PipeCD resources.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Currently, the PipeCD resources that can be managed with terraform-provider-pipecd are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Piped Agent&lt;/li&gt;
+&lt;li&gt;Application&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In the future, based on community demand, more resources that can be managed might be added. Please try out the provider and provide feedback on Github.&lt;/p&gt;
+&lt;h2 id=&#34;how-to-use&#34;&gt;How to Use&lt;/h2&gt;
+&lt;p&gt;While this blog post doesn&amp;rsquo;t delve into detailed usage, it provides an example of registering a CloudRun Application with PipeCD using HCL code:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-hcl&#34; data-lang=&#34;hcl&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;//&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;Setup&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;the&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;provider&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;terraform&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;required_providers&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;    pipecd&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;      source&lt;/span&gt;  &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;pipe-cd/pipecd&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;      version&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;0.1.0&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;  required_version&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt; &amp;#34;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;4&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;//&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;Declaration&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;of&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;CloudRun&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;Application&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;resource&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;pipecd_application&amp;#34; &amp;#34;main&amp;#34;&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;  kind&lt;/span&gt;              &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;CLOUDRUN&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;  name&lt;/span&gt;              &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;example-application&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;  description&lt;/span&gt;       &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;This is the simple application&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;  platform_provider&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;cloudrun-inproject&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;  piped_id&lt;/span&gt;          &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;your-piped-id&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;  git&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;    repository_id&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;examples&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;    remote&lt;/span&gt;        &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;git@github.com:pipe-cd/examples.git&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;    branch&lt;/span&gt;        &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;master&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;    path&lt;/span&gt;          &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;cloudrun/simple&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;    filename&lt;/span&gt;      &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;app.pipecd.yaml&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;With this simple code, you can define the configuration information for an application. Then, just use the &lt;code&gt;terraform&lt;/code&gt; command to perform an &lt;code&gt;apply&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;For more details, check out the &lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs/user-guide/terraform-provider-pipecd/&#34;&gt;documentation&lt;/a&gt; and the &lt;a href=&#34;https://github.com/pipe-cd/terraform-provider-pipecd/tree/main/example&#34;&gt;example&lt;/a&gt; in the repository.&lt;/p&gt;
+&lt;p&gt;Please watch our Community Meeting #2. &lt;a href=&#34;https://github.com/arabian9ts&#34;&gt;@arabian9ts&lt;/a&gt;, a maintainer of terraform-provider-pipecd explaned how to add an application step by step.&lt;/p&gt;
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/B8NWgzLNe_o?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+
+&lt;h2 id=&#34;born-in-the-community&#34;&gt;Born in the Community&lt;/h2&gt;
+&lt;p&gt;This project was originally developed by &lt;a href=&#34;https://github.com/arabian9ts&#34;&gt;@arabian9ts&lt;/a&gt;, &lt;a href=&#34;https://github.com/kurochan&#34;&gt;@kurochan&lt;/a&gt;, and &lt;a href=&#34;https://github.com/sivchari&#34;&gt;@sivchari&lt;/a&gt; to make the PipeCD&amp;rsquo;s management better, and later donated to the pipe-cd organization. Many thanks for their contribution! (And they stay to be the maintainer of the projects to improve it more. How amazing is it?)&lt;/p&gt;
+&lt;p&gt;PipeCD is supported by the power of such community efforts. We encourage everyone to join the PipeCD community and participate.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

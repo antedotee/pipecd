@@ -1,0 +1,46 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PipeCD – Installation</title>
+    <link>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.48.x/installation/</link>
+    <description>Recent content in Installation on PipeCD</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+	  <atom:link href="https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.48.x/installation/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs-V0.48.x: Install Control Plane</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.48.x/installation/install-control-plane/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.48.x/installation/install-control-plane/</guid>
+      <description>
+        
+        
+        &lt;p&gt;Since Control Plane is a centralized component managing deployment data and provides gRPC API, it needs some components fo storing data or credential&amp;hellip; and so on. We explain how to deploy Control Plane components.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs-V0.48.x: Install Piped</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.48.x/installation/install-piped/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.48.x/installation/install-piped/</guid>
+      <description>
+        
+        
+        &lt;p&gt;Since Piped is a stateless agent, no database or storage is required to run. In addition, a Piped can interact with one or multiple platform providers, so the number of Piped and where they should run is entirely up to your preference. For example, you can run your Pipeds in a Kubernetes cluster to deploy not just Kubernetes applications but your Terraform and Cloud Run applications as well.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

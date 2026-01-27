@@ -1,0 +1,1078 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.148.2">
+
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+<link rel="alternate" type="application/rss&#43;xml" href="https://antedotee.github.io/pipecd/docs-preview-feature/blog/index.xml">
+
+
+<link rel="shortcut icon" href="/pipecd/docs-preview-feature/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/pipecd/docs-preview-feature/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/pipecd/docs-preview-feature/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/pipecd/docs-preview-feature/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/pipecd/docs-preview-feature/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/pipecd/docs-preview-feature/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/pipecd/docs-preview-feature/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/pipecd/docs-preview-feature/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/pipecd/docs-preview-feature/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/pipecd/docs-preview-feature/favicons/android-192x192.png" sizes="192x192">
+
+<title>PipeCD Blog | PipeCD</title><meta property="og:url" content="https://antedotee.github.io/pipecd/docs-preview-feature/blog/">
+  <meta property="og:site_name" content="PipeCD">
+  <meta property="og:title" content="PipeCD Blog">
+  <meta property="og:description" content="This is the blog section. It has two categories: News and Releases.
+Files in these directories will be listed in reverse chronological order.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+    <meta property="og:image" content="https://antedotee.github.io/pipecd/docs-preview-feature/images/ogp-logo.png">
+
+  <meta itemprop="name" content="PipeCD Blog">
+  <meta itemprop="description" content="This is the blog section. It has two categories: News and Releases.
+Files in these directories will be listed in reverse chronological order.">
+  <meta itemprop="dateModified" content="2020-07-26T11:33:07+09:00">
+  <meta itemprop="wordCount" content="23">
+  <meta itemprop="image" content="https://antedotee.github.io/pipecd/docs-preview-feature/images/ogp-logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://antedotee.github.io/pipecd/docs-preview-feature/images/ogp-logo.png">
+  <meta name="twitter:title" content="PipeCD Blog">
+  <meta name="twitter:description" content="This is the blog section. It has two categories: News and Releases.
+Files in these directories will be listed in reverse chronological order.">
+
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDHG400SFD"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-QDHG400SFD');
+        }
+      </script>
+
+
+
+
+
+<link rel="preload" href="/pipecd/docs-preview-feature/scss/main.min.49ddf2fc25f3ed680b088270f5ef01a4f0ab0ea95f7758f7bac8da7f739df15b.css" as="style">
+<link href="/pipecd/docs-preview-feature/scss/main.min.49ddf2fc25f3ed680b088270f5ef01a4f0ab0ea95f7758f7bac8da7f739df15b.css" rel="stylesheet" integrity="">
+
+
+<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"
+  ></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"
+  defer
+  ></script>
+
+<script 
+  src="https://unpkg.com/medium-zoom@1.0.6/dist/medium-zoom.min.js" 
+  integrity="sha384-vXRaoKYMBDPb5PpsIJM2Vm00aBW5eV9iCza59Nhntsn7KSDO7q+1yQEQWoLpYmaf"
+  crossorigin="anonymous"
+  ></script>
+<meta name="google-site-verification" content="eyAD8gRYGv-Uw5nHkjGFPtdbi3LpbjFF4hiFw_UpikY" />
+
+
+  </head>
+  <body class="td-section td-blog">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+	
+    <a class="navbar-brand" href="/pipecd/docs-preview-feature/">
+		<span class="navbar-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 235.59 117"><defs><style>.cls-1{fill:none}.cls-2{fill:#fff}.cls-3{fill:#28beeb}</style></defs><g id="pipecd-logo"><rect class="cls-1" width="235.59" height="117"/><path class="cls-2" d="M42 74.23a.4.4.0 00.12.33l20.1 20.12C64.76 97.22 76.43 85.56 73.88 83L53.79 62.92a.43.43.0 00-.32-.12c-.84.06-3.18.62-7 4.46S42.06 73.47 42 74.23z"/><path class="cls-2" d="M47.51 44.09c0-.72-.41-3.09-4.46-7.14-3.4-3.4-5.67-4.23-6.67-4.43a.47.47.0 00-.42.13 25.28 25.28.0 000 35.76l2.87 2.87a.21.21.0 00.35-.06 21.61 21.61.0 014.75-6.49A21.57 21.57.0 0150.43 60a.21.21.0 00.06-.35l-2.87-2.87A8.79 8.79.0 0147 45C47.31 44.61 47.51 44.4 47.51 44.09z"/><path class="cls-3" d="M73.37 57.33h-.14a12.85 12.85.0 01-8.56-4.64.42.42.0 00-.66.0 10 10 0 01-.75.86l-5.58 5.57a1.39 1.39.0 000 2l9.72 9.72a1.39 1.39.0 001.95.0l4.27-4.28c3-3 6-6.66 6.82-9.59a.42.42.0 00-.54-.53A14.58 14.58.0 0173.37 57.33z"/><path class="cls-2" d="M73.67 53.77c3.74.22 6-1 7.33-2.28a4.83 4.83.0 001.25-2.26A25.26 25.26.0 0039.12 29.49c-.15.15.0.18.0.19a21.91 21.91.0 016.46 4.74 21.25 21.25.0 014.82 6.64c.13.26.24.19.6-.11a9 9 0 0111.8-.27 8.74 8.74.0 013 5.86 5.82 5.82.0 00.38 1.71A10.78 10.78.0 0067.11 50a9 9 0 006.56 3.77z"/><path class="cls-2" d="M107.5 42.87a5.58 5.58.0 00-1.83-1.4 10 10 0 00-2.38-.81 17.36 17.36.0 00-2.5-.37c-.82.0-1.65-.08-2.51-.08h-9V72.36h7.54V59.84c.52.0 1.19.0 2 0a33.57 33.57.0 003.66-.17 8.76 8.76.0 002.81-.82 5.93 5.93.0 002.08-1.52 7.41 7.41.0 001.31-2.18 12.23 12.23.0 00.66-2.53 18.55 18.55.0 00.2-2.73 16.38 16.38.0 00-.43-3.92 7.2 7.2.0 00-1.61-3.1zm-5.64 8.93a3.12 3.12.0 01-.75 1.44 3.16 3.16.0 01-1.48.66 11.05 11.05.0 01-2.08.16h-.69V46h.82a10.86 10.86.0 013 .26 2 2 0 011.13 1.42 8.6 8.6.0 01.28 2.31A8 8 0 01101.86 51.8z"/><path class="cls-2" d="M112.6 51.82V72.36h6.81V51.82a10.33 10.33.0 00-6.81.0z"/><path class="cls-2" d="M112.6 48.88a11.15 11.15.0 016.81.0V40.21H112.6z"/><path class="cls-2" d="M139.74 50.28a5.33 5.33.0 00-1.8-1.91 5.16 5.16.0 00-2.77-.7 6.32 6.32.0 00-5.57 3.6h-.09V48.35h-6.34V80.46H130V70.09h.09a6.82 6.82.0 002.44 2.31 5.25 5.25.0 005.51-.1 5.38 5.38.0 001.82-2.08 9.92 9.92.0 00.9-2.79 19.14 19.14.0 00.26-3.21V55.9a14.64 14.64.0 00-.3-3A9.45 9.45.0 00139.74 50.28zM134.18 63.4c0 .6.0 1.13.0 1.59a4.21 4.21.0 01-.26 1.26 2.11 2.11.0 01-.64.94 1.7 1.7.0 01-1.16.37 1.68 1.68.0 01-1.63-1.29 9.21 9.21.0 01-.47-3.13V57.48a8.34 8.34.0 01.47-3.1 1.75 1.75.0 011.76-1.14 1.5 1.5.0 011.09.39 2.19 2.19.0 01.61 1 5.65 5.65.0 01.23 1.2c0 .4.0.86.0 1.37z"/><path class="cls-2" d="M159.2 49.25a9.37 9.37.0 00-2.89-1.2 15.93 15.93.0 00-3.56-.38 14.28 14.28.0 00-3.73.45 7.89 7.89.0 00-2.88 1.39A6.35 6.35.0 00144.26 52a9.65 9.65.0 00-.69 3.86v9.77a7.66 7.66.0 00.71 3.41 6.15 6.15.0 002 2.34 8.64 8.64.0 002.92 1.31 15 15 0 003.58.4c2.88.0 5.1-.73 6.64-2.1s2.32-4 2.32-6.71c0 0-.05-.42-.05-.57a17.82 17.82.0 00-6.67-.23 8.1 8.1.0 01-.59 3.83c-.27.57-.91.85-1.91.85a2 2 0 01-1.59-.75 3 3 0 01-.51-1.78V61.62a34.51 34.51.0 0111.53-.15V54.61a6.56 6.56.0 00-.73-3.19A5.85 5.85.0 00159.2 49.25zm-8.81 7.33v-1.2a4.49 4.49.0 01.53-2.33 2.39 2.39.0 013.63-.09 2.85 2.85.0 01.56 1.65v1.67A21.18 21.18.0 00150.39 56.58z"/><path class="cls-3" d="M177.63 58.07v4.65a14.72 14.72.0 01-.08 1.67 5.1 5.1.0 01-.37 1.43 2.56 2.56.0 01-.85 1.1 2.47 2.47.0 01-1.48.43 2.63 2.63.0 01-2.06-.73 3.16 3.16.0 01-.64-2.15v-15.9a4.18 4.18.0 01.62-2.53 2.73 2.73.0 012.3-.82 2 2 0 011.75 1.08c.43.71.65 3.47.65 4.82l.12 3.21a10.68 10.68.0 017.42.0V50.47c0-3.2-.88-7.28-2.66-8.78s-4.31-2.25-7.63-2.25-6 .83-7.65 2.5-2.47 4.26-2.47 7.74V62.89q0 5.06 2.3 7.65t7.35 2.59c3.72.0 6.46-.83 8.23-2.51a9 9 0 002.66-6.88l-.13-5.67A8.19 8.19.0 00177.63 58.07z"/><path class="cls-3" d="M207.3 44.88a5.75 5.75.0 00-2.7-3.17 9.81 9.81.0 00-3.69-1.22 35.47 35.47.0 00-4.8-.28h-8.19V72.36h10.16a20.48 20.48.0 003.69-.3 8 8 0 003-1.2c2.12-1.31 3.19-3.63 3.22-6.94V49.64A14.71 14.71.0 00207.3 44.88zm-7.59 20.71c-.51.68-1.58 1-3.21 1a3.43 3.43.0 01-.47-.05h-.56V46a21 21 0 012.46.18 3.23 3.23.0 011.44.51 2.27 2.27.0 01.82 1.18 7.53 7.53.0 01.25 2.21V61.43a6.29 6.29.0 010 .73A5.81 5.81.0 01199.71 65.59z"/></g></svg></span>
+	</a>
+	
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/pipecd/docs-preview-feature/docs/" ><span>Documentation</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				<a class="nav-link" href="https://github.com/pipe-cd/tutorial" target="_blank" ><span>Tutorial</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link active" href="/pipecd/docs-preview-feature/blog/" ><span class="active">Blog</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/pipecd/docs-preview-feature/community/" ><span>Community</span></a>
+			</li>
+			
+			
+			<li class="nav-item dropdown d-none d-lg-block">
+				<a class="nav-link dropdown-toggle navbar-version-menu" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	v1.0.x
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="/docs-dev/">dev</a>
+	
+	<a class="dropdown-item" href="/docs-v1.0.x/">v1.0.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.55.x/">v0.55.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.54.x/">v0.54.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.53.x/">v0.53.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.52.x/">v0.52.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.51.x/">v0.51.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.50.x/">v0.50.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.49.x/">v0.49.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.48.x/">v0.48.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.47.x/">v0.47.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.46.x/">v0.46.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.45.x/">v0.45.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.44.x/">v0.44.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.43.x/">v0.43.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.42.x/">v0.42.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.41.x/">v0.41.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.40.x/">v0.40.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.39.x/">v0.39.x</a>
+	
+</div>
+
+			</li>
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block"><input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/pipecd/docs-preview-feature/offline-search-index.64759ff0975161e31e7dbaaa6598cfa7.json"
+  data-offline-search-base-href="/"
+  data-offline-search-max-results="10"
+>
+</div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  <form class="td-sidebar__search d-flex align-items-center">
+    <input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/pipecd/docs-preview-feature/offline-search-index.64759ff0975161e31e7dbaaa6598cfa7.json"
+  data-offline-search-base-href="/"
+  data-offline-search-max-results="10"
+>
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="collapse td-sidebar-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pr-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-pipecddocs-preview-featureblog-li">
+  <a href="/pipecd/docs-preview-feature/blog/" title="PipeCD Blog" class="align-left pl-0 active td-sidebar-link td-sidebar-link__section tree-root" id="m-pipecddocs-preview-featureblog"><span class="td-sidebar-nav-active-item">Blog</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featureblog20250902what-is-new-in-pipedv1-plugin-arch-piped-li">
+  <a href="/pipecd/docs-preview-feature/blog/2025/09/02/what-is-new-in-pipedv1-plugin-arch-piped/" title="What is new in pipedv1 (plugin-arch piped)" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featureblog20250902what-is-new-in-pipedv1-plugin-arch-piped"><span class="">What is new in pipedv1</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featureblog20250616plugin-architecture-piped-alpha-version-has-been-released-li">
+  <a href="/pipecd/docs-preview-feature/blog/2025/06/16/plugin-architecture-piped-alpha-version-has-been-released/" title="Plugin architecture Piped alpha version has been released" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featureblog20250616plugin-architecture-piped-alpha-version-has-been-released"><span class="">Plugin architecture Piped alpha</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featureblog20250526mcp-server-for-pipecd-docs-has-been-released-li">
+  <a href="/pipecd/docs-preview-feature/blog/2025/05/26/mcp-server-for-pipecd-docs-has-been-released/" title="MCP Server for PipeCD Docs Has Been Released" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featureblog20250526mcp-server-for-pipecd-docs-has-been-released"><span class="">MCP Server for PipeCD Docs</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featureblog20250428what-happens-before-deployment-gitops-mechanism-li">
+  <a href="/pipecd/docs-preview-feature/blog/2025/04/28/what-happens-before-deployment-gitops-mechanism/" title="What Happens before Deployment? GitOps Mechanism" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featureblog20250428what-happens-before-deployment-gitops-mechanism"><span class="">What Happens before Deployment?</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featureblog20250428introduction-to-eventwatcher-connecting-ci-to-pipecd-li">
+  <a href="/pipecd/docs-preview-feature/blog/2025/04/28/introduction-to-eventwatcher-connecting-ci-to-pipecd/" title="Introduction to EventWatcher: Connecting CI to PipeCD" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featureblog20250428introduction-to-eventwatcher-connecting-ci-to-pipecd"><span class="">Introduction to EventWatcher</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featureblog20241226the-gap-between-cicd-and-how-pipecd-appeared-to-fulfill-the-gap-li">
+  <a href="/pipecd/docs-preview-feature/blog/2024/12/26/the-gap-between-ci/cd-and-how-pipecd-appeared-to-fulfill-the-gap/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featureblog20241226the-gap-between-cicd-and-how-pipecd-appeared-to-fulfill-the-gap"><span class="">The Gap Between CI/CD and How PipeCD Appeared to FulFill the Gap</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featureblog20241128overview-of-the-plan-for-pluginnable-pipecd-li">
+  <a href="/pipecd/docs-preview-feature/blog/2024/11/28/overview-of-the-plan-for-pluginnable-pipecd/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featureblog20241128overview-of-the-plan-for-pluginnable-pipecd"><span class="">Overview of the Plan for Pluginnable PipeCD</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featureblog20240911performance-improvement-in-git-operations-on-pipecd-v0489-li">
+  <a href="/pipecd/docs-preview-feature/blog/2024/09/11/performance-improvement-in-git-operations-on-pipecd-v0.48.9/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featureblog20240911performance-improvement-in-git-operations-on-pipecd-v0489"><span class="">Performance improvement in Git operations on PipeCD v0.48.9</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featureblog20240809pipecd-at-cncf-kubecon-hong-kong-2024-li">
+  <a href="/pipecd/docs-preview-feature/blog/2024/08/09/pipecd-at-cncf-kubecon-hong-kong-2024/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featureblog20240809pipecd-at-cncf-kubecon-hong-kong-2024"><span class="">PipeCD at CNCF KubeCon Hong Kong 2024</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featureblog20240316pipecd-at-cncf-kubecon-eu-2024-li">
+  <a href="/pipecd/docs-preview-feature/blog/2024/03/16/pipecd-at-cncf-kubecon-eu-2024/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featureblog20240316pipecd-at-cncf-kubecon-eu-2024"><span class="">PipeCD at CNCF KubeCon EU 2024</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featureblog20240314control-plane-on-local-by-docker-compose-li">
+  <a href="/pipecd/docs-preview-feature/blog/2024/03/14/control-plane-on-local-by-docker-compose/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featureblog20240314control-plane-on-local-by-docker-compose"><span class="">Control Plane on local by docker-compose</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featureblog20260115how-to-set-up-a-local-development-environment-li">
+  <a href="/pipecd/docs-preview-feature/blog/2026/01/15/how-to-set-up-a-local-development-environment/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featureblog20260115how-to-set-up-a-local-development-environment"><span class="">How to set up a local development environment</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featureblog20230727terraform-provider-for-pipecd-is-out-li">
+  <a href="/pipecd/docs-preview-feature/blog/2023/07/27/terraform-provider-for-pipecd-is-out/" title="Terraform Provider for PipeCD is Out!" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featureblog20230727terraform-provider-for-pipecd-is-out"><span class="">Terraform Provider for PipeCD</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featureblog20230519cncf-sandbox-admission-li">
+  <a href="/pipecd/docs-preview-feature/blog/2023/05/19/cncf-sandbox-admission/" title="CNCF Sandbox admission 🎉" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featureblog20230519cncf-sandbox-admission"><span class="">CNCF Sandbox admission</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featureblog20230207pipecd-best-practice-02-control-plane-on-ecs-li">
+  <a href="/pipecd/docs-preview-feature/blog/2023/02/07/pipecd-best-practice-02-control-plane-on-ecs/" title="PipeCD best practice 02 - control plane on ECS" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featureblog20230207pipecd-best-practice-02-control-plane-on-ecs"><span class="">PipeCD best practice 02</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featureblog20220601may-2022-update-li">
+  <a href="/pipecd/docs-preview-feature/blog/2022/06/01/may-2022-update/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featureblog20220601may-2022-update"><span class="">May 2022 update</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featureblog20220412the-pipecd-play-environment-is-here-li">
+  <a href="/pipecd/docs-preview-feature/blog/2022/04/12/the-pipecd-play-environment-is-here/" title="The PipeCD play environment is here!!!" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featureblog20220412the-pipecd-play-environment-is-here"><span class="">The PipeCD play environment</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featureblog20220210february-2022-update-li">
+  <a href="/pipecd/docs-preview-feature/blog/2022/02/10/february-2022-update/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featureblog20220210february-2022-update"><span class="">February 2022 update</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featureblog20211229pipecd-best-practice-01-operate-your-own-pipecd-cluster-li">
+  <a href="/pipecd/docs-preview-feature/blog/2021/12/29/pipecd-best-practice-01-operate-your-own-pipecd-cluster/" title="PipeCD best practice 01 - operate your own PipeCD cluster" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featureblog20211229pipecd-best-practice-01-operate-your-own-pipecd-cluster"><span class="">PipeCD best practice 01</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featureblog20220105january-2022-update-li">
+  <a href="/pipecd/docs-preview-feature/blog/2022/01/05/january-2022-update/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featureblog20220105january-2022-update"><span class="">January 2022 update</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featureblog20211101november-2021-update-li">
+  <a href="/pipecd/docs-preview-feature/blog/2021/11/01/november-2021-update/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featureblog20211101november-2021-update"><span class="">November 2021 update</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featureblog20201006announcing-pipecd-li">
+  <a href="/pipecd/docs-preview-feature/blog/2020/10/06/announcing-pipecd/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featureblog20201006announcing-pipecd"><span class="">Announcing PipeCD</span></a>
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+          </aside>
+          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+            
+
+
+
+
+
+<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+
+
+  
+    
+      
+    
+    
+    
+      
+    
+    
+  
+
+
+
+<a href="https://github.com/pipe-cd/pipecd/edit/master/docs/content/en/blog/_index.md" target="_blank" rel="noreferrer"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+<a href="https://github.com/pipe-cd/pipecd/issues/new?title=PipeCD%20Blog" target="_blank" rel="noreferrer"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+
+
+<a href="https://github.com/pipe-cd/pipecd/issues/new" target="_blank" rel="noreferrer"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
+
+</div>
+
+
+
+            
+
+
+
+
+            
+
+	
+		
+
+
+
+  
+  
+    <div class="taxonomy taxonomy-terms-cloud taxo-categories">
+      
+        <h5 class="taxonomy-title">Categories</h5>
+      
+      <ul class="taxonomy-terms">
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/announcement/" data-taxonomy-term="announcement"><span class="taxonomy-label">Announcement</span><span class="taxonomy-count">17</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/contributing/" data-taxonomy-term="contributing"><span class="taxonomy-label">Contributing</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/example/" data-taxonomy-term="example"><span class="taxonomy-label">Example</span><span class="taxonomy-count">2</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/introduction/" data-taxonomy-term="introduction"><span class="taxonomy-label">Introduction</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/practice/" data-taxonomy-term="practice"><span class="taxonomy-label">Practice</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/tutorial/" data-taxonomy-term="tutorial"><span class="taxonomy-label">Tutorial</span><span class="taxonomy-count">1</span></a></li>
+        
+      </ul>
+    </div>
+  
+
+	
+		
+
+
+
+  
+  
+    <div class="taxonomy taxonomy-terms-cloud taxo-tags">
+      
+        <h5 class="taxonomy-title">Tags</h5>
+      
+      <ul class="taxonomy-terms">
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/ai/" data-taxonomy-term="ai"><span class="taxonomy-label">AI</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/aws/" data-taxonomy-term="aws"><span class="taxonomy-label">AWS</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/cncf/" data-taxonomy-term="cncf"><span class="taxonomy-label">CNCF</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/conference/" data-taxonomy-term="conference"><span class="taxonomy-label">Conference</span><span class="taxonomy-count">2</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/control-plane/" data-taxonomy-term="control-plane"><span class="taxonomy-label">Control Plane</span><span class="taxonomy-count">3</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/dev-setup/" data-taxonomy-term="dev-setup"><span class="taxonomy-label">Dev Setup</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/developer-experience/" data-taxonomy-term="developer-experience"><span class="taxonomy-label">Developer Experience</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/ecosystem/" data-taxonomy-term="ecosystem"><span class="taxonomy-label">Ecosystem</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/feature-guide/" data-taxonomy-term="feature-guide"><span class="taxonomy-label">Feature Guide</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/feature-improvement/" data-taxonomy-term="feature-improvement"><span class="taxonomy-label">Feature Improvement</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/getting-started/" data-taxonomy-term="getting-started"><span class="taxonomy-label">Getting Started</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/go/" data-taxonomy-term="go"><span class="taxonomy-label">Go</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/kubernetes/" data-taxonomy-term="kubernetes"><span class="taxonomy-label">Kubernetes</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/local-development/" data-taxonomy-term="local-development"><span class="taxonomy-label">Local Development</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/new-feature/" data-taxonomy-term="new-feature"><span class="taxonomy-label">New Feature</span><span class="taxonomy-count">5</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/news/" data-taxonomy-term="news"><span class="taxonomy-label">News</span><span class="taxonomy-count">8</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/plugin/" data-taxonomy-term="plugin"><span class="taxonomy-label">Plugin</span><span class="taxonomy-count">2</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/terraform/" data-taxonomy-term="terraform"><span class="taxonomy-label">Terraform</span><span class="taxonomy-count">1</span></a></li>
+        
+      </ul>
+    </div>
+  
+
+	
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5 pr-md-4" role="main">
+            <a class="btn btn-lg -bg-orange td-rss-button d-none d-lg-block" href="https://antedotee.github.io/pipecd/docs-preview-feature/blog/index.xml" target="_blank">
+              RSS <i class="fa fa-rss ml-2 "></i>
+            </a>
+            
+
+
+
+
+<div class="row">
+	<div class="col-12">
+			
+			<h2>Posts in 2024</h2>
+			<ul class="list-unstyled mt-4">
+				
+				<li class="media mb-4">
+					<div class="media-body">
+						<h5 class="mt-0 mb-1"><a href="/pipecd/docs-preview-feature/blog/2024/03/16/pipecd-at-cncf-kubecon-eu-2024/">PipeCD at CNCF KubeCon EU 2024</a></h5>
+						<p class="mb-2 mb-md-3"><small class="text-muted">Saturday, March 16, 2024 in Blog</small></p>
+						<header class="article-meta">
+							
+							
+								
+									
+
+
+<div class="taxonomy taxonomy-terms-article taxo-categories">
+  <h5 class="taxonomy-title">Categories:</h5>
+  <ul class="taxonomy-terms">
+    
+      <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/announcement/" data-taxonomy-term="announcement"><span class="taxonomy-label">Announcement</span></a></li>
+    
+  </ul>
+</div>
+
+								
+									
+
+
+<div class="taxonomy taxonomy-terms-article taxo-tags">
+  <h5 class="taxonomy-title">Tags:</h5>
+  <ul class="taxonomy-terms">
+    
+      <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/conference/" data-taxonomy-term="conference"><span class="taxonomy-label">Conference</span></a></li>
+    
+      <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/news/" data-taxonomy-term="news"><span class="taxonomy-label">News</span></a></li>
+    
+  </ul>
+</div>
+
+								
+							
+							
+						</header>
+						
+
+
+
+
+
+						<p class="pt-0 mt-0">KubeCon EU 2024 is only four more weeks away! PipeCD team is excited to announce upcoming activities at KubeCon. Let&rsquo;s come to meet each other and share insights and knowledge. We&rsquo;re excited to see you there 🙌
+PipeCD&rsquo;s presentations …</p>
+						<p class="pt-0"><a href="/pipecd/docs-preview-feature/blog/2024/03/16/pipecd-at-cncf-kubecon-eu-2024/" aria-label="Read more - PipeCD at CNCF KubeCon EU 2024">Read more</a></p>
+					</div>
+				</li>
+				
+				<li class="media mb-4">
+					<div class="media-body">
+						<h5 class="mt-0 mb-1"><a href="/pipecd/docs-preview-feature/blog/2024/03/14/control-plane-on-local-by-docker-compose/">Control Plane on local by docker-compose</a></h5>
+						<p class="mb-2 mb-md-3"><small class="text-muted">Thursday, March 14, 2024 in Blog</small></p>
+						<header class="article-meta">
+							
+							
+								
+									
+
+
+<div class="taxonomy taxonomy-terms-article taxo-categories">
+  <h5 class="taxonomy-title">Categories:</h5>
+  <ul class="taxonomy-terms">
+    
+      <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/example/" data-taxonomy-term="example"><span class="taxonomy-label">Example</span></a></li>
+    
+  </ul>
+</div>
+
+								
+									
+
+
+<div class="taxonomy taxonomy-terms-article taxo-tags">
+  <h5 class="taxonomy-title">Tags:</h5>
+  <ul class="taxonomy-terms">
+    
+      <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/control-plane/" data-taxonomy-term="control-plane"><span class="taxonomy-label">Control Plane</span></a></li>
+    
+  </ul>
+</div>
+
+								
+							
+							
+						</header>
+						
+
+
+
+
+
+						<p class="pt-0 mt-0">Currently, you can deploy and operate a PipeCD Control Plane on a Kubernetes cluster or on Amazon ECS. However, some developers would like to build a Control Plane more easily for introduction or development. This blog shows you how to install a …</p>
+						<p class="pt-0"><a href="/pipecd/docs-preview-feature/blog/2024/03/14/control-plane-on-local-by-docker-compose/" aria-label="Read more - Control Plane on local by docker-compose">Read more</a></p>
+					</div>
+				</li>
+				
+			</ul>
+			
+			<h2>Posts in 2023</h2>
+			<ul class="list-unstyled mt-4">
+				
+				<li class="media mb-4">
+					<div class="media-body">
+						<h5 class="mt-0 mb-1"><a href="/pipecd/docs-preview-feature/blog/2023/07/27/terraform-provider-for-pipecd-is-out/">Terraform Provider for PipeCD</a></h5>
+						<p class="mb-2 mb-md-3"><small class="text-muted">Thursday, July 27, 2023 in Blog</small></p>
+						<header class="article-meta">
+							
+							
+								
+									
+
+
+<div class="taxonomy taxonomy-terms-article taxo-categories">
+  <h5 class="taxonomy-title">Categories:</h5>
+  <ul class="taxonomy-terms">
+    
+      <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/announcement/" data-taxonomy-term="announcement"><span class="taxonomy-label">Announcement</span></a></li>
+    
+  </ul>
+</div>
+
+								
+									
+
+
+<div class="taxonomy taxonomy-terms-article taxo-tags">
+  <h5 class="taxonomy-title">Tags:</h5>
+  <ul class="taxonomy-terms">
+    
+      <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/ecosystem/" data-taxonomy-term="ecosystem"><span class="taxonomy-label">Ecosystem</span></a></li>
+    
+      <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/terraform/" data-taxonomy-term="terraform"><span class="taxonomy-label">Terraform</span></a></li>
+    
+  </ul>
+</div>
+
+								
+							
+							
+						</header>
+						
+
+
+
+
+
+						<p class="pt-0 mt-0">Now PipeCD resources can be managed by Terraform🎉
+terraform-provider-pipecd, which is a Terraform provider for PipeCD, has been released! Thanks to @arabian9ts, @kurochan, and @sivchari for creating this provider!
+Until now, there were two methods …</p>
+						<p class="pt-0"><a href="/pipecd/docs-preview-feature/blog/2023/07/27/terraform-provider-for-pipecd-is-out/" aria-label="Read more - Terraform Provider for PipeCD">Read more</a></p>
+					</div>
+				</li>
+				
+				<li class="media mb-4">
+					<div class="media-body">
+						<h5 class="mt-0 mb-1"><a href="/pipecd/docs-preview-feature/blog/2023/05/19/cncf-sandbox-admission/">CNCF Sandbox admission</a></h5>
+						<p class="mb-2 mb-md-3"><small class="text-muted">Friday, May 19, 2023 in Blog</small></p>
+						<header class="article-meta">
+							
+							
+								
+									
+
+
+<div class="taxonomy taxonomy-terms-article taxo-categories">
+  <h5 class="taxonomy-title">Categories:</h5>
+  <ul class="taxonomy-terms">
+    
+      <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/announcement/" data-taxonomy-term="announcement"><span class="taxonomy-label">Announcement</span></a></li>
+    
+  </ul>
+</div>
+
+								
+									
+
+
+<div class="taxonomy taxonomy-terms-article taxo-tags">
+  <h5 class="taxonomy-title">Tags:</h5>
+  <ul class="taxonomy-terms">
+    
+      <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/cncf/" data-taxonomy-term="cncf"><span class="taxonomy-label">CNCF</span></a></li>
+    
+  </ul>
+</div>
+
+								
+							
+							
+						</header>
+						
+
+
+
+
+
+						<p class="pt-0 mt-0">
+Today the whole PipeCD team is overjoyed because the PipeCD project has just been accepted into the CNCF Sandbox program!!! 🥳
+This is a great achievement for the whole team and is the beginning of our journey into CNCF. Also, many thanks to the CNCF …</p>
+						<p class="pt-0"><a href="/pipecd/docs-preview-feature/blog/2023/05/19/cncf-sandbox-admission/" aria-label="Read more - CNCF Sandbox admission">Read more</a></p>
+					</div>
+				</li>
+				
+				<li class="media mb-4">
+					<div class="media-body">
+						<h5 class="mt-0 mb-1"><a href="/pipecd/docs-preview-feature/blog/2023/02/07/pipecd-best-practice-02-control-plane-on-ecs/">PipeCD best practice 02</a></h5>
+						<p class="mb-2 mb-md-3"><small class="text-muted">Tuesday, February 07, 2023 in Blog</small></p>
+						<header class="article-meta">
+							
+							
+								
+									
+
+
+<div class="taxonomy taxonomy-terms-article taxo-categories">
+  <h5 class="taxonomy-title">Categories:</h5>
+  <ul class="taxonomy-terms">
+    
+      <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/example/" data-taxonomy-term="example"><span class="taxonomy-label">Example</span></a></li>
+    
+  </ul>
+</div>
+
+								
+									
+
+
+<div class="taxonomy taxonomy-terms-article taxo-tags">
+  <h5 class="taxonomy-title">Tags:</h5>
+  <ul class="taxonomy-terms">
+    
+      <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/control-plane/" data-taxonomy-term="control-plane"><span class="taxonomy-label">Control Plane</span></a></li>
+    
+      <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/aws/" data-taxonomy-term="aws"><span class="taxonomy-label">AWS</span></a></li>
+    
+  </ul>
+</div>
+
+								
+							
+							
+						</header>
+						
+
+
+
+
+
+						<p class="pt-0 mt-0">This blog is a part of PipeCD best practice series, a guideline for you to operate your own PipeCD. Currently, you can deploy and operate the PipeCD control plane on a Kubernetes cluster easily, but some developers that would like to introduce PipeCD …</p>
+						<p class="pt-0"><a href="/pipecd/docs-preview-feature/blog/2023/02/07/pipecd-best-practice-02-control-plane-on-ecs/" aria-label="Read more - PipeCD best practice 02">Read more</a></p>
+					</div>
+				</li>
+				
+			</ul>
+			
+			<h2>Posts in 2022</h2>
+			<ul class="list-unstyled mt-4">
+				
+				<li class="media mb-4">
+					<div class="media-body">
+						<h5 class="mt-0 mb-1"><a href="/pipecd/docs-preview-feature/blog/2022/06/01/may-2022-update/">May 2022 update</a></h5>
+						<p class="mb-2 mb-md-3"><small class="text-muted">Wednesday, June 01, 2022 in Blog</small></p>
+						<header class="article-meta">
+							
+							
+								
+									
+
+
+<div class="taxonomy taxonomy-terms-article taxo-categories">
+  <h5 class="taxonomy-title">Categories:</h5>
+  <ul class="taxonomy-terms">
+    
+      <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/announcement/" data-taxonomy-term="announcement"><span class="taxonomy-label">Announcement</span></a></li>
+    
+  </ul>
+</div>
+
+								
+									
+
+
+<div class="taxonomy taxonomy-terms-article taxo-tags">
+  <h5 class="taxonomy-title">Tags:</h5>
+  <ul class="taxonomy-terms">
+    
+      <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/news/" data-taxonomy-term="news"><span class="taxonomy-label">News</span></a></li>
+    
+  </ul>
+</div>
+
+								
+							
+							
+						</header>
+						
+
+
+
+
+
+						<p class="pt-0 mt-0">Published by the PipeCD dev team every few months, this update will provide you with news and updates about the project! Please click here if you want to see the last status update.
+What&rsquo;s changed It&rsquo;s been a while from the last update …</p>
+						<p class="pt-0"><a href="/pipecd/docs-preview-feature/blog/2022/06/01/may-2022-update/" aria-label="Read more - May 2022 update">Read more</a></p>
+					</div>
+				</li>
+				
+				<li class="media mb-4">
+					<div class="media-body">
+						<h5 class="mt-0 mb-1"><a href="/pipecd/docs-preview-feature/blog/2022/04/12/the-pipecd-play-environment-is-here/">The PipeCD play environment</a></h5>
+						<p class="mb-2 mb-md-3"><small class="text-muted">Tuesday, April 12, 2022 in Blog</small></p>
+						<header class="article-meta">
+							
+							
+								
+									
+
+
+<div class="taxonomy taxonomy-terms-article taxo-categories">
+  <h5 class="taxonomy-title">Categories:</h5>
+  <ul class="taxonomy-terms">
+    
+      <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/announcement/" data-taxonomy-term="announcement"><span class="taxonomy-label">Announcement</span></a></li>
+    
+  </ul>
+</div>
+
+								
+									
+
+
+<div class="taxonomy taxonomy-terms-article taxo-tags">
+  <h5 class="taxonomy-title">Tags:</h5>
+  <ul class="taxonomy-terms">
+    
+      <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/getting-started/" data-taxonomy-term="getting-started"><span class="taxonomy-label">Getting Started</span></a></li>
+    
+      <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/news/" data-taxonomy-term="news"><span class="taxonomy-label">News</span></a></li>
+    
+  </ul>
+</div>
+
+								
+							
+							
+						</header>
+						
+
+
+
+
+
+						<p class="pt-0 mt-0">Good news, PipeCD team&rsquo;s happy to bring you a place where you can have a look at the PipeCD platform in use. We call it the play environment - https://play.pipecd.dev.
+PipeCD play environment view With this live demo, you can now have a look at …</p>
+						<p class="pt-0"><a href="/pipecd/docs-preview-feature/blog/2022/04/12/the-pipecd-play-environment-is-here/" aria-label="Read more - The PipeCD play environment">Read more</a></p>
+					</div>
+				</li>
+				
+				<li class="media mb-4">
+					<div class="media-body">
+						<h5 class="mt-0 mb-1"><a href="/pipecd/docs-preview-feature/blog/2022/02/10/february-2022-update/">February 2022 update</a></h5>
+						<p class="mb-2 mb-md-3"><small class="text-muted">Thursday, February 10, 2022 in Blog</small></p>
+						<header class="article-meta">
+							
+							
+								
+									
+
+
+<div class="taxonomy taxonomy-terms-article taxo-categories">
+  <h5 class="taxonomy-title">Categories:</h5>
+  <ul class="taxonomy-terms">
+    
+      <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/announcement/" data-taxonomy-term="announcement"><span class="taxonomy-label">Announcement</span></a></li>
+    
+  </ul>
+</div>
+
+								
+									
+
+
+<div class="taxonomy taxonomy-terms-article taxo-tags">
+  <h5 class="taxonomy-title">Tags:</h5>
+  <ul class="taxonomy-terms">
+    
+      <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/news/" data-taxonomy-term="news"><span class="taxonomy-label">News</span></a></li>
+    
+  </ul>
+</div>
+
+								
+							
+							
+						</header>
+						
+
+
+
+
+
+						<p class="pt-0 mt-0">Published by the PipeCD dev team every month, this update will provide you with news and updates about the project! Please click here if you want to see the last status update.
+What&rsquo;s changed Since the last report, PipeCD team has introduced 4 …</p>
+						<p class="pt-0"><a href="/pipecd/docs-preview-feature/blog/2022/02/10/february-2022-update/" aria-label="Read more - February 2022 update">Read more</a></p>
+					</div>
+				</li>
+				
+				<li class="media mb-4">
+					<div class="media-body">
+						<h5 class="mt-0 mb-1"><a href="/pipecd/docs-preview-feature/blog/2022/01/05/january-2022-update/">January 2022 update</a></h5>
+						<p class="mb-2 mb-md-3"><small class="text-muted">Wednesday, January 05, 2022 in Blog</small></p>
+						<header class="article-meta">
+							
+							
+								
+									
+
+
+<div class="taxonomy taxonomy-terms-article taxo-categories">
+  <h5 class="taxonomy-title">Categories:</h5>
+  <ul class="taxonomy-terms">
+    
+      <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/announcement/" data-taxonomy-term="announcement"><span class="taxonomy-label">Announcement</span></a></li>
+    
+  </ul>
+</div>
+
+								
+									
+
+
+<div class="taxonomy taxonomy-terms-article taxo-tags">
+  <h5 class="taxonomy-title">Tags:</h5>
+  <ul class="taxonomy-terms">
+    
+      <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/news/" data-taxonomy-term="news"><span class="taxonomy-label">News</span></a></li>
+    
+  </ul>
+</div>
+
+								
+							
+							
+						</header>
+						
+
+
+
+
+
+						<p class="pt-0 mt-0">Published by the PipeCD dev team every month, this update will provide you with news and updates about the project! Please click here if you want to see the last status update.
+Happy New Year First of all, PipeCD team would like to wish you all a …</p>
+						<p class="pt-0"><a href="/pipecd/docs-preview-feature/blog/2022/01/05/january-2022-update/" aria-label="Read more - January 2022 update">Read more</a></p>
+					</div>
+				</li>
+				
+			</ul>
+			
+			<h2>Posts in 2021</h2>
+			<ul class="list-unstyled mt-4">
+				
+				<li class="media mb-4">
+					<div class="media-body">
+						<h5 class="mt-0 mb-1"><a href="/pipecd/docs-preview-feature/blog/2021/12/29/pipecd-best-practice-01-operate-your-own-pipecd-cluster/">PipeCD best practice 01</a></h5>
+						<p class="mb-2 mb-md-3"><small class="text-muted">Wednesday, December 29, 2021 in Blog</small></p>
+						<header class="article-meta">
+							
+							
+								
+									
+
+
+<div class="taxonomy taxonomy-terms-article taxo-categories">
+  <h5 class="taxonomy-title">Categories:</h5>
+  <ul class="taxonomy-terms">
+    
+      <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/practice/" data-taxonomy-term="practice"><span class="taxonomy-label">Practice</span></a></li>
+    
+  </ul>
+</div>
+
+								
+									
+
+
+<div class="taxonomy taxonomy-terms-article taxo-tags">
+  <h5 class="taxonomy-title">Tags:</h5>
+  <ul class="taxonomy-terms">
+    
+      <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/control-plane/" data-taxonomy-term="control-plane"><span class="taxonomy-label">Control Plane</span></a></li>
+    
+  </ul>
+</div>
+
+								
+							
+							
+						</header>
+						
+
+
+
+
+
+						<p class="pt-0 mt-0">PipeCD is an open source project, you can freely use the released versions of PipeCD to create and operate a continuous delivery system for your service or company. Quickstart docs - a complete guide for you to install required components of PipeCD …</p>
+						<p class="pt-0"><a href="/pipecd/docs-preview-feature/blog/2021/12/29/pipecd-best-practice-01-operate-your-own-pipecd-cluster/" aria-label="Read more - PipeCD best practice 01">Read more</a></p>
+					</div>
+				</li>
+				
+			</ul>
+			
+		
+	</div>
+</div>
+<div class="row pl-2 pt-2">
+	<div class="col">
+		
+			
+    <ul class="pagination pagination-default">
+      <li class="page-item">
+        <a href="/pipecd/docs-preview-feature/blog/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/pipecd/docs-preview-feature/blog/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/pipecd/docs-preview-feature/blog/" aria-label="Page 1" class="page-link" role="button">1</a>
+      </li>
+      <li class="page-item active">
+        <a aria-current="page" aria-label="Page 2" class="page-link" role="button">2</a>
+      </li>
+      <li class="page-item">
+        <a href="/pipecd/docs-preview-feature/blog/page/3/" aria-label="Page 3" class="page-link" role="button">3</a>
+      </li>
+      <li class="page-item">
+        <a href="/pipecd/docs-preview-feature/blog/page/3/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/pipecd/docs-preview-feature/blog/page/3/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
+		
+	</div>
+</div>
+
+          </main>
+        </div>
+      </div>
+      
+
+
+
+
+
+
+<div class="bg-dark row d-print-none">
+  <div class="container-fluid py-3 mx-sm-5">
+    <div class="row">
+      <div class="col-8 py-3 order-sm-2 text-white">
+        <a href="https://www.cncf.io/projects/pipecd/" target="_blank">
+          <img src="https://www.cncf.io/wp-content/uploads/2022/05/CNCF_logo_white.svg" alt="cncf logo" width="250">
+          <div class="py-2 text-white">PipeCD is a Cloud Native Computing Foundation sandbox project.</div>
+        </a>
+      </div>
+      <div class="col-4 order-sm-3 d-flex align-items-center justify-content-center">
+        
+        
+        <ul class="list-inline mb-0">
+          
+          <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+            <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://github.com/pipe-cd">
+              <i class="fab fa-github text-white"></i>
+            </a>
+          </li>
+          
+          <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Slack" aria-label="Slack">
+            <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://slack.cncf.io">
+              <i class="fab fa-slack text-white"></i>
+            </a>
+          </li>
+          
+          <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Developer mailing list" aria-label="Developer mailing list">
+            <a class="text-white" target="_blank" rel="noopener noreferrer" href="mailto:pipecd.dev@gmail.com">
+              <i class="fa fa-envelope text-white"></i>
+            </a>
+          </li>
+          
+        </ul>
+        
+        
+        <ul class="list-inline mb-0">
+          
+          <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Twitter" aria-label="Twitter">
+            <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://twitter.com/pipecd_dev">
+              <i class="fab fa-twitter text-white"></i>
+            </a>
+          </li>
+          
+          <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Stack Overflow" aria-label="Stack Overflow">
+            <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://stackoverflow.com/questions/tagged/pipecd">
+              <i class="fab fa-stack-overflow text-white"></i>
+            </a>
+          </li>
+          
+          <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="User mailing list" aria-label="User mailing list">
+            <a class="text-white" target="_blank" rel="noopener noreferrer" href="mailto:pipecd.dev@gmail.com">
+              <i class="fa fa-envelope text-white"></i>
+            </a>
+          </li>
+          
+        </ul>
+        
+        
+      </div>
+    </div>
+    <div class="border-top text-center py-3 text-white">
+      <small>Copyright The PipeCD Authors.</small>
+      <br>
+      <small>The Linux Foundation® (TLF) has registered trademarks and uses trademarks. For a list of TLF trademarks,
+        see <a href="https://www.linuxfoundation.org/trademark-usage/">Trademark Usage</a>.</small>
+    </div>
+  </div>
+</div>
+
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+<script defer src="/pipecd/docs-preview-feature/js/medium-zoom.js" integrity="" crossorigin="anonymous"></script>
+
+
+
+<script src="/pipecd/docs-preview-feature/js/main.min.eaef49e7f859bb90335b315ee6e17dfd8c836ce241ac5e7a61330cd36a7d2f56.js" integrity="sha256-6u9J5/hZu5AzWzFe5uF9/YyDbOJBrF56YTMM02p9L1Y=" crossorigin="anonymous"></script>
+
+
+
+
+
+  </body>
+</html>

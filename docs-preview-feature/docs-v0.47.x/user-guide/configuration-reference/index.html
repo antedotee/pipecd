@@ -1,0 +1,3770 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.148.2">
+
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+
+
+<link rel="shortcut icon" href="/pipecd/docs-preview-feature/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/pipecd/docs-preview-feature/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/pipecd/docs-preview-feature/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/pipecd/docs-preview-feature/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/pipecd/docs-preview-feature/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/pipecd/docs-preview-feature/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/pipecd/docs-preview-feature/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/pipecd/docs-preview-feature/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/pipecd/docs-preview-feature/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/pipecd/docs-preview-feature/favicons/android-192x192.png" sizes="192x192">
+
+<title>Configuration reference | PipeCD</title><meta property="og:url" content="https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/">
+  <meta property="og:site_name" content="PipeCD">
+  <meta property="og:title" content="Configuration reference">
+  <meta property="og:description" content="This page describes all configurable fields in the application configuration and analysis template.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs-v0.47.x">
+    <meta property="article:modified_time" content="2025-07-14T11:09:28+09:00">
+    <meta property="og:image" content="https://antedotee.github.io/pipecd/docs-preview-feature/images/ogp-logo.png">
+
+  <meta itemprop="name" content="Configuration reference">
+  <meta itemprop="description" content="This page describes all configurable fields in the application configuration and analysis template.">
+  <meta itemprop="dateModified" content="2025-07-14T11:09:28+09:00">
+  <meta itemprop="wordCount" content="4704">
+  <meta itemprop="image" content="https://antedotee.github.io/pipecd/docs-preview-feature/images/ogp-logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://antedotee.github.io/pipecd/docs-preview-feature/images/ogp-logo.png">
+  <meta name="twitter:title" content="Configuration reference">
+  <meta name="twitter:description" content="This page describes all configurable fields in the application configuration and analysis template.">
+
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDHG400SFD"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-QDHG400SFD');
+        }
+      </script>
+
+
+
+
+
+<link rel="preload" href="/pipecd/docs-preview-feature/scss/main.min.49ddf2fc25f3ed680b088270f5ef01a4f0ab0ea95f7758f7bac8da7f739df15b.css" as="style">
+<link href="/pipecd/docs-preview-feature/scss/main.min.49ddf2fc25f3ed680b088270f5ef01a4f0ab0ea95f7758f7bac8da7f739df15b.css" rel="stylesheet" integrity="">
+
+
+<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"
+  ></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"
+  defer
+  ></script>
+
+<script 
+  src="https://unpkg.com/medium-zoom@1.0.6/dist/medium-zoom.min.js" 
+  integrity="sha384-vXRaoKYMBDPb5PpsIJM2Vm00aBW5eV9iCza59Nhntsn7KSDO7q+1yQEQWoLpYmaf"
+  crossorigin="anonymous"
+  ></script>
+<meta name="google-site-verification" content="eyAD8gRYGv-Uw5nHkjGFPtdbi3LpbjFF4hiFw_UpikY" />
+
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+	
+    <a class="navbar-brand" href="/pipecd/docs-preview-feature/">
+		<span class="navbar-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 235.59 117"><defs><style>.cls-1{fill:none}.cls-2{fill:#fff}.cls-3{fill:#28beeb}</style></defs><g id="pipecd-logo"><rect class="cls-1" width="235.59" height="117"/><path class="cls-2" d="M42 74.23a.4.4.0 00.12.33l20.1 20.12C64.76 97.22 76.43 85.56 73.88 83L53.79 62.92a.43.43.0 00-.32-.12c-.84.06-3.18.62-7 4.46S42.06 73.47 42 74.23z"/><path class="cls-2" d="M47.51 44.09c0-.72-.41-3.09-4.46-7.14-3.4-3.4-5.67-4.23-6.67-4.43a.47.47.0 00-.42.13 25.28 25.28.0 000 35.76l2.87 2.87a.21.21.0 00.35-.06 21.61 21.61.0 014.75-6.49A21.57 21.57.0 0150.43 60a.21.21.0 00.06-.35l-2.87-2.87A8.79 8.79.0 0147 45C47.31 44.61 47.51 44.4 47.51 44.09z"/><path class="cls-3" d="M73.37 57.33h-.14a12.85 12.85.0 01-8.56-4.64.42.42.0 00-.66.0 10 10 0 01-.75.86l-5.58 5.57a1.39 1.39.0 000 2l9.72 9.72a1.39 1.39.0 001.95.0l4.27-4.28c3-3 6-6.66 6.82-9.59a.42.42.0 00-.54-.53A14.58 14.58.0 0173.37 57.33z"/><path class="cls-2" d="M73.67 53.77c3.74.22 6-1 7.33-2.28a4.83 4.83.0 001.25-2.26A25.26 25.26.0 0039.12 29.49c-.15.15.0.18.0.19a21.91 21.91.0 016.46 4.74 21.25 21.25.0 014.82 6.64c.13.26.24.19.6-.11a9 9 0 0111.8-.27 8.74 8.74.0 013 5.86 5.82 5.82.0 00.38 1.71A10.78 10.78.0 0067.11 50a9 9 0 006.56 3.77z"/><path class="cls-2" d="M107.5 42.87a5.58 5.58.0 00-1.83-1.4 10 10 0 00-2.38-.81 17.36 17.36.0 00-2.5-.37c-.82.0-1.65-.08-2.51-.08h-9V72.36h7.54V59.84c.52.0 1.19.0 2 0a33.57 33.57.0 003.66-.17 8.76 8.76.0 002.81-.82 5.93 5.93.0 002.08-1.52 7.41 7.41.0 001.31-2.18 12.23 12.23.0 00.66-2.53 18.55 18.55.0 00.2-2.73 16.38 16.38.0 00-.43-3.92 7.2 7.2.0 00-1.61-3.1zm-5.64 8.93a3.12 3.12.0 01-.75 1.44 3.16 3.16.0 01-1.48.66 11.05 11.05.0 01-2.08.16h-.69V46h.82a10.86 10.86.0 013 .26 2 2 0 011.13 1.42 8.6 8.6.0 01.28 2.31A8 8 0 01101.86 51.8z"/><path class="cls-2" d="M112.6 51.82V72.36h6.81V51.82a10.33 10.33.0 00-6.81.0z"/><path class="cls-2" d="M112.6 48.88a11.15 11.15.0 016.81.0V40.21H112.6z"/><path class="cls-2" d="M139.74 50.28a5.33 5.33.0 00-1.8-1.91 5.16 5.16.0 00-2.77-.7 6.32 6.32.0 00-5.57 3.6h-.09V48.35h-6.34V80.46H130V70.09h.09a6.82 6.82.0 002.44 2.31 5.25 5.25.0 005.51-.1 5.38 5.38.0 001.82-2.08 9.92 9.92.0 00.9-2.79 19.14 19.14.0 00.26-3.21V55.9a14.64 14.64.0 00-.3-3A9.45 9.45.0 00139.74 50.28zM134.18 63.4c0 .6.0 1.13.0 1.59a4.21 4.21.0 01-.26 1.26 2.11 2.11.0 01-.64.94 1.7 1.7.0 01-1.16.37 1.68 1.68.0 01-1.63-1.29 9.21 9.21.0 01-.47-3.13V57.48a8.34 8.34.0 01.47-3.1 1.75 1.75.0 011.76-1.14 1.5 1.5.0 011.09.39 2.19 2.19.0 01.61 1 5.65 5.65.0 01.23 1.2c0 .4.0.86.0 1.37z"/><path class="cls-2" d="M159.2 49.25a9.37 9.37.0 00-2.89-1.2 15.93 15.93.0 00-3.56-.38 14.28 14.28.0 00-3.73.45 7.89 7.89.0 00-2.88 1.39A6.35 6.35.0 00144.26 52a9.65 9.65.0 00-.69 3.86v9.77a7.66 7.66.0 00.71 3.41 6.15 6.15.0 002 2.34 8.64 8.64.0 002.92 1.31 15 15 0 003.58.4c2.88.0 5.1-.73 6.64-2.1s2.32-4 2.32-6.71c0 0-.05-.42-.05-.57a17.82 17.82.0 00-6.67-.23 8.1 8.1.0 01-.59 3.83c-.27.57-.91.85-1.91.85a2 2 0 01-1.59-.75 3 3 0 01-.51-1.78V61.62a34.51 34.51.0 0111.53-.15V54.61a6.56 6.56.0 00-.73-3.19A5.85 5.85.0 00159.2 49.25zm-8.81 7.33v-1.2a4.49 4.49.0 01.53-2.33 2.39 2.39.0 013.63-.09 2.85 2.85.0 01.56 1.65v1.67A21.18 21.18.0 00150.39 56.58z"/><path class="cls-3" d="M177.63 58.07v4.65a14.72 14.72.0 01-.08 1.67 5.1 5.1.0 01-.37 1.43 2.56 2.56.0 01-.85 1.1 2.47 2.47.0 01-1.48.43 2.63 2.63.0 01-2.06-.73 3.16 3.16.0 01-.64-2.15v-15.9a4.18 4.18.0 01.62-2.53 2.73 2.73.0 012.3-.82 2 2 0 011.75 1.08c.43.71.65 3.47.65 4.82l.12 3.21a10.68 10.68.0 017.42.0V50.47c0-3.2-.88-7.28-2.66-8.78s-4.31-2.25-7.63-2.25-6 .83-7.65 2.5-2.47 4.26-2.47 7.74V62.89q0 5.06 2.3 7.65t7.35 2.59c3.72.0 6.46-.83 8.23-2.51a9 9 0 002.66-6.88l-.13-5.67A8.19 8.19.0 00177.63 58.07z"/><path class="cls-3" d="M207.3 44.88a5.75 5.75.0 00-2.7-3.17 9.81 9.81.0 00-3.69-1.22 35.47 35.47.0 00-4.8-.28h-8.19V72.36h10.16a20.48 20.48.0 003.69-.3 8 8 0 003-1.2c2.12-1.31 3.19-3.63 3.22-6.94V49.64A14.71 14.71.0 00207.3 44.88zm-7.59 20.71c-.51.68-1.58 1-3.21 1a3.43 3.43.0 01-.47-.05h-.56V46a21 21 0 012.46.18 3.23 3.23.0 011.44.51 2.27 2.27.0 01.82 1.18 7.53 7.53.0 01.25 2.21V61.43a6.29 6.29.0 010 .73A5.81 5.81.0 01199.71 65.59z"/></g></svg></span>
+	</a>
+	
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/pipecd/docs-preview-feature/docs/" ><span>Documentation</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				<a class="nav-link" href="https://github.com/pipe-cd/tutorial" target="_blank" ><span>Tutorial</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/pipecd/docs-preview-feature/blog/" ><span>Blog</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/pipecd/docs-preview-feature/community/" ><span>Community</span></a>
+			</li>
+			
+			
+			<li class="nav-item dropdown d-none d-lg-block">
+				<a class="nav-link dropdown-toggle navbar-version-menu" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	v1.0.x
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="/docs-dev/">dev</a>
+	
+	<a class="dropdown-item" href="/docs-v1.0.x/">v1.0.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.55.x/">v0.55.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.54.x/">v0.54.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.53.x/">v0.53.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.52.x/">v0.52.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.51.x/">v0.51.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.50.x/">v0.50.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.49.x/">v0.49.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.48.x/">v0.48.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.47.x/">v0.47.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.46.x/">v0.46.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.45.x/">v0.45.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.44.x/">v0.44.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.43.x/">v0.43.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.42.x/">v0.42.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.41.x/">v0.41.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.40.x/">v0.40.x</a>
+	
+	<a class="dropdown-item" href="/docs-v0.39.x/">v0.39.x</a>
+	
+</div>
+
+			</li>
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block"><input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/pipecd/docs-preview-feature/offline-search-index.64759ff0975161e31e7dbaaa6598cfa7.json"
+  data-offline-search-base-href="/"
+  data-offline-search-max-results="10"
+>
+</div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  <form class="td-sidebar__search d-flex align-items-center">
+    <input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/pipecd/docs-preview-feature/offline-search-index.64759ff0975161e31e7dbaaa6598cfa7.json"
+  data-offline-search-base-href="/"
+  data-offline-search-max-results="10"
+>
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="collapse td-sidebar-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pr-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-pipecddocs-preview-featuredocs-v047x-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/" title="Welcome to PipeCD" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-pipecddocs-preview-featuredocs-v047x"><span class="">Documentation [v0.47.x]</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v047xoverview-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/overview/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v047xoverview"><span class="">Overview</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v047xconcepts-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/concepts/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v047xconcepts"><span class="">Concepts</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v047xquickstart-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/quickstart/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v047xquickstart"><span class="">Quickstart</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-pipecddocs-preview-featuredocs-v047xinstallation-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/installation/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v047xinstallation"><span class="">Installation</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-pipecddocs-preview-featuredocs-v047xinstallationinstall-control-plane-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/installation/install-control-plane/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v047xinstallationinstall-control-plane"><span class="">Install Control Plane</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xinstallationinstall-control-planeinstalling-controlplane-on-k8s-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/installation/install-control-plane/installing-controlplane-on-k8s/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xinstallationinstall-control-planeinstalling-controlplane-on-k8s"><span class="">Installing Control Plane on Kubernetes</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xinstallationinstall-control-planeinstalling-controlplane-on-ecs-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/installation/install-control-plane/installing-controlplane-on-ecs/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xinstallationinstall-control-planeinstalling-controlplane-on-ecs"><span class="">Installing Control Plane on ECS</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-pipecddocs-preview-featuredocs-v047xinstallationinstall-piped-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/installation/install-piped/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v047xinstallationinstall-piped"><span class="">Install Piped</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xinstallationinstall-pipedinstalling-on-kubernetes-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/installation/install-piped/installing-on-kubernetes/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xinstallationinstall-pipedinstalling-on-kubernetes"><span class="">Installing on Kubernetes cluster</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xinstallationinstall-pipedinstalling-on-google-cloud-vm-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/installation/install-piped/installing-on-google-cloud-vm/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xinstallationinstall-pipedinstalling-on-google-cloud-vm"><span class="">Installing on Google Cloud VM</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xinstallationinstall-pipedinstalling-on-cloudrun-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/installation/install-piped/installing-on-cloudrun/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xinstallationinstall-pipedinstalling-on-cloudrun"><span class="">Installing on Cloud Run</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xinstallationinstall-pipedinstalling-on-fargate-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/installation/install-piped/installing-on-fargate/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xinstallationinstall-pipedinstalling-on-fargate"><span class="">Installing on ECS Fargate</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xinstallationinstall-pipedinstalling-on-single-machine-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/installation/install-piped/installing-on-single-machine/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xinstallationinstall-pipedinstalling-on-single-machine"><span class="">Installing on a single machine</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xinstallationinstall-pipedrequired-permissions-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/installation/install-piped/required-permissions/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xinstallationinstall-pipedrequired-permissions"><span class="">Required Permissions</span></a>
+</li>
+  </ul>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-pipecddocs-preview-featuredocs-v047xuser-guide-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v047xuser-guide"><span class="">User Guide</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-application-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-application/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-application"><span class="">Managing application</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationadding-an-application-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-application/adding-an-application/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationadding-an-application"><span class="">Adding an application</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationdefining-app-configuration-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-application/defining-app-configuration/" title="Defining application&#39;s configuration" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationdefining-app-configuration"><span class="">Defining app configuration</span></a>
+  <ul class="ul-4 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationdefining-app-configurationkubernetes-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-application/defining-app-configuration/kubernetes/" title="Configuring Kubernetes application" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationdefining-app-configurationkubernetes"><span class="">Kubernetes</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationdefining-app-configurationterraform-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-application/defining-app-configuration/terraform/" title="Configuring Terraform application" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationdefining-app-configurationterraform"><span class="">Terraform</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationdefining-app-configurationcloudrun-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-application/defining-app-configuration/cloudrun/" title="Configuring Cloud Run application" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationdefining-app-configurationcloudrun"><span class="">Cloud Run</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationdefining-app-configurationlambda-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-application/defining-app-configuration/lambda/" title="Configuring Lambda application" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationdefining-app-configurationlambda"><span class="">Lambda</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationdefining-app-configurationecs-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-application/defining-app-configuration/ecs/" title="Configuring ECS application" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationdefining-app-configurationecs"><span class="">ECS</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationcustomizing-deployment-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-application/customizing-deployment/" title="Customizing application&#39;s deployment pipeline" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationcustomizing-deployment"><span class="">Customizing deployment</span></a>
+  <ul class="ul-4 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationcustomizing-deploymentadding-a-wait-stage-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-application/customizing-deployment/adding-a-wait-stage/" title="Adding a wait stage" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationcustomizing-deploymentadding-a-wait-stage"><span class="">Wait stage</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationcustomizing-deploymentadding-a-manual-approval-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-application/customizing-deployment/adding-a-manual-approval/" title="Adding a manual approval stage" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationcustomizing-deploymentadding-a-manual-approval"><span class="">Manual approval stage</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationcustomizing-deploymentautomated-deployment-analysis-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-application/customizing-deployment/automated-deployment-analysis/" title="Adding an automated deployment analysis stage" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationcustomizing-deploymentautomated-deployment-analysis"><span class="">Automated deployment analysis stage</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationcustomizing-deploymentcustom-sync-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-application/customizing-deployment/custom-sync/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationcustomizing-deploymentcustom-sync"><span class="">Custom Sync</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationcustomizing-deploymentscript-run-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-application/customizing-deployment/script-run/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationcustomizing-deploymentscript-run"><span class="">Script Run stage</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationtriggering-a-deployment-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-application/triggering-a-deployment/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationtriggering-a-deployment"><span class="">Triggering a deployment</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationcancelling-a-deployment-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-application/cancelling-a-deployment/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationcancelling-a-deployment"><span class="">Cancelling a deployment</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationrolling-back-a-deployment-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-application/rolling-back-a-deployment/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationrolling-back-a-deployment"><span class="">Rolling back a deployment</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationapplication-live-state-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-application/application-live-state/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationapplication-live-state"><span class="">Application live state</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationconfiguration-drift-detection-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-application/configuration-drift-detection/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationconfiguration-drift-detection"><span class="">Configuration drift detection</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationsecret-management-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-application/secret-management/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationsecret-management"><span class="">Secret management</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationmanifest-attachment-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-application/manifest-attachment/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationmanifest-attachment"><span class="">Manifest attachment</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationdeployment-chain-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-application/deployment-chain/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-applicationdeployment-chain"><span class="">Deployment chain</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v047xuser-guideevent-watcher-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/event-watcher/" title="Connect between CI and CD with event watcher" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guideevent-watcher"><span class="">Event watcher</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v047xuser-guideplan-preview-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/plan-preview/" title="Confidently review your changes with Plan Preview" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guideplan-preview"><span class="">Plan preview</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v047xuser-guideinsights-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/insights/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guideinsights"><span class="">Insights</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-controlplane-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-controlplane/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-controlplane"><span class="">Managing Control Plane</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-controlplanearchitecture-overview-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-controlplane/architecture-overview/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-controlplanearchitecture-overview"><span class="">Architecture overview</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-controlplaneadding-a-project-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-controlplane/adding-a-project/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-controlplaneadding-a-project"><span class="">Adding a project</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-controlplaneauth-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-controlplane/auth/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-controlplaneauth"><span class="">Authentication and authorization</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-controlplaneregistering-a-piped-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-controlplane/registering-a-piped/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-controlplaneregistering-a-piped"><span class="">Registering a piped</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-controlplaneconfiguration-reference-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-controlplane/configuration-reference/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-controlplaneconfiguration-reference"><span class="">Configuration reference</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-piped-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-piped/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-piped"><span class="">Managing Piped</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-pipedremote-upgrade-remote-config-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-piped/remote-upgrade-remote-config/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-pipedremote-upgrade-remote-config"><span class="">Remote upgrade and remote config</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-pipedadding-a-git-repository-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-piped/adding-a-git-repository/" title="Adding a git repository" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-pipedadding-a-git-repository"><span class="">Adding git repository</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-pipedadding-a-cloud-provider-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-piped/adding-a-cloud-provider/" title="Adding a cloud provider" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-pipedadding-a-cloud-provider"><span class="">Adding cloud provider</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-pipedadding-a-platform-provider-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-piped/adding-a-platform-provider/" title="Adding a platform provider" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-pipedadding-a-platform-provider"><span class="">Adding platform provider</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-pipedadding-helm-chart-repository-or-registry-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-piped/adding-helm-chart-repository-or-registry/" title="Adding a Helm chart repository or registry" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-pipedadding-helm-chart-repository-or-registry"><span class="">Adding Helm chart repo or registry</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-pipedadding-an-analysis-provider-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-piped/adding-an-analysis-provider/" title="Adding an analysis provider" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-pipedadding-an-analysis-provider"><span class="">Adding analysis provider</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-pipedconfiguring-event-watcher-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-piped/configuring-event-watcher/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-pipedconfiguring-event-watcher"><span class="">Configuring event watcher</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-pipedconfiguring-notifications-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-piped/configuring-notifications/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-pipedconfiguring-notifications"><span class="">Configuring notifications</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-pipedconfiguration-reference-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-piped/configuration-reference/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-pipedconfiguration-reference"><span class="">Configuration reference</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-pipedusing-pprof-in-piped-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-piped/using-pprof-in-piped/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-pipedusing-pprof-in-piped"><span class="">Using Pprof in Piped</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-pipedruntime-options-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/managing-piped/runtime-options/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemanaging-pipedruntime-options"><span class="">Runtime Options</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemetrics-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/metrics/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidemetrics"><span class="">Metrics</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v047xuser-guidecommand-line-tool-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/command-line-tool/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guidecommand-line-tool"><span class="">Command-line tool: pipectl</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v047xuser-guideterraform-provider-pipecd-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/terraform-provider-pipecd/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guideterraform-provider-pipecd"><span class="">PipeCD Terraform provider</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v047xuser-guideconfiguration-reference-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guideconfiguration-reference"><span class="td-sidebar-nav-active-item">Configuration reference</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-pipecddocs-preview-featuredocs-v047xuser-guideexamples-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/examples/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v047xuser-guideexamples"><span class="">Examples</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guideexamplesk8s-app-canary-with-istio-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/examples/k8s-app-canary-with-istio/" title="Canary deployment for Kubernetes app with Istio" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guideexamplesk8s-app-canary-with-istio"><span class="">Canary k8s app with Istio</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guideexamplesk8s-app-bluegreen-with-istio-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/examples/k8s-app-bluegreen-with-istio/" title="BlueGreen deployment for Kubernetes app with Istio" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guideexamplesk8s-app-bluegreen-with-istio"><span class="">BlueGreen k8s app with Istio</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guideexamplesk8s-app-canary-with-pod-selector-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/examples/k8s-app-canary-with-pod-selector/" title="Canary deployment for Kubernetes app with PodSelector" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guideexamplesk8s-app-canary-with-pod-selector"><span class="">Canary k8s app with PodSelector</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xuser-guideexamplesk8s-app-bluegreen-with-pod-selector-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/examples/k8s-app-bluegreen-with-pod-selector/" title="BlueGreen deployment for Kubernetes app with PodSelector" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xuser-guideexamplesk8s-app-bluegreen-with-pod-selector"><span class="">BlueGreen k8s app with PodSelector</span></a>
+</li>
+  </ul>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-pipecddocs-preview-featuredocs-v047xcontribution-guidelines-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/contribution-guidelines/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v047xcontribution-guidelines"><span class="">Contributor Guide</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xcontribution-guidelinescontributing-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/contribution-guidelines/contributing/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xcontribution-guidelinescontributing"><span class="">Contributing</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-pipecddocs-preview-featuredocs-v047xcontribution-guidelinesarchitectural-overview-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/contribution-guidelines/architectural-overview/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-pipecddocs-preview-featuredocs-v047xcontribution-guidelinesarchitectural-overview"><span class="">Architectural overview</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v047xexamples-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/examples/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v047xexamples"><span class="">Examples</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v047xfeature-status-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/feature-status/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v047xfeature-status"><span class="">Feature Status</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v047xfaq-li">
+  <a href="/pipecd/docs-preview-feature/docs-v0.47.x/faq/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v047xfaq"><span class="">FAQ</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-pipecddocs-preview-featuredocs-v047xreleases-li">
+  <a href="https://github.com/pipe-cd/pipecd/releases" target="_blank" rel="noopener" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-pipecddocs-preview-featuredocs-v047xreleases"><span class="">Releases ⧉</span></a>
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+          </aside>
+          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+            
+
+
+
+
+
+<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+
+
+  
+    
+      
+    
+    
+    
+      
+    
+    
+  
+
+
+
+<a href="https://github.com/pipe-cd/pipecd/edit/master/docs/content/en/docs-v0.47.x/user-guide/configuration-reference.md" target="_blank" rel="noreferrer"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+<a href="https://github.com/pipe-cd/pipecd/issues/new?title=Configuration%20reference" target="_blank" rel="noreferrer"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+
+
+<a href="https://github.com/pipe-cd/pipecd/issues/new" target="_blank" rel="noreferrer"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
+
+</div>
+
+
+
+            
+
+
+<div class="td-toc"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#kubernetes-application">Kubernetes Application</a>
+      <ul>
+        <li><a href="#annotations">Annotations</a></li>
+      </ul>
+    </li>
+    <li><a href="#terraform-application">Terraform application</a></li>
+    <li><a href="#cloud-run-application">Cloud Run application</a></li>
+    <li><a href="#lambda-application">Lambda application</a></li>
+    <li><a href="#ecs-application">ECS application</a></li>
+    <li><a href="#analysis-template-configuration">Analysis Template Configuration</a></li>
+    <li><a href="#event-watcher-configuration-deprecated">Event Watcher Configuration (deprecated)</a>
+      <ul>
+        <li><a href="#eventwatcherreplacement">EventWatcherReplacement</a></li>
+      </ul>
+    </li>
+    <li><a href="#commitmatcher">CommitMatcher</a></li>
+    <li><a href="#secretencryption">SecretEncryption</a></li>
+    <li><a href="#attachment">Attachment</a></li>
+    <li><a href="#deploymentplanner">DeploymentPlanner</a></li>
+    <li><a href="#deploymenttrigger">DeploymentTrigger</a>
+      <ul>
+        <li><a href="#oncommit">OnCommit</a></li>
+        <li><a href="#oncommand">OnCommand</a></li>
+        <li><a href="#onoutofsync">OnOutOfSync</a></li>
+        <li><a href="#onchain">OnChain</a></li>
+      </ul>
+    </li>
+    <li><a href="#pipeline">Pipeline</a>
+      <ul>
+        <li><a href="#pipelinestage">PipelineStage</a></li>
+      </ul>
+    </li>
+    <li><a href="#deploymentnotification">DeploymentNotification</a>
+      <ul>
+        <li><a href="#notificationmention">NotificationMention</a></li>
+      </ul>
+    </li>
+    <li><a href="#kubernetesdeploymentinput">KubernetesDeploymentInput</a>
+      <ul>
+        <li><a href="#helmchart">HelmChart</a></li>
+        <li><a href="#helmoptions">HelmOptions</a></li>
+      </ul>
+    </li>
+    <li><a href="#kubernetesvariantlabel">KubernetesVariantLabel</a></li>
+    <li><a href="#kubernetesquicksync">KubernetesQuickSync</a></li>
+    <li><a href="#kubernetesservice">KubernetesService</a></li>
+    <li><a href="#kubernetesworkload">KubernetesWorkload</a></li>
+    <li><a href="#kubernetestrafficrouting">KubernetesTrafficRouting</a>
+      <ul>
+        <li><a href="#istiotrafficrouting">IstioTrafficRouting</a></li>
+      </ul>
+    </li>
+    <li><a href="#terraformdeploymentinput">TerraformDeploymentInput</a>
+      <ul>
+        <li><a href="#terraformcommandflags">TerraformCommandFlags</a></li>
+        <li><a href="#terraformcommandenvs">TerraformCommandEnvs</a></li>
+      </ul>
+    </li>
+    <li><a href="#terraformquicksync">TerraformQuickSync</a></li>
+    <li><a href="#cloudrundeploymentinput">CloudRunDeploymentInput</a></li>
+    <li><a href="#cloudrunquicksync">CloudRunQuickSync</a></li>
+    <li><a href="#lambdadeploymentinput">LambdaDeploymentInput</a>
+      <ul>
+        <li><a href="#specific-functionyaml">Specific function.yaml</a></li>
+      </ul>
+    </li>
+    <li><a href="#lambdaquicksync">LambdaQuickSync</a></li>
+    <li><a href="#ecsdeploymentinput">ECSDeploymentInput</a>
+      <ul>
+        <li><a href="#restrictions-of-service-definition">Restrictions of Service Definition</a></li>
+        <li><a href="#restrictions-of-task-definition">Restrictions of Task Definition</a></li>
+        <li><a href="#ecstargetgroupinput">ECSTargetGroupInput</a></li>
+      </ul>
+    </li>
+    <li><a href="#ecsquicksync">ECSQuickSync</a></li>
+    <li><a href="#analysismetrics">AnalysisMetrics</a>
+      <ul>
+        <li><a href="#analysisexpected">AnalysisExpected</a></li>
+        <li><a href="#analysistemplateref">AnalysisTemplateRef</a></li>
+      </ul>
+    </li>
+    <li><a href="#analysislog">AnalysisLog</a></li>
+    <li><a href="#analysishttp">AnalysisHttp</a></li>
+    <li><a href="#stageoptions">StageOptions</a>
+      <ul>
+        <li><a href="#kubernetesprimaryrolloutstageoptions">KubernetesPrimaryRolloutStageOptions</a></li>
+        <li><a href="#kubernetescanaryrolloutstageoptions">KubernetesCanaryRolloutStageOptions</a></li>
+        <li><a href="#kubernetescanarycleanstageoptions">KubernetesCanaryCleanStageOptions</a></li>
+        <li><a href="#kubernetesbaselinerolloutstageoptions">KubernetesBaselineRolloutStageOptions</a></li>
+        <li><a href="#kubernetesbaselinecleanstageoptions">KubernetesBaselineCleanStageOptions</a></li>
+        <li><a href="#kubernetestrafficroutingstageoptions">KubernetesTrafficRoutingStageOptions</a></li>
+        <li><a href="#terraformplanstageoptions">TerraformPlanStageOptions</a></li>
+        <li><a href="#terraformapplystageoptions">TerraformApplyStageOptions</a></li>
+        <li><a href="#cloudrunpromotestageoptions">CloudRunPromoteStageOptions</a></li>
+        <li><a href="#lambdacanaryrolloutstageoptions">LambdaCanaryRolloutStageOptions</a></li>
+        <li><a href="#lambdapromotestageoptions">LambdaPromoteStageOptions</a></li>
+        <li><a href="#ecsprimaryrolloutstageoptions">ECSPrimaryRolloutStageOptions</a></li>
+        <li><a href="#ecscanaryrolloutstageoptions">ECSCanaryRolloutStageOptions</a></li>
+        <li><a href="#ecstrafficroutingstageoptions">ECSTrafficRoutingStageOptions</a></li>
+        <li><a href="#analysisstageoptions">AnalysisStageOptions</a></li>
+        <li><a href="#waitstageoptions">WaitStageOptions</a></li>
+        <li><a href="#waitapprovalstageoptions">WaitApprovalStageOptions</a></li>
+        <li><a href="#customsyncstageoptions-deprecated">CustomSyncStageOptions (deprecated)</a></li>
+        <li><a href="#scriptrunstageoptions">ScriptRunStageOptions</a></li>
+      </ul>
+    </li>
+    <li><a href="#postsync">PostSync</a>
+      <ul>
+        <li><a href="#deploymentchain">DeploymentChain</a></li>
+      </ul>
+    </li>
+    <li><a href="#eventwatcher">EventWatcher</a>
+      <ul>
+        <li><a href="#eventwatchermatcher">EventWatcherMatcher</a></li>
+        <li><a href="#eventwatcherhandler">EventWatcherHandler</a></li>
+        <li><a href="#eventwatcherhandlerconfig">EventWatcherHandlerConfig</a></li>
+      </ul>
+    </li>
+    <li><a href="#driftdetection">DriftDetection</a></li>
+    <li><a href="#pipecd-rich-defined-types">PipeCD rich defined types</a>
+      <ul>
+        <li><a href="#percentage">Percentage</a></li>
+        <li><a href="#kubernetesresourcepatch">KubernetesResourcePatch</a></li>
+        <li><a href="#kubernetesresourcepatchtarget">KubernetesResourcePatchTarget</a></li>
+        <li><a href="#kubernetesresourcepatchop">KubernetesResourcePatchOp</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+
+
+
+            
+
+	
+		
+
+
+
+  
+  
+    <div class="taxonomy taxonomy-terms-cloud taxo-categories">
+      
+        <h5 class="taxonomy-title">Categories</h5>
+      
+      <ul class="taxonomy-terms">
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/announcement/" data-taxonomy-term="announcement"><span class="taxonomy-label">Announcement</span><span class="taxonomy-count">17</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/contributing/" data-taxonomy-term="contributing"><span class="taxonomy-label">Contributing</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/example/" data-taxonomy-term="example"><span class="taxonomy-label">Example</span><span class="taxonomy-count">2</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/introduction/" data-taxonomy-term="introduction"><span class="taxonomy-label">Introduction</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/practice/" data-taxonomy-term="practice"><span class="taxonomy-label">Practice</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/tutorial/" data-taxonomy-term="tutorial"><span class="taxonomy-label">Tutorial</span><span class="taxonomy-count">1</span></a></li>
+        
+      </ul>
+    </div>
+  
+
+	
+		
+
+
+
+  
+  
+    <div class="taxonomy taxonomy-terms-cloud taxo-tags">
+      
+        <h5 class="taxonomy-title">Tags</h5>
+      
+      <ul class="taxonomy-terms">
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/ai/" data-taxonomy-term="ai"><span class="taxonomy-label">AI</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/aws/" data-taxonomy-term="aws"><span class="taxonomy-label">AWS</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/cncf/" data-taxonomy-term="cncf"><span class="taxonomy-label">CNCF</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/conference/" data-taxonomy-term="conference"><span class="taxonomy-label">Conference</span><span class="taxonomy-count">2</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/control-plane/" data-taxonomy-term="control-plane"><span class="taxonomy-label">Control Plane</span><span class="taxonomy-count">3</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/dev-setup/" data-taxonomy-term="dev-setup"><span class="taxonomy-label">Dev Setup</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/developer-experience/" data-taxonomy-term="developer-experience"><span class="taxonomy-label">Developer Experience</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/ecosystem/" data-taxonomy-term="ecosystem"><span class="taxonomy-label">Ecosystem</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/feature-guide/" data-taxonomy-term="feature-guide"><span class="taxonomy-label">Feature Guide</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/feature-improvement/" data-taxonomy-term="feature-improvement"><span class="taxonomy-label">Feature Improvement</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/getting-started/" data-taxonomy-term="getting-started"><span class="taxonomy-label">Getting Started</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/go/" data-taxonomy-term="go"><span class="taxonomy-label">Go</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/kubernetes/" data-taxonomy-term="kubernetes"><span class="taxonomy-label">Kubernetes</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/local-development/" data-taxonomy-term="local-development"><span class="taxonomy-label">Local Development</span><span class="taxonomy-count">1</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/new-feature/" data-taxonomy-term="new-feature"><span class="taxonomy-label">New Feature</span><span class="taxonomy-count">5</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/news/" data-taxonomy-term="news"><span class="taxonomy-label">News</span><span class="taxonomy-count">8</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/plugin/" data-taxonomy-term="plugin"><span class="taxonomy-label">Plugin</span><span class="taxonomy-count">2</span></a></li>
+        
+          <li><a class="taxonomy-term" href="https://antedotee.github.io/pipecd/docs-preview-feature/tags/terraform/" data-taxonomy-term="terraform"><span class="taxonomy-label">Terraform</span><span class="taxonomy-count">1</span></a></li>
+        
+      </ul>
+    </div>
+  
+
+	
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.47.x/">Documentation [v0.47.x]</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/">User Guide</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/">Configuration reference</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>Configuration reference</h1>
+	<div class="lead">This page describes all configurable fields in the application configuration and analysis template.</div>
+	<header class="article-meta">
+		
+		
+			
+				
+
+
+			
+				
+
+
+			
+		
+		
+	</header>    
+	<h2 id="kubernetes-application">Kubernetes Application</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">pipecd.dev/v1beta1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">KubernetesApp</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">input</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">pipeline</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#000">...</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>name</td>
+          <td>string</td>
+          <td>The application name.</td>
+          <td>Yes (if you want to create PipeCD application through the application configuration file)</td>
+      </tr>
+      <tr>
+          <td>labels</td>
+          <td>map[string]string</td>
+          <td>Additional attributes to identify applications.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>description</td>
+          <td>string</td>
+          <td>Notes on the Application.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>input</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#kubernetesdeploymentinput">KubernetesDeploymentInput</a></td>
+          <td>Input for Kubernetes deployment such as kubectl version, helm version, manifests filter&hellip;</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>trigger</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#deploymenttrigger">DeploymentTrigger</a></td>
+          <td>Configuration for trigger used to determine should we trigger a new deployment or not.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>planner</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#deploymentplanner">DeploymentPlanner</a></td>
+          <td>Configuration for planner used while planning deployment.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>commitMatcher</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#commitmatcher">CommitMatcher</a></td>
+          <td>Forcibly use QuickSync or Pipeline when commit message matched the specified pattern.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>quickSync</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#kubernetesquicksync">KubernetesQuickSync</a></td>
+          <td>Configuration for quick sync.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>pipeline</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#pipeline">Pipeline</a></td>
+          <td>Pipeline for deploying progressively.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>service</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#kubernetesservice">KubernetesService</a></td>
+          <td>Which Kubernetes resource should be considered as the Service of application. Empty means the first Service resource will be used.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>workloads</td>
+          <td>[]<a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#kubernetesworkload">KubernetesWorkload</a></td>
+          <td>Which Kubernetes resources should be considered as the Workloads of application. Empty means all Deployment resources.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>trafficRouting</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#kubernetestrafficrouting">KubernetesTrafficRouting</a></td>
+          <td>How to change traffic routing percentages.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>encryption</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#secretencryption">SecretEncryption</a></td>
+          <td>List of encrypted secrets and targets that should be decrypted before using.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>attachment</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#attachment">Attachment</a></td>
+          <td>List of attachment sources and targets that should be attached to manifests before using.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>timeout</td>
+          <td>duration</td>
+          <td>The maximum length of time to execute deployment before giving up. Default is 6h.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>notification</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#deploymentnotification">DeploymentNotification</a></td>
+          <td>Additional configuration used while sending notification to external services.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>postSync</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#postsync">PostSync</a></td>
+          <td>Additional configuration used as extra actions once the deployment is triggered.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>variantLabel</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#kubernetesvariantlabel">KubernetesVariantLabel</a></td>
+          <td>The label will be configured to variant manifests used to distinguish them.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>eventWatcher</td>
+          <td>[]<a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#eventwatcher">EventWatcher</a></td>
+          <td>List of configurations for event watcher.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>driftDetection</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#driftdetection">DriftDetection</a></td>
+          <td>Configuration for drift detection.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="annotations">Annotations</h3>
+<p>Kubernetes resources can be managed by some annotations provided by PipeCD.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Annotation key</th>
+          <th>Target resource(s)</th>
+          <th>Possible values</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>pipecd.dev/ignore-drift-detection</code></td>
+          <td>any</td>
+          <td>&ldquo;true&rdquo;</td>
+          <td>Whether the drift detection should ignore this resource.</td>
+      </tr>
+      <tr>
+          <td><code>pipecd.dev/server-side-apply</code></td>
+          <td>any</td>
+          <td>&ldquo;true&rdquo;</td>
+          <td>Use server side apply instead of client side apply.</td>
+      </tr>
+      <tr>
+          <td><code>pipecd.dev/sync-by-replace</code></td>
+          <td>any</td>
+          <td>&ldquo;enabled&rdquo;</td>
+          <td>Use <code>replace</code> instead of <code>apply</code>.</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="terraform-application">Terraform application</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">pipecd.dev/v1beta1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">TerraformApp</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">input</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">pipeline</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#000">...</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>name</td>
+          <td>string</td>
+          <td>The application name.</td>
+          <td>Yes if you set the application through the application configuration file</td>
+      </tr>
+      <tr>
+          <td>labels</td>
+          <td>map[string]string</td>
+          <td>Additional attributes to identify applications.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>description</td>
+          <td>string</td>
+          <td>Notes on the Application.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>input</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#terraformdeploymentinput">TerraformDeploymentInput</a></td>
+          <td>Input for Terraform deployment such as terraform version, workspace&hellip;</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>trigger</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#deploymenttrigger">DeploymentTrigger</a></td>
+          <td>Configuration for trigger used to determine should we trigger a new deployment or not.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>planner</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#deploymentplanner">DeploymentPlanner</a></td>
+          <td>Configuration for planner used while planning deployment.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>quickSync</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#terraformquicksync">TerraformQuickSync</a></td>
+          <td>Configuration for quick sync.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>pipeline</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#pipeline">Pipeline</a></td>
+          <td>Pipeline for deploying progressively.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>encryption</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#secretencryption">SecretEncryption</a></td>
+          <td>List of encrypted secrets and targets that should be decrypted before using.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>attachment</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#attachment">Attachment</a></td>
+          <td>List of attachment sources and targets that should be attached to manifests before using.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>timeout</td>
+          <td>duration</td>
+          <td>The maximum length of time to execute deployment before giving up. Default is 6h.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>notification</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#deploymentnotification">DeploymentNotification</a></td>
+          <td>Additional configuration used while sending notification to external services.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>postSync</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#postsync">PostSync</a></td>
+          <td>Additional configuration used as extra actions once the deployment is triggered.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>eventWatcher</td>
+          <td>[]<a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#eventwatcher">EventWatcher</a></td>
+          <td>List of configurations for event watcher.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="cloud-run-application">Cloud Run application</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">pipecd.dev/v1beta1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">CloudRunApp</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">input</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">pipeline</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#000">...</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>name</td>
+          <td>string</td>
+          <td>The application name.</td>
+          <td>Yes if you set the application through the application configuration file</td>
+      </tr>
+      <tr>
+          <td>labels</td>
+          <td>map[string]string</td>
+          <td>Additional attributes to identify applications.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>description</td>
+          <td>string</td>
+          <td>Notes on the Application.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>input</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#cloudrundeploymentinput">CloudRunDeploymentInput</a></td>
+          <td>Input for Cloud Run deployment such as docker image&hellip;</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>trigger</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#deploymenttrigger">DeploymentTrigger</a></td>
+          <td>Configuration for trigger used to determine should we trigger a new deployment or not.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>planner</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#deploymentplanner">DeploymentPlanner</a></td>
+          <td>Configuration for planner used while planning deployment.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>quickSync</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#cloudrunquicksync">CloudRunQuickSync</a></td>
+          <td>Configuration for quick sync.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>pipeline</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#pipeline">Pipeline</a></td>
+          <td>Pipeline for deploying progressively.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>encryption</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#secretencryption">SecretEncryption</a></td>
+          <td>List of encrypted secrets and targets that should be decrypted before using.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>attachment</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#attachment">Attachment</a></td>
+          <td>List of attachment sources and targets that should be attached to manifests before using.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>timeout</td>
+          <td>duration</td>
+          <td>The maximum length of time to execute deployment before giving up. Default is 6h.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>notification</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#deploymentnotification">DeploymentNotification</a></td>
+          <td>Additional configuration used while sending notification to external services.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>postSync</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#postsync">PostSync</a></td>
+          <td>Additional configuration used as extra actions once the deployment is triggered.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>eventWatcher</td>
+          <td>[]<a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#eventwatcher">EventWatcher</a></td>
+          <td>List of configurations for event watcher.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="lambda-application">Lambda application</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">pipecd.dev/v1beta1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">LambdaApp</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">pipeline</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#000">...</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>name</td>
+          <td>string</td>
+          <td>The application name.</td>
+          <td>Yes if you set the application through the application configuration file</td>
+      </tr>
+      <tr>
+          <td>labels</td>
+          <td>map[string]string</td>
+          <td>Additional attributes to identify applications.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>description</td>
+          <td>string</td>
+          <td>Notes on the Application.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>input</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#lambdadeploymentinput">LambdaDeploymentInput</a></td>
+          <td>Input for Lambda deployment such as path to function manifest file&hellip;</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>architectures</td>
+          <td>[]string</td>
+          <td>Specific architecture for which a function supports (Default x86_64).</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>trigger</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#deploymenttrigger">DeploymentTrigger</a></td>
+          <td>Configuration for trigger used to determine should we trigger a new deployment or not.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>planner</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#deploymentplanner">DeploymentPlanner</a></td>
+          <td>Configuration for planner used while planning deployment.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>quickSync</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#lambdaquicksync">LambdaQuickSync</a></td>
+          <td>Configuration for quick sync.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>pipeline</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#pipeline">Pipeline</a></td>
+          <td>Pipeline for deploying progressively.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>encryption</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#secretencryption">SecretEncryption</a></td>
+          <td>List of encrypted secrets and targets that should be decrypted before using.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>attachment</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#attachment">Attachment</a></td>
+          <td>List of attachment sources and targets that should be attached to manifests before using.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>timeout</td>
+          <td>duration</td>
+          <td>The maximum length of time to execute deployment before giving up. Default is 6h.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>notification</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#deploymentnotification">DeploymentNotification</a></td>
+          <td>Additional configuration used while sending notification to external services.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>postSync</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#postsync">PostSync</a></td>
+          <td>Additional configuration used as extra actions once the deployment is triggered.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>eventWatcher</td>
+          <td>[]<a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#eventwatcher">EventWatcher</a></td>
+          <td>List of configurations for event watcher.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="ecs-application">ECS application</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">pipecd.dev/v1beta1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ECSApp</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">input</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">pipeline</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#000">...</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>name</td>
+          <td>string</td>
+          <td>The application name.</td>
+          <td>Yes if you set the application through the application configuration file</td>
+      </tr>
+      <tr>
+          <td>labels</td>
+          <td>map[string]string</td>
+          <td>Additional attributes to identify applications.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>description</td>
+          <td>string</td>
+          <td>Notes on the Application.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>input</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#ecsdeploymentinput">ECSDeploymentInput</a></td>
+          <td>Input for ECS deployment such as path to TaskDefinition, Service&hellip;</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>trigger</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#deploymenttrigger">DeploymentTrigger</a></td>
+          <td>Configuration for trigger used to determine should we trigger a new deployment or not.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>planner</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#deploymentplanner">DeploymentPlanner</a></td>
+          <td>Configuration for planner used while planning deployment.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>quickSync</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#ecsquicksync">ECSQuickSync</a></td>
+          <td>Configuration for quick sync.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>pipeline</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#pipeline">Pipeline</a></td>
+          <td>Pipeline for deploying progressively.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>encryption</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#secretencryption">SecretEncryption</a></td>
+          <td>List of encrypted secrets and targets that should be decrypted before using.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>attachment</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#attachment">Attachment</a></td>
+          <td>List of attachment sources and targets that should be attached to manifests before using.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>timeout</td>
+          <td>duration</td>
+          <td>The maximum length of time to execute deployment before giving up. Default is 6h.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>notification</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#deploymentnotification">DeploymentNotification</a></td>
+          <td>Additional configuration used while sending notification to external services.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>postSync</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#postsync">PostSync</a></td>
+          <td>Additional configuration used as extra actions once the deployment is triggered.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>eventWatcher</td>
+          <td>[]<a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#eventwatcher">EventWatcher</a></td>
+          <td>List of configurations for event watcher.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="analysis-template-configuration">Analysis Template Configuration</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">pipecd.dev/v1beta1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">AnalysisTemplate</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">metrics</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">grpc_error_rate_percentage</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">interval</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1m</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">provider</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">prometheus-dev</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">failureLimit</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">expected</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">max</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">10</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">query</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">awesome_query</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>metrics</td>
+          <td>map[string]<a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#analysismetrics">AnalysisMetrics</a></td>
+          <td>Template for metrics.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="event-watcher-configuration-deprecated">Event Watcher Configuration (deprecated)</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">pipecd.dev/v1beta1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">EventWatcher</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">events</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">helloworld-image-update</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">replacements</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span>- <span style="color:#204a87;font-weight:bold">file</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">helloworld/deployment.yaml</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">yamlField</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">$.spec.template.spec.containers[0].image</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>name</td>
+          <td>string</td>
+          <td>The event name.</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>labels</td>
+          <td>map[string]string</td>
+          <td>Additional attributes of event. This can make an event definition unique even if the one with the same name exists.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>replacements</td>
+          <td>[]<a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#eventwatcherreplacement">EventWatcherReplacement</a></td>
+          <td>List of places where will be replaced when the new event matches.</td>
+          <td>Yes</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="eventwatcherreplacement">EventWatcherReplacement</h3>
+<p>One of <code>yamlField</code> or <code>regex</code> is required.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>file</td>
+          <td>string</td>
+          <td>The relative path from the repository root to the file to be updated.</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>yamlField</td>
+          <td>string</td>
+          <td>The yaml path to the field to be updated. It requires to start with <code>$</code> which represents the root element. e.g. <code>$.foo.bar[0].baz</code>.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>regex</td>
+          <td>string</td>
+          <td>The regex string that specify what should be replaced. The only first capturing group enclosed by <code>()</code> will be replaced with the new value. e.g. <code>host.xz/foo/bar:(v[0-9].[0-9].[0-9])</code></td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="commitmatcher">CommitMatcher</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>quickSync</td>
+          <td>string</td>
+          <td>Regular expression string to forcibly do QuickSync when it matches the commit message.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>pipeline</td>
+          <td>string</td>
+          <td>Regular expression string to forcibly do Pipeline when it matches the commit message.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="secretencryption">SecretEncryption</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>encryptedSecrets</td>
+          <td>map[string]string</td>
+          <td>List of encrypted secrets.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>decryptionTargets</td>
+          <td>[]string</td>
+          <td>List of files to be decrypted before using.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="attachment">Attachment</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>sources</td>
+          <td>map[string]string</td>
+          <td>List of attaching files with key is its refer name.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>targets</td>
+          <td>[]string</td>
+          <td>List of files which should contain the attachments.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="deploymentplanner">DeploymentPlanner</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>alwaysUsePipeline</td>
+          <td>bool</td>
+          <td>Always use the defined pipeline to deploy the application in all deployments. Default is <code>false</code>.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="deploymenttrigger">DeploymentTrigger</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>onCommit</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#oncommit">OnCommit</a></td>
+          <td>Controls triggering new deployment when new Git commits touched the application.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>onCommand</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#oncommand">OnCommand</a></td>
+          <td>Controls triggering new deployment when received a new <code>SYNC</code> command.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>onOutOfSync</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#onoutofsync">OnOutOfSync</a></td>
+          <td>Controls triggering new deployment when application is at <code>OUT_OF_SYNC</code> state.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>onChain</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#onchain">OnChain</a></td>
+          <td>Controls triggering new deployment when the application is counted as a node of some chains.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="oncommit">OnCommit</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>disabled</td>
+          <td>bool</td>
+          <td>Whether to exclude application from triggering target when new Git commits touched it. Default is <code>false</code>.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>paths</td>
+          <td>[]string</td>
+          <td>List of directories or files where any changes of them will be considered as touching the application. Regular expression can be used. Empty means watching all changes under the application directory.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>ignores</td>
+          <td>[]string</td>
+          <td>List of directories or files where any changes of them will NOT be considered as touching the application. Regular expression can be used. This config has a higher priority compare to <code>paths</code>.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="oncommand">OnCommand</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>disabled</td>
+          <td>bool</td>
+          <td>Whether to exclude application from triggering target when received a new <code>SYNC</code> command. Default is <code>false</code>.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="onoutofsync">OnOutOfSync</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>disabled</td>
+          <td>bool</td>
+          <td>Whether to exclude application from triggering target when application is at <code>OUT_OF_SYNC</code> state. Default is <code>true</code>.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>minWindow</td>
+          <td>duration</td>
+          <td>Minimum amount of time must be elapsed since the last deployment. This can be used to avoid triggering unnecessary continuous deployments based on <code>OUT_OF_SYNC</code> status. Default is <code>5m</code>.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="onchain">OnChain</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>disabled</td>
+          <td>bool</td>
+          <td>Whether to exclude application from triggering target when application is counted as a node of some chains. Default is <code>true</code>.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="pipeline">Pipeline</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>stages</td>
+          <td>[]<a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#pipelinestage">PipelineStage</a></td>
+          <td>List of deployment pipeline stages.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="pipelinestage">PipelineStage</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>id</td>
+          <td>string</td>
+          <td>The unique ID of the stage.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>name</td>
+          <td>string</td>
+          <td>One of the provided stage names.</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>desc</td>
+          <td>string</td>
+          <td>The description about the stage.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>timeout</td>
+          <td>duration</td>
+          <td>The maximum time the stage can be taken to run.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>with</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#stageoptions">StageOptions</a></td>
+          <td>Specific configuration for the stage. This must be one of these <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#stageoptions">StageOptions</a>.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="deploymentnotification">DeploymentNotification</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>mentions</td>
+          <td>[]<a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#notificationmention">NotificationMention</a></td>
+          <td>List of users to be notified for each event.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="notificationmention">NotificationMention</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>event</td>
+          <td>string</td>
+          <td>The event to be notified to users.</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>slack</td>
+          <td>[]string</td>
+          <td>List of user IDs for mentioning in Slack. See <a href="https://api.slack.com/reference/surfaces/formatting#mentioning-users">here</a> for more information on how to check them.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="kubernetesdeploymentinput">KubernetesDeploymentInput</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>manifests</td>
+          <td>[]string</td>
+          <td>List of manifest files in the application directory used to deploy. Empty means all manifest files in the directory will be used.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>kubectlVersion</td>
+          <td>string</td>
+          <td>Version of kubectl will be used. Empty means the version set on <a href="../managing-piped/configuration-reference/#platformproviderkubernetesconfig">piped config</a> or <a href="https://github.com/pipe-cd/pipecd/blob/master/pkg/app/piped/toolregistry/install.go#L29">default version</a> will be used.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>kustomizeVersion</td>
+          <td>string</td>
+          <td>Version of kustomize will be used. Empty means the <a href="https://github.com/pipe-cd/pipecd/blob/master/pkg/app/piped/toolregistry/install.go#L30">default version</a> will be used.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>kustomizeOptions</td>
+          <td>map[string]string</td>
+          <td>List of options that should be used by Kustomize commands.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>helmVersion</td>
+          <td>string</td>
+          <td>Version of helm will be used. Empty means the <a href="https://github.com/pipe-cd/pipecd/blob/master/pkg/app/piped/toolregistry/install.go#L31">default version</a> will be used.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>helmChart</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#helmchart">HelmChart</a></td>
+          <td>Where to fetch helm chart.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>helmOptions</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#helmoptions">HelmOptions</a></td>
+          <td>Configurable parameters for helm commands.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>namespace</td>
+          <td>string</td>
+          <td>The namespace where manifests will be applied.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>autoRollback</td>
+          <td>bool</td>
+          <td>Automatically reverts all deployment changes on failure. Default is <code>true</code>.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>autoCreateNamespace</td>
+          <td>bool</td>
+          <td>Automatically create a new namespace if it does not exist. Default is <code>false</code>.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="helmchart">HelmChart</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>gitRemote</td>
+          <td>string</td>
+          <td>Git remote address where the chart is placing. Empty means the same repository.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>ref</td>
+          <td>string</td>
+          <td>The commit SHA or tag value. Only valid when gitRemote is not empty.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>path</td>
+          <td>string</td>
+          <td>Relative path from the repository root to the chart directory.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>repository</td>
+          <td>string</td>
+          <td>The name of a registered Helm Chart Repository.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>name</td>
+          <td>string</td>
+          <td>The chart name.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>version</td>
+          <td>string</td>
+          <td>The chart version.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="helmoptions">HelmOptions</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>releaseName</td>
+          <td>string</td>
+          <td>The release name of helm deployment. By default, the release name is equal to the application name.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>setValues</td>
+          <td>map[string]string</td>
+          <td>List of values.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>valueFiles</td>
+          <td>[]string</td>
+          <td>List of value files should be loaded. Only local files stored under the application directory or remote files served at the http(s) endpoint are allowed.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>setFiles</td>
+          <td>map[string]string</td>
+          <td>List of file path for values.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>apiVersions</td>
+          <td>[]string</td>
+          <td>Kubernetes api versions used for Capabilities.APIVersions.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>kubeVersion</td>
+          <td>string</td>
+          <td>Kubernetes version used for Capabilities.KubeVersion.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="kubernetesvariantlabel">KubernetesVariantLabel</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>key</td>
+          <td>string</td>
+          <td>The key of the label. Default is <code>pipecd.dev/variant</code>.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>primaryValue</td>
+          <td>string</td>
+          <td>The label value for PRIMARY variant. Default is <code>primary</code>.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>canaryValue</td>
+          <td>string</td>
+          <td>The label value for CANARY variant. Default is <code>canary</code>.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>baselineValue</td>
+          <td>string</td>
+          <td>The label value for BASELINE variant. Default is <code>baseline</code>.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="kubernetesquicksync">KubernetesQuickSync</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>addVariantLabelToSelector</td>
+          <td>bool</td>
+          <td>Whether the PRIMARY variant label should be added to manifests if they were missing. Default is <code>false</code>.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>prune</td>
+          <td>bool</td>
+          <td>Whether the resources that are no longer defined in Git should be removed or not. Default is <code>false</code></td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="kubernetesservice">KubernetesService</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>name</td>
+          <td>string</td>
+          <td>The name of Service manifest.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="kubernetesworkload">KubernetesWorkload</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>kind</td>
+          <td>string</td>
+          <td>The kind name of workload manifests. Currently, only <code>Deployment</code> is supported. In the future, we also want to support <code>ReplicationController</code>, <code>DaemonSet</code>, <code>StatefulSet</code>.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>name</td>
+          <td>string</td>
+          <td>The name of workload manifest.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="kubernetestrafficrouting">KubernetesTrafficRouting</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>method</td>
+          <td>string</td>
+          <td>Which traffic routing method will be used. Available values are <code>istio</code>, <code>smi</code>, <code>podselector</code>. Default is <code>podselector</code>.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>istio</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#istiotrafficrouting">IstioTrafficRouting</a></td>
+          <td>Istio configuration when the method is <code>istio</code>.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="istiotrafficrouting">IstioTrafficRouting</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>editableRoutes</td>
+          <td>[]string</td>
+          <td>List of routes in the VirtualService that can be changed to update traffic routing. Empty means all routes should be updated.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>host</td>
+          <td>string</td>
+          <td>The service host.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>virtualService</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#istiovirtualservice">IstioVirtualService</a></td>
+          <td>The reference to VirtualService manifest. Empty means the first VirtualService resource will be used.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="istiovirtualservice">IstioVirtualService</h4>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>name</td>
+          <td>string</td>
+          <td>The name of VirtualService manifest.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="terraformdeploymentinput">TerraformDeploymentInput</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>workspace</td>
+          <td>string</td>
+          <td>The terraform workspace name. Empty means <code>default</code> workspace.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>terraformVersion</td>
+          <td>string</td>
+          <td>The version of terraform should be used. Empty means the pre-installed version will be used.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>vars</td>
+          <td>[]string</td>
+          <td>List of variables that will be set directly on terraform commands with <code>-var</code> flag. The variable must be formatted by <code>key=value</code>.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>varFiles</td>
+          <td>[]string</td>
+          <td>List of variable files that will be set on terraform commands with <code>-var-file</code> flag.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>commandFlags</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#terraformcommandflags">TerraformCommandFlags</a></td>
+          <td>List of additional flags will be used while executing terraform commands.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>commandEnvs</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#terraformcommandenvs">TerraformCommandEnvs</a></td>
+          <td>List of additional environment variables will be used while executing terraform commands.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>autoRollback</td>
+          <td>bool</td>
+          <td>Automatically reverts all changes from all stages when one of them failed.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="terraformcommandflags">TerraformCommandFlags</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>shared</td>
+          <td>[]string</td>
+          <td>List of additional flags used for all Terraform commands.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>init</td>
+          <td>[]string</td>
+          <td>List of additional flags used for Terraform <code>init</code> command.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>plan</td>
+          <td>[]string</td>
+          <td>List of additional flags used for Terraform <code>plan</code> command.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>apply</td>
+          <td>[]string</td>
+          <td>List of additional flags used for Terraform <code>apply</code> command.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="terraformcommandenvs">TerraformCommandEnvs</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>shared</td>
+          <td>[]string</td>
+          <td>List of additional environment variables used for all Terraform commands.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>init</td>
+          <td>[]string</td>
+          <td>List of additional environment variables used for Terraform <code>init</code> command.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>plan</td>
+          <td>[]string</td>
+          <td>List of additional environment variables used for Terraform <code>plan</code> command.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>apply</td>
+          <td>[]string</td>
+          <td>List of additional environment variables used for Terraform <code>apply</code> command.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="terraformquicksync">TerraformQuickSync</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2 id="cloudrundeploymentinput">CloudRunDeploymentInput</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>serviceManifestFile</td>
+          <td>string</td>
+          <td>The name of service manifest file placing in application directory. Default is <code>service.yaml</code>.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>autoRollback</td>
+          <td>bool</td>
+          <td>Automatically reverts to the previous state when the deployment is failed. Default is <code>true</code>.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="cloudrunquicksync">CloudRunQuickSync</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2 id="lambdadeploymentinput">LambdaDeploymentInput</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>functionManifestFile</td>
+          <td>string</td>
+          <td>The name of function manifest file placing in application directory. Default is <code>function.yaml</code>.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>autoRollback</td>
+          <td>bool</td>
+          <td>Automatically reverts to the previous state when the deployment is failed. Default is <code>true</code>.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="specific-functionyaml">Specific function.yaml</h3>
+<p>One of <code>image</code>, <code>s3Bucket</code>, or <code>source</code> is required.</p>
+<ul>
+<li>
+<p>If you use <code>s3Bucket</code>, <code>s3Key</code> and <code>s3ObjectVersion</code> are required.</p>
+</li>
+<li>
+<p>If you use <code>s3Bucket</code> or <code>source</code>, <code>handler</code> and <code>runtime</code> are required.</p>
+</li>
+</ul>
+<p>See <a href="../managing-application/defining-app-configuration/lambda">Configuring Lambda application</a> for more details.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>name</td>
+          <td>string</td>
+          <td>Name of the Lambda function</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>role</td>
+          <td>string</td>
+          <td>IAM role ARN</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>image</td>
+          <td>string</td>
+          <td>URI of the container image</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>s3Bucket</td>
+          <td>string</td>
+          <td>S3 bucket name for code package</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>s3Key</td>
+          <td>string</td>
+          <td>S3 key for code package</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>s3ObjectVersion</td>
+          <td>string</td>
+          <td>S3 object version for code package</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>source</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#source">Source</a></td>
+          <td>Git settings</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>handler</td>
+          <td>string</td>
+          <td>Lambda function handler</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>runtime</td>
+          <td>string</td>
+          <td>Runtime environment</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>architectures</td>
+          <td>[]<a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#architecture">Architecture</a></td>
+          <td>Supported architectures</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>ephemeralStorage</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#ephemeralstorage">EphemeralStorage</a></td>
+          <td>Ephemeral storage configuration</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>memory</td>
+          <td>int32</td>
+          <td>Memory allocation (in MB)</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>timeout</td>
+          <td>int32</td>
+          <td>Function timeout (in seconds)</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>tags</td>
+          <td>map[string]string</td>
+          <td>Key-value pairs for tags</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>environments</td>
+          <td>map[string]string</td>
+          <td>Environment variables</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>vpcConfig</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#vpcconfig">VPCConfig</a></td>
+          <td>VPC configuration</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>layers</td>
+          <td>[]string</td>
+          <td>ARNs of <a href="https://docs.aws.amazon.com/lambda/latest/dg/chapter-layers.html">layers</a> to depend on</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="source">Source</h4>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>git</td>
+          <td>string</td>
+          <td>Git repository URL</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>ref</td>
+          <td>string</td>
+          <td>Git branch/tag/reference</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>path</td>
+          <td>string</td>
+          <td>Path within the repository</td>
+          <td>Yes</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="architecture">Architecture</h4>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>name</td>
+          <td>string</td>
+          <td>Name of the architecture</td>
+          <td>Yes</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="ephemeralstorage">EphemeralStorage</h4>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>size</td>
+          <td>int32</td>
+          <td>Size of the ephemeral storage</td>
+          <td>Yes</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="vpcconfig">VPCConfig</h4>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>securityGroupIds</td>
+          <td>[]string</td>
+          <td>List of security group IDs</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>subnetIds</td>
+          <td>[]string</td>
+          <td>List of subnet IDs</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="lambdaquicksync">LambdaQuickSync</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2 id="ecsdeploymentinput">ECSDeploymentInput</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>serviceDefinitionFile</td>
+          <td>string</td>
+          <td>The path ECS Service configuration file. Allow file in both <code>yaml</code> and <code>json</code> format. The default value is <code>service.json</code>. See <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service_definition_parameters.html">here</a> and <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#restrictions-of-service-definition">Restrictions</a> for parameters.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>taskDefinitionFile</td>
+          <td>string</td>
+          <td>The path to ECS TaskDefinition configuration file. Allow file in both <code>yaml</code> and <code>json</code> format. The default value is <code>taskdef.json</code>. See <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html">here</a> and <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#restrictions-of-task-definition">Restrictions</a> for parameters.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>targetGroups</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#ecstargetgroupinput">ECSTargetGroupInput</a></td>
+          <td>The target groups configuration, will be used to routing traffic to created task sets.</td>
+          <td>Yes (if you want to perform progressive delivery)</td>
+      </tr>
+      <tr>
+          <td>runStandaloneTask</td>
+          <td>bool</td>
+          <td>Run standalone tasks during deployments. About standalone task, see <a href="https://docs.aws.amazon.com/AmazonECS/latest/userguide/ecs_run_task-v2.html">here</a>. The default value is <code>true</code>.</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>accessType</td>
+          <td>string</td>
+          <td>How the ECS service is accessed. One of <code>ELB</code> or <code>SERVICE_DISCOVERY</code>. See examples <a href="https://github.com/pipe-cd/examples/tree/master/ecs/servicediscovery/simple">here</a>. The default value is <code>ELB</code>.</td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="restrictions-of-service-definition">Restrictions of Service Definition</h3>
+<p>There are some restrictions in configuring a service definition file.</p>
+<ul>
+<li><code>capacityProviderStrategy</code> is not supported.</li>
+<li><code>clientToken</code> is not supported.</li>
+<li><code>deploymentController</code> is required and must be <code>EXTERNAL</code>.</li>
+<li><code>loadBalancers</code> is not supported. Use <code>targetGroups</code> in <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#ecsdeploymentinput">ECSDeploymentInput</a> instead.</li>
+<li><code>platformFamily</code> is not supported.</li>
+<li><code>propagateTags</code> is always set as <code>SERVICE</code>.</li>
+<li><code>taskDefinition</code> is not supported. PipeCD uses the definition in <code>taskDefinitionFile</code> in <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#ecsdeploymentinput">ECSDeploymentInput</a>.</li>
+</ul>
+<h3 id="restrictions-of-task-definition">Restrictions of Task Definition</h3>
+<p>There are some restrictions in configuring a task definition file.</p>
+<ul>
+<li><code>placementConstraints</code> is not supported.</li>
+<li><code>proxyConfiguration</code> is not supported.</li>
+<li><code>tags</code> is not supported.</li>
+</ul>
+<h3 id="ecstargetgroupinput">ECSTargetGroupInput</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>primary</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#ecstargetgroupobject">ECSTargetGroupObject</a></td>
+          <td>The PRIMARY target group, will be used to register the PRIMARY ECS task set.</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>canary</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#ecstargetgroupobject">ECSTargetGroupObject</a></td>
+          <td>The CANARY target group, will be used to register the CANARY ECS task set if exist. It&rsquo;s required to enable PipeCD to perform the multi-stage deployment.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="ecstargetgroupobject">ECSTargetGroupObject</h4>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>targetGroupArn</td>
+          <td>string</td>
+          <td>The name of the container (as it appears in a container definition) to　associate with the load balancer</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>containerName</td>
+          <td>string</td>
+          <td>The full Amazon Resource Name (ARN) of the Elastic Load Balancing target group or groups associated with a service or task set.</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>containerPort</td>
+          <td>int</td>
+          <td>The port on the container to associate with the load balancer.</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>LoadBalancerName</td>
+          <td>string</td>
+          <td>The name of the load balancer to associate with the Amazon ECS service or task set.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<p>Note: The available values are identical to those found in the aws-sdk-go-v2 Types.LoadBalancer. For more details, please refer to <a href="https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/ecs/types#LoadBalancer">this link</a> .</p>
+<h2 id="ecsquicksync">ECSQuickSync</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>recreate</td>
+          <td>bool</td>
+          <td>Whether to delete old tasksets before creating new ones or not. Default to false.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="analysismetrics">AnalysisMetrics</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>provider</td>
+          <td>string</td>
+          <td>The unique name of provider defined in the Piped Configuration.</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>strategy</td>
+          <td>string</td>
+          <td>The strategy name. One of <code>THRESHOLD</code> or <code>PREVIOUS</code> or <code>CANARY_BASELINE</code> or <code>CANARY_PRIMARY</code> is available. Defaults to <code>THRESHOLD</code>.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>query</td>
+          <td>string</td>
+          <td>A query performed against the <a href="../../concepts/#analysis-provider">Analysis Provider</a>. The stage will be skipped if no data points were returned.</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>expected</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#analysisexpected">AnalysisExpected</a></td>
+          <td>The statically defined expected query result. This field is ignored if there was no data point as a result of the query.</td>
+          <td>Yes if the strategy is <code>THRESHOLD</code></td>
+      </tr>
+      <tr>
+          <td>interval</td>
+          <td>duration</td>
+          <td>Run a query at specified intervals.</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>failureLimit</td>
+          <td>int</td>
+          <td>Acceptable number of failures. e.g. If 1 is set, the <code>ANALYSIS</code> stage will end with failure after two queries results failed. Defaults to 1.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>skipOnNoData</td>
+          <td>bool</td>
+          <td>If true, it considers as a success when no data returned from the analysis provider. Defaults to false.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>deviation</td>
+          <td>string</td>
+          <td>The stage fails on deviation in the specified direction. One of <code>LOW</code> or <code>HIGH</code> or <code>EITHER</code> is available. This can be used only for <code>PREVIOUS</code>, <code>CANARY_BASELINE</code> or <code>CANARY_PRIMARY</code>. Defaults to <code>EITHER</code>.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>baselineArgs</td>
+          <td>map[string][string]</td>
+          <td>The custom arguments to be populated for the Baseline query. They can be reffered as <code>{{ .VariantCustomArgs.xxx }}</code>.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>canaryArgs</td>
+          <td>map[string][string]</td>
+          <td>The custom arguments to be populated for the Canary query. They can be reffered as <code>{{ .VariantCustomArgs.xxx }}</code>.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>primaryArgs</td>
+          <td>map[string][string]</td>
+          <td>The custom arguments to be populated for the Primary query. They can be reffered as <code>{{ .VariantCustomArgs.xxx }}</code>.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>timeout</td>
+          <td>duration</td>
+          <td>How long after which the query times out.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>template</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#analysistemplateref">AnalysisTemplateRef</a></td>
+          <td>Reference to the template to be used.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="analysisexpected">AnalysisExpected</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>min</td>
+          <td>float64</td>
+          <td>Failure, if the query result is less than this value.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>max</td>
+          <td>float64</td>
+          <td>Failure, if the query result is larger than this value.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="analysistemplateref">AnalysisTemplateRef</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>name</td>
+          <td>string</td>
+          <td>The template name to refer.</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>appArgs</td>
+          <td>map[string]string</td>
+          <td>The arguments for custom-args.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="analysislog">AnalysisLog</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2 id="analysishttp">AnalysisHttp</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2 id="stageoptions">StageOptions</h2>
+<h3 id="kubernetesprimaryrolloutstageoptions">KubernetesPrimaryRolloutStageOptions</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>suffix</td>
+          <td>string</td>
+          <td>Suffix that should be used when naming the PRIMARY variant&rsquo;s resources. Default is <code>primary</code>.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>createService</td>
+          <td>bool</td>
+          <td>Whether the PRIMARY service should be created. Default is <code>false</code>.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>addVariantLabelToSelector</td>
+          <td>bool</td>
+          <td>Whether the PRIMARY variant label should be added to manifests if they were missing. Default is <code>false</code>.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>prune</td>
+          <td>bool</td>
+          <td>Whether the resources that are no longer defined in Git should be removed or not. Default is <code>false</code></td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="kubernetescanaryrolloutstageoptions">KubernetesCanaryRolloutStageOptions</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>replicas</td>
+          <td>int</td>
+          <td>How many pods for CANARY workloads. Default is <code>1</code> pod. Alternatively, can be specified a string suffixed by &ldquo;%&rdquo; to indicate a percentage value compared to the pod number of PRIMARY</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>suffix</td>
+          <td>string</td>
+          <td>Suffix that should be used when naming the CANARY variant&rsquo;s resources. Default is <code>canary</code>.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>createService</td>
+          <td>bool</td>
+          <td>Whether the CANARY service should be created. Default is <code>false</code>.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>patches</td>
+          <td>[]<a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#kubernetesresourcepatch">KubernetesResourcePatch</a></td>
+          <td>List of patches used to customize manifests for CANARY variant.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="kubernetescanarycleanstageoptions">KubernetesCanaryCleanStageOptions</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="kubernetesbaselinerolloutstageoptions">KubernetesBaselineRolloutStageOptions</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>replicas</td>
+          <td>int</td>
+          <td>How many pods for BASELINE workloads. Default is <code>1</code> pod. Alternatively, can be specified a string suffixed by &ldquo;%&rdquo; to indicate a percentage value compared to the pod number of PRIMARY</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>suffix</td>
+          <td>string</td>
+          <td>Suffix that should be used when naming the BASELINE variant&rsquo;s resources. Default is <code>baseline</code>.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>createService</td>
+          <td>bool</td>
+          <td>Whether the BASELINE service should be created. Default is <code>false</code>.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="kubernetesbaselinecleanstageoptions">KubernetesBaselineCleanStageOptions</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="kubernetestrafficroutingstageoptions">KubernetesTrafficRoutingStageOptions</h3>
+<p>This stage routes traffic with the method specified in <a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#kubernetestrafficrouting">KubernetesTrafficRouting</a>.
+When using <code>podselector</code> method as a traffic routing method, routing is done by updating the Service selector.
+Therefore, note that all traffic will be routed to the primary if the the primary variant&rsquo;s service is rolled out by running the <code>K8S_PRIMARY_ROLLOUT</code> stage.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>all</td>
+          <td>string</td>
+          <td>Which variant should receive all traffic. Available values are &ldquo;primary&rdquo;, &ldquo;canary&rdquo;, &ldquo;baseline&rdquo;. Default is <code>primary</code>.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>primary</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#percentage">Percentage</a></td>
+          <td>The percentage of traffic should be routed to PRIMARY variant.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>canary</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#percentage">Percentage</a></td>
+          <td>The percentage of traffic should be routed to CANARY variant.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>baseline</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#percentage">Percentage</a></td>
+          <td>The percentage of traffic should be routed to BASELINE variant.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="terraformplanstageoptions">TerraformPlanStageOptions</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>exitOnNoChanges</td>
+          <td>bool</td>
+          <td>Whether exiting the pipeline when the result has no changes</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="terraformapplystageoptions">TerraformApplyStageOptions</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h3 id="cloudrunpromotestageoptions">CloudRunPromoteStageOptions</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>percent</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#percentage">Percentage</a></td>
+          <td>Percentage of traffic should be routed to the new version.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="lambdacanaryrolloutstageoptions">LambdaCanaryRolloutStageOptions</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h3 id="lambdapromotestageoptions">LambdaPromoteStageOptions</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>percent</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#percentage">Percentage</a></td>
+          <td>Percentage of traffic should be routed to the new version.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="ecsprimaryrolloutstageoptions">ECSPrimaryRolloutStageOptions</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h3 id="ecscanaryrolloutstageoptions">ECSCanaryRolloutStageOptions</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>scale</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#percentage">Percentage</a></td>
+          <td>The percentage of workloads should be rolled out as CANARY variant&rsquo;s workload.</td>
+          <td>Yes</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="ecstrafficroutingstageoptions">ECSTrafficRoutingStageOptions</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>primary</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#percentage">Percentage</a></td>
+          <td>The percentage of traffic should be routed to PRIMARY variant.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>canary</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#percentage">Percentage</a></td>
+          <td>The percentage of traffic should be routed to CANARY variant.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<p>Note: By default, the sum of traffic is rounded to 100. If both <code>primary</code> and <code>canary</code> numbers are not set, the PRIMARY variant will receive 100% while the CANARY variant will receive 0% of the traffic.</p>
+<h3 id="analysisstageoptions">AnalysisStageOptions</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>duration</td>
+          <td>duration</td>
+          <td>Maximum time to perform the analysis.</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>metrics</td>
+          <td>[]<a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#analysismetrics">AnalysisMetrics</a></td>
+          <td>Configuration for analysis by metrics.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="waitstageoptions">WaitStageOptions</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>duration</td>
+          <td>duration</td>
+          <td>Time to wait.</td>
+          <td>Yes</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="waitapprovalstageoptions">WaitApprovalStageOptions</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>timeout</td>
+          <td>duration</td>
+          <td>The maximum length of time to wait before giving up. Default is 6h.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>approvers</td>
+          <td>[]string</td>
+          <td>List of username who has permission to approve.</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>minApproverNum</td>
+          <td>int</td>
+          <td>Number of minimum needed approvals to make this stage complete. Default is 1.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="customsyncstageoptions-deprecated">CustomSyncStageOptions (deprecated)</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>timeout</td>
+          <td>duration</td>
+          <td>The maximum time the stage can be taken to run. Default is <code>6h</code></td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>envs</td>
+          <td>map[string]string</td>
+          <td>Environment variables used with scripts.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>run</td>
+          <td>string</td>
+          <td>Script run on this stage.</td>
+          <td>Yes</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="scriptrunstageoptions">ScriptRunStageOptions</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>run</td>
+          <td>string</td>
+          <td>Script run on this stage.</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>env</td>
+          <td>map[string]string</td>
+          <td>Environment variables used with scripts.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>timeout</td>
+          <td>duration</td>
+          <td>The maximum time the stage can be taken to run. Default is <code>6h</code></td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="postsync">PostSync</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>chain</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#deploymentchain">DeploymentChain</a></td>
+          <td>Deployment chain configuration, used to determine and build deployments that should be triggered once the current deployment is triggered.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="deploymentchain">DeploymentChain</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>applications</td>
+          <td>[]<a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#deploymentchainapplication">DeploymentChainApplication</a></td>
+          <td>The list of applications which should be triggered once deployment of this application rolled out successfully.</td>
+          <td>Yes</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="deploymentchainapplication">DeploymentChainApplication</h4>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>name</td>
+          <td>string</td>
+          <td>The name of PipeCD application, note that application name is not unique in PipeCD datastore</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>kind</td>
+          <td>string</td>
+          <td>The kind of the PipeCD application, which should be triggered as a node in deployment chain. The value will be one of: KUBERNETES, TERRAFORM, CLOUDRUN, LAMBDA, ECS.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="eventwatcher">EventWatcher</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>matcher</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#eventwatchermatcher">EventWatcherMatcher</a></td>
+          <td>Which event will be handled.</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>handler</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#eventwatcherhandler">EventWatcherHandler</a></td>
+          <td>What to do for the event which matched by the above matcher.</td>
+          <td>Yes</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="eventwatchermatcher">EventWatcherMatcher</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>name</td>
+          <td>string</td>
+          <td>The event name.</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>labels</td>
+          <td>map[string]string</td>
+          <td>Additional attributes of event. This can make an event definition unique even if the one with the same name exists.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="eventwatcherhandler">EventWatcherHandler</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>type</td>
+          <td>string</td>
+          <td>The handler type. Currently, only <code>GIT_UPDATE</code> is supported.</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>config</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#eventwatcherhandlerconfig">EventWatcherHandlerConfig</a></td>
+          <td>Configuration for the event watcher handler.</td>
+          <td>Yes</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="eventwatcherhandlerconfig">EventWatcherHandlerConfig</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>commitMessage</td>
+          <td>string</td>
+          <td>The commit message used to push after replacing values. Default message is used if not given.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>makePullRequest</td>
+          <td>bool</td>
+          <td>Whether to create a new branch or not when commit changes in event watcher. Default is <code>false</code>.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>replacements</td>
+          <td>[]<a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#eventwatcherreplacement">EventWatcherReplacement</a></td>
+          <td>List of places where will be replaced when the new event matches.</td>
+          <td>Yes</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="driftdetection">DriftDetection</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ignoreFields</td>
+          <td>[]string</td>
+          <td>List of fields path in manifests, which its diff should be ignored. This is available for only <code>KubernetesApp</code>.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="pipecd-rich-defined-types">PipeCD rich defined types</h2>
+<h3 id="percentage">Percentage</h3>
+<p>A wrapper of type <code>int</code> to represent percentage data. Basically, you can pass <code>10</code> or <code>&quot;10&quot;</code> or <code>10%</code> and they will be treated as <code>10%</code> in PipeCD.</p>
+<h3 id="kubernetesresourcepatch">KubernetesResourcePatch</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>target</td>
+          <td><a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#kubernetesresourcepatchtarget">KubernetesResourcePatchTarget</a></td>
+          <td>Which manifest, which field will be the target of patch operations.</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>ops</td>
+          <td>[]<a href="/pipecd/docs-preview-feature/docs-v0.47.x/user-guide/configuration-reference/#kubernetesresourcepatchop">KubernetesResourcePatchOp</a></td>
+          <td>List of operations should be applied to the above target.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="kubernetesresourcepatchtarget">KubernetesResourcePatchTarget</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>kind</td>
+          <td>string</td>
+          <td>The resource kind. e.g. <code>ConfigMap</code></td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>name</td>
+          <td>string</td>
+          <td>The resource name. e.g. <code>config-map-name</code></td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>documentRoot</td>
+          <td>string</td>
+          <td>In case you want to manipulate the YAML or JSON data specified in a field of the manfiest, specify that field&rsquo;s path. The string value of that field will be used as input for the patch operations. Otherwise, the whole manifest will be the target of patch operations. e.g. <code>$.data.envoy-config</code></td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="kubernetesresourcepatchop">KubernetesResourcePatchOp</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>op</td>
+          <td>string</td>
+          <td>The operation type. This must be one of <code>yaml-replace</code>, <code>yaml-add</code>, <code>yaml-remove</code>, <code>json-replace</code>, <code>text-regex</code>. Default is <code>yaml-replace</code>.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>path</td>
+          <td>string</td>
+          <td>The path string pointing to the manipulated field. For yaml operations it looks like <code>$.foo.array[0].bar</code>.</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>value</td>
+          <td>string</td>
+          <td>The value string whose content will be used as new value for the field.</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+
+	
+		<style>
+  .feedback--answer {
+    display: inline-block;
+  }
+  .feedback--answer-no {
+    margin-left: 1em;
+  }
+  .feedback--response {
+    display: none;
+    margin-top: 1em;
+  }
+  .feedback--response__visible {
+    display: block;
+  }
+</style>
+<div class="d-print-none">
+<h2 class="feedback--title">Feedback</h2>
+<p class="feedback--question">Was this page helpful?</p>
+<button class="btn btn-primary mb-4 feedback--answer feedback--answer-yes">Yes</button>
+<button class="btn btn-primary mb-4 feedback--answer feedback--answer-no">No</button>
+<p class="feedback--response feedback--response-yes">
+  Glad to hear it! Please <a href="https://github.com/pipe-cd/pipecd/issues/new">tell us how we can improve</a>.
+</p>
+<p class="feedback--response feedback--response-no">
+  Sorry to hear that. Please <a href="https://github.com/pipe-cd/pipecd/issues/new">tell us how we can improve</a>.
+</p>
+</div>
+<script>
+  const yesButton = document.querySelector('.feedback--answer-yes');
+  const noButton = document.querySelector('.feedback--answer-no');
+  const yesResponse = document.querySelector('.feedback--response-yes');
+  const noResponse = document.querySelector('.feedback--response-no');
+  const disableButtons = () => {
+    yesButton.disabled = true;
+    noButton.disabled = true;
+  };
+  const sendFeedback = (value) => {
+    if (typeof ga !== 'function') return;
+    const args = {
+      command: 'send',
+      hitType: 'event',
+      category: 'Helpful',
+      action: 'click',
+      label: window.location.pathname,
+      value: value
+    };
+    ga(args.command, args.hitType, args.category, args.action, args.label, args.value);
+  };
+  yesButton.addEventListener('click', () => {
+    yesResponse.classList.add('feedback--response__visible');
+    disableButtons();
+    sendFeedback(1);
+  });
+  noButton.addEventListener('click', () => {
+    noResponse.classList.add('feedback--response__visible');
+    disableButtons();
+    sendFeedback(0);
+  });
+</script>
+
+		<br />
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">
+  Last modified July 14, 2025: <a href="https://github.com/pipe-cd/pipecd/commit/2f295975e6b4d841d440044dc2fd8a0f6a1561e2">Delete unused flag &#39;Retries&#39; from Terraform config (#6022) (2f295975e)</a>
+</div>
+
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+
+
+
+
+
+
+<div class="bg-dark row d-print-none">
+  <div class="container-fluid py-3 mx-sm-5">
+    <div class="row">
+      <div class="col-8 py-3 order-sm-2 text-white">
+        <a href="https://www.cncf.io/projects/pipecd/" target="_blank">
+          <img src="https://www.cncf.io/wp-content/uploads/2022/05/CNCF_logo_white.svg" alt="cncf logo" width="250">
+          <div class="py-2 text-white">PipeCD is a Cloud Native Computing Foundation sandbox project.</div>
+        </a>
+      </div>
+      <div class="col-4 order-sm-3 d-flex align-items-center justify-content-center">
+        
+        
+        <ul class="list-inline mb-0">
+          
+          <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+            <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://github.com/pipe-cd">
+              <i class="fab fa-github text-white"></i>
+            </a>
+          </li>
+          
+          <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Slack" aria-label="Slack">
+            <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://slack.cncf.io">
+              <i class="fab fa-slack text-white"></i>
+            </a>
+          </li>
+          
+          <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Developer mailing list" aria-label="Developer mailing list">
+            <a class="text-white" target="_blank" rel="noopener noreferrer" href="mailto:pipecd.dev@gmail.com">
+              <i class="fa fa-envelope text-white"></i>
+            </a>
+          </li>
+          
+        </ul>
+        
+        
+        <ul class="list-inline mb-0">
+          
+          <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Twitter" aria-label="Twitter">
+            <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://twitter.com/pipecd_dev">
+              <i class="fab fa-twitter text-white"></i>
+            </a>
+          </li>
+          
+          <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Stack Overflow" aria-label="Stack Overflow">
+            <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://stackoverflow.com/questions/tagged/pipecd">
+              <i class="fab fa-stack-overflow text-white"></i>
+            </a>
+          </li>
+          
+          <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="User mailing list" aria-label="User mailing list">
+            <a class="text-white" target="_blank" rel="noopener noreferrer" href="mailto:pipecd.dev@gmail.com">
+              <i class="fa fa-envelope text-white"></i>
+            </a>
+          </li>
+          
+        </ul>
+        
+        
+      </div>
+    </div>
+    <div class="border-top text-center py-3 text-white">
+      <small>Copyright The PipeCD Authors.</small>
+      <br>
+      <small>The Linux Foundation® (TLF) has registered trademarks and uses trademarks. For a list of TLF trademarks,
+        see <a href="https://www.linuxfoundation.org/trademark-usage/">Trademark Usage</a>.</small>
+    </div>
+  </div>
+</div>
+
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+<script defer src="/pipecd/docs-preview-feature/js/medium-zoom.js" integrity="" crossorigin="anonymous"></script>
+
+
+
+<script src="/pipecd/docs-preview-feature/js/main.min.eaef49e7f859bb90335b315ee6e17dfd8c836ce241ac5e7a61330cd36a7d2f56.js" integrity="sha256-6u9J5/hZu5AzWzFe5uF9/YyDbOJBrF56YTMM02p9L1Y=" crossorigin="anonymous"></script>
+
+
+
+
+
+  </body>
+</html>

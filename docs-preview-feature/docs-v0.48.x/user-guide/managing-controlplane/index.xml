@@ -1,0 +1,780 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PipeCD – Managing Control Plane</title>
+    <link>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.48.x/user-guide/managing-controlplane/</link>
+    <description>Recent content in Managing Control Plane on PipeCD</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+	  <atom:link href="https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.48.x/user-guide/managing-controlplane/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs-V0.48.x: Architecture overview</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.48.x/user-guide/managing-controlplane/architecture-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.48.x/user-guide/managing-controlplane/architecture-overview/</guid>
+      <description>
+        
+        
+        &lt;p&gt;&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/control-plane-components.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p style=&#34;text-align: center;&#34;&gt;
+Component Architecture
+&lt;/p&gt;
+&lt;p&gt;The control plane is a centralized part of PipeCD. It contains several services as below to manage the application, deployment data and handle all requests from &lt;code&gt;piped&lt;/code&gt;s and web clients:&lt;/p&gt;
+&lt;h5 id=&#34;server&#34;&gt;Server&lt;/h5&gt;
+&lt;p&gt;&lt;code&gt;server&lt;/code&gt; handles all incoming gRPC requests from &lt;code&gt;piped&lt;/code&gt;s, web clients, incoming HTTP requests such as auth callback from third party services.
+It also serves all web assets including HTML, JS, CSS&amp;hellip;
+This service can be easily scaled by updating the pod number.&lt;/p&gt;
+&lt;h5 id=&#34;cache&#34;&gt;Cache&lt;/h5&gt;
+&lt;p&gt;&lt;code&gt;cache&lt;/code&gt; is a single pod service for caching internal data used by &lt;code&gt;server&lt;/code&gt; service. Currently, this &lt;code&gt;cache&lt;/code&gt; service is powered by &lt;code&gt;redis&lt;/code&gt;.
+You can configure the control plane to use a fully-managed redis cache service instead of launching a cache pod in your cluster.&lt;/p&gt;
+&lt;h5 id=&#34;ops&#34;&gt;Ops&lt;/h5&gt;
+&lt;p&gt;&lt;code&gt;ops&lt;/code&gt; is a single pod service for operating PipeCD owner&amp;rsquo;s tasks.
+For example, it provides an internal web page for adding and managing projects; it periodically removes the old data; it collects and saves the deployment insights.&lt;/p&gt;
+&lt;h5 id=&#34;data-store&#34;&gt;Data Store&lt;/h5&gt;
+&lt;p&gt;&lt;code&gt;Data store&lt;/code&gt; is a storage for storing model data such as applications and deployments. This can be a fully-managed service such as GCP &lt;a href=&#34;https://cloud.google.com/firestore&#34;&gt;Firestore&lt;/a&gt;, GCP &lt;a href=&#34;https://cloud.google.com/sql&#34;&gt;Cloud SQL&lt;/a&gt; or AWS &lt;a href=&#34;https://aws.amazon.com/rds/&#34;&gt;RDS&lt;/a&gt; (currently we choose &lt;a href=&#34;https://www.mysql.com/&#34;&gt;MySQL v8&lt;/a&gt; as supported relational data store). You can also configure the control plane to use a self-managed MySQL server.
+When installing the control plane, you have to choose one of the provided data store services.&lt;/p&gt;
+&lt;h5 id=&#34;file-store&#34;&gt;File Store&lt;/h5&gt;
+&lt;p&gt;&lt;code&gt;File store&lt;/code&gt; is a storage for storing stage logs, application live states. This can be a fully-managed service such as GCP &lt;a href=&#34;https://cloud.google.com/storage&#34;&gt;GCS&lt;/a&gt;, AWS &lt;a href=&#34;https://aws.amazon.com/s3/&#34;&gt;S3&lt;/a&gt;, or a self-managed service such as &lt;a href=&#34;https://github.com/minio/minio&#34;&gt;Minio&lt;/a&gt;.
+When installing the control plane, you have to choose one of the provided file store services.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs-V0.48.x: Adding a project</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.48.x/user-guide/managing-controlplane/adding-a-project/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.48.x/user-guide/managing-controlplane/adding-a-project/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The control plane ops can add a new project for a team.
+Project adding can be simply done from an internal web page prepared for the ops.
+Because that web service is running in an &lt;code&gt;ops&lt;/code&gt; pod, so in order to access it, using &lt;code&gt;kubectl port-forward&lt;/code&gt; command to forward a local port to a port on the &lt;code&gt;ops&lt;/code&gt; pod as following:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-style:italic&#34;&gt;kubectl port-forward service/pipecd-ops 9082 --namespace={NAMESPACE}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then, access to &lt;a href=&#34;http://localhost:9082&#34;&gt;http://localhost:9082&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;On that page, you will see the list of registered projects and a link to register new projects.
+Registering a new project requires only a unique ID string and an optional description text.&lt;/p&gt;
+&lt;p&gt;Once a new project has been registered, a static admin (username, password) will be automatically generated for the project admin. You can send that information to the project admin. The project admin first uses the provided static admin information to log in to PipeCD. After that, they can change the static admin information, configure the SSO, RBAC or disable static admin user.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Caution:&lt;/strong&gt; The Role-Based Access Control (RBAC) setting is required to enable your team login using SSO, please make sure you have that setup before disable static admin user.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs-V0.48.x: Authentication and authorization</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.48.x/user-guide/managing-controlplane/auth/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.48.x/user-guide/managing-controlplane/auth/</guid>
+      <description>
+        
+        
+        &lt;p&gt;&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/settings-project-v0.38.x.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;static-admin&#34;&gt;Static Admin&lt;/h3&gt;
+&lt;p&gt;When the PipeCD owner &lt;a href=&#34;../adding-a-project/&#34;&gt;adds a new project&lt;/a&gt;, an admin account will be automatically generated for the project. After that, PipeCD owner sends that static admin information including username, password strings to the project admin, who can use that information to log in to PipeCD web with the admin role.&lt;/p&gt;
+&lt;p&gt;After logging, the project admin should change the provided username and password. Or disable the static admin account after configuring the single sign-on for the project.&lt;/p&gt;
+&lt;h3 id=&#34;single-sign-on-sso&#34;&gt;Single Sign-On (SSO)&lt;/h3&gt;
+&lt;p&gt;Single sign-on (SSO) allows users to log in to PipeCD by relying on a trusted third-party service.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Supported service&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GitHub&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note: In the future, we want to support such as Google Gmail, Bitbucket&amp;hellip;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Before configuring the SSO, you need an OAuth application of the using service. For example, GitHub SSO requires creating a GitHub OAuth application as described in this page:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.github.com/en/developers/apps/creating-an-oauth-app&#34;&gt;https://docs.github.com/en/developers/apps/creating-an-oauth-app&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The authorization callback URL should be &lt;code&gt;https://YOUR_PIPECD_ADDRESS/auth/callback&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/settings-update-sso.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;The project can be configured to use a shared SSO configuration (shared OAuth application) instead of needing a new one. In that case, while creating the project, the PipeCD owner specifies the name of the shared SSO configuration should be used, and then the project admin can skip configuring SSO at the settings page.&lt;/p&gt;
+&lt;h3 id=&#34;role-based-access-control-rbac&#34;&gt;Role-Based Access Control (RBAC)&lt;/h3&gt;
+&lt;p&gt;Role-based access control (RBAC) allows restricting access on the PipeCD web-based on the roles of user groups within the project. Before using this feature, the SSO must be configured.&lt;/p&gt;
+&lt;p&gt;PipeCD provides three built-in roles:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Viewer&lt;/code&gt;: has only permissions to view existing resources or data.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Editor&lt;/code&gt;: has all viewer permissions, plus permissions for actions that modify state, such as manually syncing application, canceling deployment&amp;hellip;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Admin&lt;/code&gt;: has all editor permissions, plus permissions for updating project configurations.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;configuring-the-pipecds-roles&#34;&gt;Configuring the PipeCD&amp;rsquo;s roles&lt;/h4&gt;
+&lt;p&gt;The below table represents PipeCD&amp;rsquo;s resources with actions on those resources.&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;resource&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;get&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;list&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;create&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;update&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;delete&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;application&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;○&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;○&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;○&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;○&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;○&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;deployment&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;○&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;○&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;○&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;event&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;○&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;piped&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;○&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;○&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;○&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;○&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;project&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;○&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;○&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;apiKey&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;○&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;○&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;○&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;insight&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;○&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Each role is defined as a combination of multiple policies under this format.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;resources=RESOURCE_NAMES;actions=ACTION_NAMES
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The &lt;code&gt;*&lt;/code&gt; represents all resources and all actions for a resource.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;resources=*;actions=ACTION_NAMES
+resources=RESOURCE_NAMES;actions=*
+resources=*;actions=*
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;configuring-the-pipecds-user-groups&#34;&gt;Configuring the PipeCD&amp;rsquo;s user groups&lt;/h4&gt;
+&lt;p&gt;User Group represents a relation with a specific team (GitHub)/group (Google) and an arbitrary role. All users belong to a team/group will have all permissions of that team/group.&lt;/p&gt;
+&lt;p&gt;In case of using the GitHub team as a PipeCD user group, the PipeCD user group must be set in lowercase. For example, if your GitHub team is named &lt;code&gt;ORG/ABC-TEAM&lt;/code&gt;, the PipeCD user group would be set as &lt;code&gt;ORG/abc-team&lt;/code&gt;. (It&amp;rsquo;s follow the GitHub team URL as github.com/orgs/{organization-name}/teams/{TEAM-NAME})&lt;/p&gt;
+&lt;p&gt;Note: You CANNOT assign multiple roles to a team/group, should create a new role with suitable permissions instead.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/settings-add-user-group.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs-V0.48.x: Registering a piped</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.48.x/user-guide/managing-controlplane/registering-a-piped/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.48.x/user-guide/managing-controlplane/registering-a-piped/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The list of pipeds are shown in the Settings page. Anyone who has the project admin role can register a new piped by clicking on the &lt;code&gt;+ADD&lt;/code&gt; button.&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/settings-add-piped.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p style=&#34;text-align: center;&#34;&gt;
+Registering a new piped
+&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs-V0.48.x: Configuration reference</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.48.x/user-guide/managing-controlplane/configuration-reference/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.48.x/user-guide/managing-controlplane/configuration-reference/</guid>
+      <description>
+        
+        
+        &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;apiVersion&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;pipecd.dev/v1beta1&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;kind&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;ControlPlane&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;spec&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;address&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;https://your-pipecd-address&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;...&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;control-plane-configuration&#34;&gt;Control Plane Configuration&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Field&lt;/th&gt;
+          &lt;th&gt;Type&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+          &lt;th&gt;Required&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;stateKey&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;A randomly generated string used to sign oauth state.&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;datastore&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.48.x/user-guide/managing-controlplane/configuration-reference/#datastore&#34;&gt;DataStore&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Storage for storing application, deployment data.&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;filestore&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.48.x/user-guide/managing-controlplane/configuration-reference/#filestore&#34;&gt;FileStore&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;File storage for storing deployment logs and application states.&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;cache&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.48.x/user-guide/managing-controlplane/configuration-reference/#cache&#34;&gt;Cache&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Internal cache configuration.&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;address&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The address to the control plane. This is required if SSO is enabled.&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;insightCollector&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.48.x/user-guide/managing-controlplane/configuration-reference/#insightcollector&#34;&gt;InsightCollector&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Option to run collector of Insights feature.&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;sharedSSOConfigs&lt;/td&gt;
+          &lt;td&gt;[]&lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.48.x/user-guide/managing-controlplane/configuration-reference/#sharedssoconfig&#34;&gt;SharedSSOConfig&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;List of shared SSO configurations that can be used by any projects.&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;projects&lt;/td&gt;
+          &lt;td&gt;[]&lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.48.x/user-guide/managing-controlplane/configuration-reference/#project&#34;&gt;Project&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;List of debugging/quickstart projects. Please note that do not use this to configure the projects running in the production.&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;datastore&#34;&gt;DataStore&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Field&lt;/th&gt;
+          &lt;th&gt;Type&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+          &lt;th&gt;Required&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;type&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;Which type of data store should be used. Can be one of the following values&lt;br&gt;&lt;code&gt;FIRESTORE&lt;/code&gt;, &lt;code&gt;MYSQL&lt;/code&gt;.&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;config&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.48.x/user-guide/managing-controlplane/configuration-reference/#datastoreconfig&#34;&gt;DataStoreConfig&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Specific configuration for the datastore type. This must be one of these DataStoreConfig.&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;datastoreconfig&#34;&gt;DataStoreConfig&lt;/h2&gt;
+&lt;p&gt;Must be one of the following objects:&lt;/p&gt;
+&lt;h3 id=&#34;datastorefirestoreconfig&#34;&gt;DataStoreFireStoreConfig&lt;/h3&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Field&lt;/th&gt;
+          &lt;th&gt;Type&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+          &lt;th&gt;Required&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;namespace&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The root path element considered as a logical namespace, e.g. &lt;code&gt;pipecd&lt;/code&gt;.&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;environment&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The second path element considered as a logical environment, e.g. &lt;code&gt;dev&lt;/code&gt;. All pipecd collections will have path formatted according to &lt;code&gt;{namespace}/{environment}/{collection-name}&lt;/code&gt;.&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;collectionNamePrefix&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The prefix for collection name. This can be used to avoid conflicts with existing collections in your Firestore database.&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;project&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The name of GCP project hosting the Firestore.&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;credentialsFile&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The path to the service account file for accessing Firestores.&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;datastoremysqlconfig&#34;&gt;DataStoreMySQLConfig&lt;/h3&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Field&lt;/th&gt;
+          &lt;th&gt;Type&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+          &lt;th&gt;Required&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;url&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The address to MySQL server. Should attach with the database port info as &lt;code&gt;127.0.0.1:3307&lt;/code&gt; in case you want to use another port than the default value.&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;database&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The name of database.&lt;/td&gt;
+          &lt;td&gt;No (If you set it via URL)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;usernameFile&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;Path to the file containing the username.&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;passwordFile&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;Path to the file containing the password.&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;filestore&#34;&gt;FileStore&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Field&lt;/th&gt;
+          &lt;th&gt;Type&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+          &lt;th&gt;Required&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;type&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;Which type of file store should be used. Can be one of the following values&lt;br&gt;&lt;code&gt;GCS&lt;/code&gt;, &lt;code&gt;S3&lt;/code&gt;, &lt;code&gt;MINIO&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;config&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.48.x/user-guide/managing-controlplane/configuration-reference/#filestoreconfig&#34;&gt;FileStoreConfig&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Specific configuration for the filestore type. This must be one of these FileStoreConfig.&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;filestoreconfig&#34;&gt;FileStoreConfig&lt;/h2&gt;
+&lt;p&gt;Must be one of the following objects:&lt;/p&gt;
+&lt;h3 id=&#34;filestoregcsconfig&#34;&gt;FileStoreGCSConfig&lt;/h3&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Field&lt;/th&gt;
+          &lt;th&gt;Type&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+          &lt;th&gt;Required&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;bucket&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The bucket name.&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;credentialsFile&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The path to the service account file for accessing GCS.&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;filestores3config&#34;&gt;FileStoreS3Config&lt;/h3&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Field&lt;/th&gt;
+          &lt;th&gt;Type&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+          &lt;th&gt;Required&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;bucket&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The AWS S3 bucket name.&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;region&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The AWS region name.&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;profile&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The AWS profile name. Default value is &lt;code&gt;default&lt;/code&gt;.&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;credentialsFile&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The path to AWS credential file. Requires only if you want to auth by specified credential file, by default PipeCD will use &lt;code&gt;$HOME/.aws/credentials&lt;/code&gt; file.&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;roleARN&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The IAM role arn to use when assuming an role. Requires only if you want to auth by &lt;code&gt;WebIdentity&lt;/code&gt; pattern.&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;tokenFile&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The path to the WebIdentity token PipeCD should use to assume a role with. Requires only if you want to auth by &lt;code&gt;WebIdentity&lt;/code&gt; pattern.&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;filestoreminioconfig&#34;&gt;FileStoreMinioConfig&lt;/h3&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Field&lt;/th&gt;
+          &lt;th&gt;Type&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+          &lt;th&gt;Required&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;endpoint&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The address of Minio.&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;bucket&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The bucket name.&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;accessKeyFile&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The path to the access key file.&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;secretKeyFile&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The path to the secret key file.&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;autoCreateBucket&lt;/td&gt;
+          &lt;td&gt;bool&lt;/td&gt;
+          &lt;td&gt;Whether the given bucket should be made automatically if not exists.&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;cache&#34;&gt;Cache&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Field&lt;/th&gt;
+          &lt;th&gt;Type&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+          &lt;th&gt;Required&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;ttl&lt;/td&gt;
+          &lt;td&gt;duration&lt;/td&gt;
+          &lt;td&gt;The time that in-memory cache items are stored before they are considered as stale.&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;project&#34;&gt;Project&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Field&lt;/th&gt;
+          &lt;th&gt;Type&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+          &lt;th&gt;Required&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;id&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The unique identifier of the project.&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;desc&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The description about the project.&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;staticAdmin&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.48.x/user-guide/managing-controlplane/configuration-reference/#projectstaticuser&#34;&gt;ProjectStaticUser&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Static admin account of the project.&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;projectstaticuser&#34;&gt;ProjectStaticUser&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Field&lt;/th&gt;
+          &lt;th&gt;Type&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+          &lt;th&gt;Required&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;username&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The username string.&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;passwordHash&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The bcrypt hashed value of the password string.&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;insightcollector&#34;&gt;InsightCollector&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Field&lt;/th&gt;
+          &lt;th&gt;Type&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+          &lt;th&gt;Required&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;application&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.48.x/user-guide/managing-controlplane/configuration-reference/#insightcollectorapplication&#34;&gt;InsightCollectorApplication&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Application metrics collector.&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;deployment&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.48.x/user-guide/managing-controlplane/configuration-reference/#insightcollectordeployment&#34;&gt;InsightCollectorDeployment&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Deployment metrics collector.&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;insightcollectorapplication&#34;&gt;InsightCollectorApplication&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Field&lt;/th&gt;
+          &lt;th&gt;Type&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+          &lt;th&gt;Required&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;enabled&lt;/td&gt;
+          &lt;td&gt;bool&lt;/td&gt;
+          &lt;td&gt;Whether to enable. Default is &lt;code&gt;true&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;schedule&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;When collector will be executed. Default is &lt;code&gt;0 * * * *&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;insightcollectordeployment&#34;&gt;InsightCollectorDeployment&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Field&lt;/th&gt;
+          &lt;th&gt;Type&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+          &lt;th&gt;Required&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;enabled&lt;/td&gt;
+          &lt;td&gt;bool&lt;/td&gt;
+          &lt;td&gt;Whether to enable. Default is &lt;code&gt;true&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;schedule&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;When collector will be executed. Default is &lt;code&gt;30 * * * *&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;chunkMaxCount&lt;/td&gt;
+          &lt;td&gt;int&lt;/td&gt;
+          &lt;td&gt;The maximum number of deployment items could be stored in a chunk. Default is &lt;code&gt;1000&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;sharedssoconfig&#34;&gt;SharedSSOConfig&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Field&lt;/th&gt;
+          &lt;th&gt;Type&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+          &lt;th&gt;Required&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;name&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The unique name of the configuration.&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;provider&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The SSO service provider. Currently, only &lt;code&gt;GITHUB&lt;/code&gt; is supported.&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;sessionTtl&lt;/td&gt;
+          &lt;td&gt;int&lt;/td&gt;
+          &lt;td&gt;The time to live of session for SSO login. Unit is &lt;code&gt;hour&lt;/code&gt;. Default is 7 * 24 hours.&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;github&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.48.x/user-guide/managing-controlplane/configuration-reference/#ssoconfiggithub&#34;&gt;SSOConfigGitHub&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;GitHub sso configuration.&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;ssoconfiggithub&#34;&gt;SSOConfigGitHub&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Field&lt;/th&gt;
+          &lt;th&gt;Type&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+          &lt;th&gt;Required&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;clientId&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The client id string of GitHub oauth app.&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;clientSecret&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The client secret string of GitHub oauth app.&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;baseUrl&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The address of GitHub service. Required if enterprise.&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;uploadUrl&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The upload url of GitHub service.&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;proxyUrl&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+          &lt;td&gt;The address of the proxy used while communicating with the GitHub service.&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

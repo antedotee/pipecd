@@ -1,0 +1,381 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PipeCD – Contribute</title>
+    <link>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v1.0.x/contribution-guidelines/</link>
+    <description>Recent content in Contribute on PipeCD</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+	  <atom:link href="https://antedotee.github.io/pipecd/docs-preview-feature/docs-v1.0.x/contribution-guidelines/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs-V1.0.x: Contributing</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v1.0.x/contribution-guidelines/contributing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v1.0.x/contribution-guidelines/contributing/</guid>
+      <description>
+        
+        
+        &lt;p&gt;PipeCD is an open source project that anyone in the community can use, improve, and enjoy. We&amp;rsquo;d love you to join us! &lt;a href=&#34;https://github.com/pipe-cd/pipecd/tree/master/CONTRIBUTING.md&#34;&gt;Contributing to PipeCD&lt;/a&gt; is the best place to start with.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs-V1.0.x: Contribute to PipeCD Blogs</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v1.0.x/contribution-guidelines/contributing-blogs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v1.0.x/contribution-guidelines/contributing-blogs/</guid>
+      <description>
+        
+        
+        &lt;p&gt;We welcome blog contributions from the community! Blog posts are a great way to share your experiences, tutorials, and insights about PipeCD with other users.&lt;/p&gt;
+&lt;h2 id=&#34;what-makes-a-good-blog-post&#34;&gt;What makes a good blog post?&lt;/h2&gt;
+&lt;p&gt;Blog posts can cover a variety of topics, including:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Announcements&lt;/strong&gt;: New features, releases, or project updates&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tutorials&lt;/strong&gt;: Step-by-step guides on using PipeCD features&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Use cases&lt;/strong&gt;: How you or your organization uses PipeCD&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Best practices&lt;/strong&gt;: Tips and tricks for getting the most out of PipeCD&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integrations&lt;/strong&gt;: How to integrate PipeCD with other tools&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;where-blog-posts-live&#34;&gt;Where blog posts live&lt;/h2&gt;
+&lt;p&gt;Blog posts are located in the &lt;code&gt;/docs/content/en/blog/&lt;/code&gt; directory within the &lt;a href=&#34;https://github.com/pipe-cd/pipecd&#34;&gt;pipe-cd/pipecd repository&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;blog-post-format&#34;&gt;Blog post format&lt;/h2&gt;
+&lt;p&gt;Each blog post is a Markdown file with YAML front matter. Here&amp;rsquo;s the structure:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;---&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;date&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;2025-01-03&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;title&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Your Blog Post Title&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;linkTitle&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Short Title for Navigation&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;weight&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;980&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;description&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;A brief description of your post&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;author&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;Your Name ([@your-github-handle](https://github.com/your-github-handle))&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;categories&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Announcement&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;tags&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Tag1&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Tag2&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;---&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;Your content here...&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;front-matter-fields&#34;&gt;Front matter fields&lt;/h3&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Field&lt;/th&gt;
+          &lt;th&gt;Required&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;date&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+          &lt;td&gt;Publication date in &lt;code&gt;YYYY-MM-DD&lt;/code&gt; format&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;title&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+          &lt;td&gt;Full title of your blog post&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;linkTitle&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+          &lt;td&gt;Shorter title used in navigation menus&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;weight&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+          &lt;td&gt;Controls ordering (lower = newer, typically use ~980-990)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;description&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+          &lt;td&gt;Brief summary for SEO and previews&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;author&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+          &lt;td&gt;Your name with GitHub profile link&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;categories&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+          &lt;td&gt;One of: &lt;code&gt;Announcement&lt;/code&gt;, &lt;code&gt;Tutorial&lt;/code&gt;, &lt;code&gt;Release&lt;/code&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;tags&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+          &lt;td&gt;Relevant keywords for your post&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;content-guidelines&#34;&gt;Content guidelines&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Use clear, concise language&lt;/li&gt;
+&lt;li&gt;Include code examples where appropriate (use fenced code blocks with language identifiers)&lt;/li&gt;
+&lt;li&gt;Add images to &lt;code&gt;/docs/static/images/&lt;/code&gt; and reference them as &lt;code&gt;![alt text](/images/your-image.png)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Structure your post with headings (&lt;code&gt;##&lt;/code&gt;, &lt;code&gt;###&lt;/code&gt;) for readability&lt;/li&gt;
+&lt;li&gt;Include a conclusion or summary section&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;how-to-submit-your-blog-post&#34;&gt;How to submit your blog post&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Fork and clone&lt;/strong&gt; the &lt;a href=&#34;https://github.com/pipe-cd/pipecd&#34;&gt;pipecd repository&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Create a branch&lt;/strong&gt; for your blog post:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git checkout -b blog/your-post-title
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Create your blog post&lt;/strong&gt; file in &lt;code&gt;/docs/content/en/blog/&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;touch docs/content/en/blog/your-post-title.md
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Add any images&lt;/strong&gt; to &lt;code&gt;/docs/static/images/&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Preview locally&lt;/strong&gt; by running:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;make run/site
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then visit &lt;code&gt;http://localhost:1313/blog/&lt;/code&gt; to see your post.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Commit and push&lt;/strong&gt; your changes:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git add .
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git commit -s -m &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;blog: add post about your-topic&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git push origin blog/your-post-title
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Open a Pull Request&lt;/strong&gt; against the &lt;code&gt;master&lt;/code&gt; branch&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;review-process&#34;&gt;Review process&lt;/h2&gt;
+&lt;p&gt;A maintainer will review your blog post for:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Technical accuracy&lt;/li&gt;
+&lt;li&gt;Clarity and readability&lt;/li&gt;
+&lt;li&gt;Adherence to the format guidelines&lt;/li&gt;
+&lt;li&gt;Appropriate use of images and code examples&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Feel free to reach out on the &lt;a href=&#34;https://cloud-native.slack.com/&#34;&gt;#pipecd Slack channel&lt;/a&gt; if you have questions or want feedback on your draft before submitting.&lt;/p&gt;
+&lt;p&gt;Thank you for contributing to the PipeCD blog!&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs-V1.0.x: Contribute to PipeCD plugins</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v1.0.x/contribution-guidelines/contributing-plugins/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v1.0.x/contribution-guidelines/contributing-plugins/</guid>
+      <description>
+        
+        
+        &lt;p&gt;PipeCD&amp;rsquo;s plugin architecture allows anyone to extend piped&amp;rsquo;s capabilities by creating custom plugins. This guide explains how to develop and contribute plugins.&lt;/p&gt;
+&lt;h2 id=&#34;understanding-the-plugin-architecture&#34;&gt;Understanding the plugin architecture&lt;/h2&gt;
+&lt;p&gt;In PipeCD v1, plugins are the actors that execute deployments on behalf of piped. Instead of piped directly deploying to platforms, plugins handle platform-specific logic while piped&amp;rsquo;s core controls deployment flows.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Key concepts:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Plugins&lt;/strong&gt; run as gRPC servers, launched and managed by piped&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Deploy targets&lt;/strong&gt; define where a plugin deploys (e.g., a Kubernetes cluster)&lt;/li&gt;
+&lt;li&gt;Plugins can be &lt;strong&gt;official&lt;/strong&gt; (maintained by PipeCD team) or &lt;strong&gt;community-contributed&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For a detailed overview, see the &lt;a href=&#34;https://pipecd.dev/blog/2024/11/28/overview-of-the-plan-for-pluginnable-pipecd/&#34;&gt;Plugin Architecture blog post&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;plugin-types&#34;&gt;Plugin types&lt;/h2&gt;
+&lt;p&gt;Plugins can implement one or more of these interfaces:&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Interface&lt;/th&gt;
+          &lt;th&gt;Purpose&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Deployment&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Plan and execute deployment stages&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;LiveState&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Fetch and build the state of live resources&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Drift&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Calculate drift between live and git-source manifests&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;For example:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A Kubernetes plugin implements all three interfaces&lt;/li&gt;
+&lt;li&gt;A Wait stage plugin only implements the Deployment interface&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;where-plugins-live&#34;&gt;Where plugins live&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Official plugins&lt;/strong&gt;: Located in &lt;code&gt;/pkg/app/pipedv1/plugin/&lt;/code&gt; in the &lt;a href=&#34;https://github.com/pipe-cd/pipecd&#34;&gt;pipecd repository&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Community plugins&lt;/strong&gt;: Located in the &lt;a href=&#34;https://github.com/pipe-cd/community-plugins&#34;&gt;pipe-cd/community-plugins&lt;/a&gt; repository&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;getting-started&#34;&gt;Getting started&lt;/h2&gt;
+&lt;h3 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://go.dev/&#34;&gt;Go 1.24 or later&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Understanding of gRPC&lt;/li&gt;
+&lt;li&gt;Familiarity with the platform you&amp;rsquo;re building a plugin for&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;study-existing-plugins&#34;&gt;Study existing plugins&lt;/h3&gt;
+&lt;p&gt;Before creating a new plugin, study the existing ones:&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Plugin&lt;/th&gt;
+          &lt;th&gt;Complexity&lt;/th&gt;
+          &lt;th&gt;Good for learning&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&#34;https://github.com/pipe-cd/pipecd/tree/master/pkg/app/pipedv1/plugin/wait&#34;&gt;wait&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Simple&lt;/td&gt;
+          &lt;td&gt;Basic plugin structure&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&#34;https://github.com/pipe-cd/pipecd/tree/master/pkg/app/pipedv1/plugin/waitapproval&#34;&gt;waitapproval&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Simple&lt;/td&gt;
+          &lt;td&gt;Stage-only plugin&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&#34;https://github.com/pipe-cd/pipecd/tree/master/pkg/app/pipedv1/plugin/kubernetes&#34;&gt;kubernetes&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Complex&lt;/td&gt;
+          &lt;td&gt;Full-featured plugin&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&#34;https://github.com/pipe-cd/pipecd/tree/master/pkg/app/pipedv1/plugin/terraform&#34;&gt;terraform&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Complex&lt;/td&gt;
+          &lt;td&gt;Infrastructure as Code plugin&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Community plugins:&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Plugin&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&#34;https://github.com/pipe-cd/community-plugins/tree/main/plugins/opentofu&#34;&gt;opentofu&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;OpenTofu deployment plugin&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;plugin-structure&#34;&gt;Plugin structure&lt;/h3&gt;
+&lt;p&gt;A minimal plugin needs:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;your-plugin/
+├── go.mod
+├── go.sum
+├── main.go           # Entry point, starts gRPC server
+├── plugin.go         # Implements plugin interfaces
+├── config/           # Plugin-specific configuration
+│   └── application.go
+└── README.md         # Documentation
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;plugin-configuration&#34;&gt;Plugin configuration&lt;/h3&gt;
+&lt;p&gt;Plugins are configured in the piped config. See the &lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs-v1.0.x/installation/install-piped/&#34;&gt;piped installation guide&lt;/a&gt; for configuration examples:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;apiVersion&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;pipecd.dev/v1beta1&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;kind&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;Piped&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;spec&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;plugins&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;- &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;your-plugin&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;port&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;7001&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;              &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Any unused port&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;url&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;&amp;lt;PLUGIN_URL&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;deployTargets&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;          &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Optional, depends on plugin&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;- &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;target1&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;          &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;config&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;            &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Plugin-specific config&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;contributing-to-official-plugins&#34;&gt;Contributing to official plugins&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Open an issue&lt;/strong&gt; first to discuss your plugin idea with maintainers&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Fork and clone&lt;/strong&gt; the &lt;a href=&#34;https://github.com/pipe-cd/pipecd&#34;&gt;pipecd repository&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Create your plugin&lt;/strong&gt; under &lt;code&gt;/pkg/app/pipedv1/plugin/your-plugin/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Write tests&lt;/strong&gt; — see existing plugins for patterns&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Add a README&lt;/strong&gt; documenting configuration and usage&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Submit a PR&lt;/strong&gt; linking to the discussion issue&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;build-and-test&#34;&gt;Build and test&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Build all plugins&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;make build/plugin
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Run tests&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;make test/go
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Run piped locally with your plugin&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;make run/piped &lt;span style=&#34;color:#000&#34;&gt;CONFIG_FILE&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;piped-config.yaml &lt;span style=&#34;color:#000&#34;&gt;EXPERIMENTAL&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;INSECURE&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;contributing-to-community-plugins&#34;&gt;Contributing to community plugins&lt;/h2&gt;
+&lt;p&gt;The &lt;a href=&#34;https://github.com/pipe-cd/community-plugins&#34;&gt;community-plugins repository&lt;/a&gt; welcomes plugins that may not fit in the official repo.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Fork&lt;/strong&gt; the community-plugins repository&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Create your plugin&lt;/strong&gt; following the structure above&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Submit a PR&lt;/strong&gt; with documentation&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;resources&#34;&gt;Resources&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/pipe-cd/pipecd/blob/master/docs/rfcs/0015-pipecd-plugin-arch-meta.md&#34;&gt;Plugin Architecture RFC&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs-v1.0.x/concepts/#plugins&#34;&gt;Plugin Concepts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/docs-v1.0.x/installation/install-piped/&#34;&gt;Installing piped&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pipecd.dev/blog/2025/06/16/plugin-architecture-piped-alpha-version-has-been-released/&#34;&gt;Plugin Alpha Release blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloud-native.slack.com/&#34;&gt;#pipecd Slack channel&lt;/a&gt; for questions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Thank you for contributing to PipeCD plugins!&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs-V1.0.x: Contribute to PipeCD Documentation</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v1.0.x/contribution-guidelines/contributing-documentation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v1.0.x/contribution-guidelines/contributing-documentation/</guid>
+      <description>
+        
+        
+        &lt;p&gt;Welcome! We are so happy you&amp;rsquo;re interested in helping improve our documentation. Your contributions make the project better for everyone.&lt;/p&gt;
+&lt;p&gt;This guide explains how you can contribute to the PipeCD Documentation, which resides on our official website, &lt;a href=&#34;https://pipecd.dev&#34;&gt;https://pipecd.dev&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;where-to-find-the-docs&#34;&gt;Where to find the docs&lt;/h2&gt;
+&lt;p&gt;Our documentation is located in the &lt;code&gt;/docs&lt;/code&gt; folder within the &lt;a href=&#34;https://github.com/pipe-cd/pipecd&#34;&gt;pipe-cd/pipecd repository&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The content files are written in Markdown and live inside &lt;code&gt;/docs/content/en/&lt;/code&gt;. You&amp;rsquo;ll notice two types of documentation folders:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/docs-dev/&lt;/code&gt;: This is for documentation related to unreleased, in-development features.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/docs-v0.x.x/&lt;/code&gt; (and &lt;code&gt;/docs-v1.0.x/&lt;/code&gt;): These folders contain the documentation for specific released versions of PipeCD.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;how-to-build-the-docs-locally&#34;&gt;How to build the docs locally&lt;/h2&gt;
+&lt;p&gt;To preview your changes as you work, you must run the documentation website on your local machine.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Install Prerequisite:&lt;/strong&gt; You must have the &lt;strong&gt;extended&lt;/strong&gt; version of &lt;a href=&#34;https://gohugo.io/getting-started/installing/&#34;&gt;Hugo (v0.92.1 or higher)&lt;/a&gt; installed.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Run the Server:&lt;/strong&gt; From the root of the &lt;code&gt;pipecd&lt;/code&gt; repository, run the following command:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;make run/site
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Preview:&lt;/strong&gt; Open your browser and go to &lt;code&gt;http://localhost:1313&lt;/code&gt; to see the live-reloading site.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;how-to-submit-your-changes-the-pr-process&#34;&gt;How to submit your changes (The PR Process)&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Create a Branch:&lt;/strong&gt; Create a new branch for your changes (e.g., &lt;code&gt;git checkout -b my-docs-fix&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Make Your Changes:&lt;/strong&gt; Edit the necessary documentation files. If you are fixing an issue in the current documentation, remember to edit the file in both the &lt;code&gt;/docs-dev/&lt;/code&gt; and the latest &lt;code&gt;/docs-vx.y.z/&lt;/code&gt; folders.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Commit and Push:&lt;/strong&gt; Commit your changes with a clear message and push your branch to your fork.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Open a Pull Request:&lt;/strong&gt; Go to the PipeCD repository and open a Pull Request. In the description, please link to the issue you are fixing (e.g., &lt;code&gt;Addresses #6124&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Review:&lt;/strong&gt; A maintainer will review your PR, provide feedback, and merge it.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Thank you for contributing!&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

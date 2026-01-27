@@ -1,0 +1,75 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PipeCD – Contributor Guide</title>
+    <link>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.52.x/contribution-guidelines/</link>
+    <description>Recent content in Contributor Guide on PipeCD</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+	  <atom:link href="https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.52.x/contribution-guidelines/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs-V0.52.x: Contributing</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.52.x/contribution-guidelines/contributing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.52.x/contribution-guidelines/contributing/</guid>
+      <description>
+        
+        
+        &lt;p&gt;PipeCD is an open source project that anyone in the community can use, improve, and enjoy. We&amp;rsquo;d love you to join us! &lt;a href=&#34;https://github.com/pipe-cd/pipecd/tree/master/CONTRIBUTING.md&#34;&gt;Contributing to PipeCD&lt;/a&gt; is the best place to start with.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs-V0.52.x: Architectural overview</title>
+      <link>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.52.x/contribution-guidelines/architectural-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://antedotee.github.io/pipecd/docs-preview-feature/docs-v0.52.x/contribution-guidelines/architectural-overview/</guid>
+      <description>
+        
+        
+        &lt;p&gt;&lt;img src=&#34;https://antedotee.github.io/pipecd/docs-preview-feature/images/architecture-overview.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p style=&#34;text-align: center;&#34;&gt;
+Component Architecture
+&lt;/p&gt;
+&lt;h3 id=&#34;piped&#34;&gt;Piped&lt;/h3&gt;
+&lt;p&gt;A single binary component runs in your cluster, your local network to handle the deployment tasks.
+It can be run inside a Kubernetes cluster by simply starting a Pod or a Deployment.
+This component is designed to be stateless, so it can also be run in a single VM or even your local machine.&lt;/p&gt;
+&lt;h3 id=&#34;control-plane&#34;&gt;Control Plane&lt;/h3&gt;
+&lt;p&gt;A centralized component manages deployment data and provides gRPC API for connecting &lt;code&gt;piped&lt;/code&gt;s as well as all web-functionalities of PipeCD such as
+authentication, showing deployment list/details, application list/details, delivery insights&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Control Plane contains the following components:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;server&lt;/code&gt;: a service to provide api for piped, web and serve static assets for web.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ops&lt;/code&gt;: a service to provide administrative features for Control Plane owner like adding/managing projects.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cache&lt;/code&gt;: a redis cache service for caching internal data.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;datastore&lt;/code&gt;: data storage for storing deployment, application data
+&lt;ul&gt;
+&lt;li&gt;this can be a fully-managed service such as &lt;code&gt;Firestore&lt;/code&gt;, &lt;code&gt;Cloud SQL&lt;/code&gt;&amp;hellip;&lt;/li&gt;
+&lt;li&gt;or a self-managed such as &lt;code&gt;MySQL&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;filestore&lt;/code&gt;: file storage for storing logs, application states
+&lt;ul&gt;
+&lt;li&gt;this can a fully-managed service such as &lt;code&gt;GCS&lt;/code&gt;, &lt;code&gt;S3&lt;/code&gt;&amp;hellip;&lt;/li&gt;
+&lt;li&gt;or a self-managed service such as &lt;code&gt;Minio&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For more information, see &lt;a href=&#34;../../user-guide/managing-controlplane/architecture-overview/&#34;&gt;Architecture overview of Control Plane&lt;/a&gt;.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>
