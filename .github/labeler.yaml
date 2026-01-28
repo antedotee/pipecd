@@ -33,3 +33,7 @@ area/pipedv1:
 
 area/plugin-sdk:
 - pkg/plugin/sdk/**/*
+
+area/docs:
+- docs/**/*
+- "**/*.md"
