@@ -1,0 +1,19 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PipeCD – Categories</title>
+    <link>https://antedotee.github.io/pipecd/docs-preview-feature/categories/</link>
+    <description>Recent content in Categories on PipeCD</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 15 Jan 2026 00:00:00 +0000</lastBuildDate>
+    
+	  <atom:link href="https://antedotee.github.io/pipecd/docs-preview-feature/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+  </channel>
+</rss>
