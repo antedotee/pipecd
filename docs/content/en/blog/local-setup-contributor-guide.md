@@ -24,7 +24,9 @@ Make sure you have the following installed and configured:
 - **Go** (v1.21 or higher)
 - **Docker**
 - **kubectl**
-- **Kind** (required to create the local cluster)
+- **Kind** or **Minikube** (required to create the local cluster)
+  - **Kind** is faster and recommended for local development
+  - **Minikube** is an alternative option that works with Docker, Kubernetes in Docker (Docker Desktop), or other drivers
 - **Node.js and Yarn** (required to build the web UI)
 - **A fork of the PipeCD repository**
 
@@ -50,6 +52,10 @@ make update/web-deps
 
 ### Start local registry and cluster
 
+You can use either **KinD** (recommended, faster) or **Minikube** to set up your local cluster.
+
+#### Option 1: Using KinD (Recommended)
+
 A helper command starts a local kind cluster and a container registry. This command also automatically creates the `pipecd` namespace where the components will run.
 ```bash
 make up/local-cluster
@@ -59,6 +65,35 @@ After the cluster starts, export the kubeconfig to ensure kubectl can communicat
 ```bash
 kind export kubeconfig --name pipecd
 ```
+
+#### Option 2: Using Minikube
+
+If you prefer to use Minikube (with Docker driver or other drivers), you can set up the cluster as follows:
+
+```bash
+# Start local registry and Minikube cluster
+make up/local-cluster-minikube
+```
+
+Or if you want to use a different Minikube driver (e.g., Docker Desktop's Kubernetes):
+
+```bash
+# Set the driver (docker, hyperkit, virtualbox, etc.)
+export MINIKUBE_DRIVER=docker
+make up/local-cluster-minikube
+```
+
+After the cluster starts, ensure kubectl is configured to use the Minikube cluster:
+
+```bash
+# Use Minikube's kubectl context
+minikube kubectl --profile pipecd -- config use-context pipecd
+
+# Or export the kubeconfig
+export KUBECONFIG=$(minikube kubectl --profile pipecd -- config view --flatten --minify)
+```
+
+**Note:** Minikube with Docker driver is recommended for consistency with KinD. Other drivers (like hyperkit or virtualbox) may require additional configuration for registry access.
 ## 2. Run the PipeCD Control Plane (from source)
 
 The control plane provides the web UI, API, and metadata storage. Running it from source ensures you are testing your latest changes.
@@ -129,8 +164,14 @@ make run/piped CONFIG_FILE=piped-config.yaml INSECURE=true
 
 To stop and remove the local cluster and registry when you are done, run:
 
+**For KinD:**
 ```bash
 make down/local-cluster
+```
+
+**For Minikube:**
+```bash
+make down/local-cluster-minikube
 ```
 ## Next Steps
 

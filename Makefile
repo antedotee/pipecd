@@ -312,9 +312,34 @@ down/local-registry:
 .PHONY: down/local-cluster
 down/local-cluster: down/kind-cluster down/local-registry
 
+.PHONY: up/minikube-cluster
+up/minikube-cluster: MINIKUBE_CLUSTER ?= pipecd
+up/minikube-cluster:
+	./hack/create-minikube-cluster.sh $(MINIKUBE_CLUSTER)
+
+.PHONY: up/local-cluster-minikube
+up/local-cluster-minikube: up/local-registry up/minikube-cluster
+
+.PHONY: down/minikube-cluster
+down/minikube-cluster: MINIKUBE_CLUSTER ?= pipecd
+down/minikube-cluster:
+	minikube stop -p $(MINIKUBE_CLUSTER) || true
+	minikube delete -p $(MINIKUBE_CLUSTER) || true
+
+.PHONY: down/local-cluster-minikube
+down/local-cluster-minikube: down/minikube-cluster down/local-registry
+
 .PHONY: delete/local-volumes
 delete/local-volumes:
 	docker volume rm pipecd-data
+
+.PHONY: test/minikube-setup
+test/minikube-setup:
+	./hack/test-minikube-setup.sh
+
+.PHONY: validate/minikube-script
+validate/minikube-script:
+	./hack/validate-minikube-script.sh
 
 # Other commands
 
