@@ -75,3 +75,21 @@
 .medium-zoom-image--opened {
     z-index: 101;
 }
+
+// Right nav TOC: black in light mode (opposite = white in dark mode)
+.td-toc #TableOfContents a {
+    color: $black;
+}
+.td-toc #TableOfContents a:hover,
+.td-toc #TableOfContents a.active {
+    color: $primary;
+}
+
+// Tags and categories titles only: same color as sidebar "Documentation [dev]" (tree-root)
+.taxonomy-terms-article .taxonomy-title,
+.taxonomy-terms-cloud .taxonomy-title {
+    color: $td-sidebar-tree-root-color;
+}
+.taxonomy-terms-cloud .taxonomy-title {
+    border-bottom-color: $td-sidebar-tree-root-color;
+}

@@ -31,5 +31,15 @@
 			{{ end }}
 		</ul>
 	</div>
-	<div class="navbar-nav d-none d-lg-block">{{ partial "search-input.html" . }}</div>
+	<div class="navbar-nav d-flex flex-row align-items-center td-navbar-right">
+		<div class="td-navbar-theme-toggle-wrapper d-none d-lg-flex align-items-center">
+			<button type="button" class="btn btn-link nav-link py-2 px-2 td-navbar-theme-toggle theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+				<span class="theme-toggle-dark" title="Switch to dark mode"><i class="fas fa-moon"></i></span>
+				<span class="theme-toggle-light" title="Switch to light mode"><i class="fas fa-sun"></i></span>
+			</button>
+		</div>
+		<div class="d-none d-lg-block td-navbar-search-wrapper">
+			{{ partial "search-input.html" . }}
+		</div>
+	</div>
 </nav>

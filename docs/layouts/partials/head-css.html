@@ -1,0 +1,18 @@
+{{ $scssMain := "scss/main.scss" }}
+{{ $scssDark := "scss/dark-mode.scss" }}
+{{ if not hugo.IsProduction }}
+{{ $css := resources.Get $scssMain | toCSS (dict "enableSourceMap" true) }}
+<link href="{{ $css.RelPermalink }}" rel="stylesheet">
+{{ with resources.Get $scssDark }}
+{{ $cssDark := . | toCSS (dict "enableSourceMap" true) }}
+<link href="{{ $cssDark.RelPermalink }}" rel="stylesheet">
+{{ end }}
+{{ else }}
+{{ $css := resources.Get $scssMain | toCSS (dict "enableSourceMap" false) | postCSS | minify | fingerprint }}
+<link rel="preload" href="{{ $css.RelPermalink }}" as="style">
+<link href="{{ $css.RelPermalink }}" rel="stylesheet" integrity="{{ $css.Data.integrity }}">
+{{ with resources.Get $scssDark }}
+{{ $cssDark := . | toCSS (dict "enableSourceMap" false) | postCSS | minify | fingerprint }}
+<link href="{{ $cssDark.RelPermalink }}" rel="stylesheet" integrity="{{ $cssDark.Data.integrity }}">
+{{ end }}
+{{ end }}
