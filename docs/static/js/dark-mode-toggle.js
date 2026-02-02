@@ -6,6 +6,8 @@
 (function () {
   var KEY = 'pipecd-docs-theme';
   var DARK_CODE_COLOR = '#e6edf3';
+  var CNCF_LOGO_WHITE = 'https://www.cncf.io/wp-content/uploads/2022/05/CNCF_logo_white.svg';
+  var CNCF_LOGO_COLOR = 'https://www.cncf.io/wp-content/uploads/2022/07/cncf-color-bg.svg';
 
   function getTheme() {
     return document.documentElement.getAttribute('data-theme') || 'light';
@@ -15,8 +17,19 @@
     document.documentElement.setAttribute('data-theme', theme);
     try {
       localStorage.setItem(KEY, theme);
-    } catch (e) {}
+    } catch (e) {
+      // localStorage may throw in private mode or when quota exceeded
+    }
     applyCodeBlockColors(theme);
+    applyFooterLogo(theme);
+  }
+
+  function applyFooterLogo(theme) {
+    var homeFooter = document.querySelector('.td-outer div.bg-white.d-print-none');
+    if (!homeFooter) return;
+    var img = homeFooter.querySelector('img[alt="cncf logo"]');
+    if (!img) return;
+    img.src = theme === 'dark' ? CNCF_LOGO_WHITE : CNCF_LOGO_COLOR;
   }
 
   function applyCodeBlockColors(theme) {
@@ -38,12 +51,11 @@
     setTheme(next);
   }
 
-  window.__setTheme = setTheme;
-
   document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.theme-toggle').forEach(function (btn) {
       btn.addEventListener('click', toggleTheme);
     });
     applyCodeBlockColors(getTheme());
+    applyFooterLogo(getTheme());
   });
 })();
